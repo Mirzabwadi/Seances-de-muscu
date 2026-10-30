@@ -1,0 +1,878 @@
+[
+  {
+    "text": "L'un",
+    "start": 0.06,
+    "end": 0.25,
+    "id": "w0"
+  },
+  {
+    "text": "des",
+    "start": 0.25,
+    "end": 0.36,
+    "id": "w1"
+  },
+  {
+    "text": "plus",
+    "start": 0.57,
+    "end": 0.72,
+    "id": "w2"
+  },
+  {
+    "text": "grands",
+    "start": 0.72,
+    "end": 1.12,
+    "id": "w3"
+  },
+  {
+    "text": "philosophes",
+    "start": 1.12,
+    "end": 1.83,
+    "id": "w4"
+  },
+  {
+    "text": "de",
+    "start": 1.87,
+    "end": 1.98,
+    "id": "w5"
+  },
+  {
+    "text": "l'histoire",
+    "start": 1.98,
+    "end": 2.67,
+    "id": "w6"
+  },
+  {
+    "text": "n'a",
+    "start": 2.78,
+    "end": 2.9,
+    "id": "w7"
+  },
+  {
+    "text": "jamais",
+    "start": 2.9,
+    "end": 3.28,
+    "id": "w8"
+  },
+  {
+    "text": "écrit",
+    "start": 3.42,
+    "end": 3.61,
+    "id": "w9"
+  },
+  {
+    "text": "une",
+    "start": 3.61,
+    "end": 3.79,
+    "id": "w10"
+  },
+  {
+    "text": "seule",
+    "start": 3.79,
+    "end": 4.1,
+    "id": "w11"
+  },
+  {
+    "text": "ligne.",
+    "start": 4.1,
+    "end": 4.5,
+    "id": "w12"
+  },
+  {
+    "text": "Socrates",
+    "start": 4.61,
+    "end": 5.32,
+    "id": "w13"
+  },
+  {
+    "text": "vivait",
+    "start": 5.32,
+    "end": 5.94,
+    "id": "w14"
+  },
+  {
+    "text": "à",
+    "start": 5.94,
+    "end": 6.04,
+    "id": "w15"
+  },
+  {
+    "text": "Athènes",
+    "start": 6.04,
+    "end": 6.77,
+    "id": "w16"
+  },
+  {
+    "text": "il",
+    "start": 6.9,
+    "end": 7.05,
+    "id": "w17"
+  },
+  {
+    "text": "y",
+    "start": 7.05,
+    "end": 7.17,
+    "id": "w18"
+  },
+  {
+    "text": "a",
+    "start": 7.17,
+    "end": 7.31,
+    "id": "w19"
+  },
+  {
+    "text": "2400",
+    "start": 7.31,
+    "end": 8.8,
+    "id": "w20"
+  },
+  {
+    "text": "ans.",
+    "start": 8.82,
+    "end": 9.3,
+    "id": "w21"
+  },
+  {
+    "text": "Tout",
+    "start": 9.4,
+    "end": 9.57,
+    "id": "w22"
+  },
+  {
+    "text": "ce",
+    "start": 9.57,
+    "end": 9.66,
+    "id": "w23"
+  },
+  {
+    "text": "qu'on",
+    "start": 9.83,
+    "end": 10.02,
+    "id": "w24"
+  },
+  {
+    "text": "sait",
+    "start": 10.08,
+    "end": 10.24,
+    "id": "w25"
+  },
+  {
+    "text": "de",
+    "start": 10.29,
+    "end": 10.42,
+    "id": "w26"
+  },
+  {
+    "text": "lui,",
+    "start": 10.42,
+    "end": 10.8,
+    "id": "w27"
+  },
+  {
+    "text": "on",
+    "start": 10.8,
+    "end": 10.94,
+    "id": "w28"
+  },
+  {
+    "text": "lui",
+    "start": 10.94,
+    "end": 11.13,
+    "id": "w29"
+  },
+  {
+    "text": "doit",
+    "start": 11.24,
+    "end": 11.49,
+    "id": "w30"
+  },
+  {
+    "text": "à",
+    "start": 11.49,
+    "end": 11.56,
+    "id": "w31"
+  },
+  {
+    "text": "ses",
+    "start": 11.56,
+    "end": 11.79,
+    "id": "w32"
+  },
+  {
+    "text": "élèves",
+    "start": 11.79,
+    "end": 12.29,
+    "id": "w33"
+  },
+  {
+    "text": "et",
+    "start": 12.3,
+    "end": 12.5,
+    "id": "w34"
+  },
+  {
+    "text": "surtout",
+    "start": 12.5,
+    "end": 13.09,
+    "id": "w35"
+  },
+  {
+    "text": "à",
+    "start": 13.19,
+    "end": 13.29,
+    "id": "w36"
+  },
+  {
+    "text": "Platon.",
+    "start": 13.29,
+    "end": 14,
+    "id": "w37"
+  },
+  {
+    "text": "Sa",
+    "start": 14.11,
+    "end": 14.21,
+    "id": "w38"
+  },
+  {
+    "text": "méthode",
+    "start": 14.21,
+    "end": 14.94,
+    "id": "w39"
+  },
+  {
+    "text": "était",
+    "start": 14.99,
+    "end": 15.5,
+    "id": "w40"
+  },
+  {
+    "text": "simple,",
+    "start": 15.5,
+    "end": 16.36,
+    "id": "w41"
+  },
+  {
+    "text": "poser",
+    "start": 16.4,
+    "end": 16.67,
+    "id": "w42"
+  },
+  {
+    "text": "des",
+    "start": 16.81,
+    "end": 17,
+    "id": "w43"
+  },
+  {
+    "text": "questions",
+    "start": 17.01,
+    "end": 17.7,
+    "id": "w44"
+  },
+  {
+    "text": "encore",
+    "start": 17.7,
+    "end": 18.09,
+    "id": "w45"
+  },
+  {
+    "text": "et",
+    "start": 18.15,
+    "end": 18.3,
+    "id": "w46"
+  },
+  {
+    "text": "encore,",
+    "start": 18.32,
+    "end": 18.86,
+    "id": "w47"
+  },
+  {
+    "text": "jusqu'à",
+    "start": 19,
+    "end": 19.56,
+    "id": "w48"
+  },
+  {
+    "text": "ce",
+    "start": 19.56,
+    "end": 19.75,
+    "id": "w49"
+  },
+  {
+    "text": "que",
+    "start": 19.75,
+    "end": 20.02,
+    "id": "w50"
+  },
+  {
+    "text": "son",
+    "start": 20.09,
+    "end": 20.33,
+    "id": "w51"
+  },
+  {
+    "text": "interlocuteur",
+    "start": 20.33,
+    "end": 21.57,
+    "id": "w52"
+  },
+  {
+    "text": "réalise",
+    "start": 21.71,
+    "end": 22.26,
+    "id": "w53"
+  },
+  {
+    "text": "qu'il",
+    "start": 22.32,
+    "end": 22.57,
+    "id": "w54"
+  },
+  {
+    "text": "ne",
+    "start": 22.57,
+    "end": 22.68,
+    "id": "w55"
+  },
+  {
+    "text": "savait",
+    "start": 22.68,
+    "end": 23.02,
+    "id": "w56"
+  },
+  {
+    "text": "pas",
+    "start": 23.02,
+    "end": 23.19,
+    "id": "w57"
+  },
+  {
+    "text": "vraiment",
+    "start": 23.19,
+    "end": 23.7,
+    "id": "w58"
+  },
+  {
+    "text": "ce",
+    "start": 23.73,
+    "end": 23.76,
+    "id": "w59"
+  },
+  {
+    "text": "qu'il",
+    "start": 23.8,
+    "end": 23.92,
+    "id": "w60"
+  },
+  {
+    "text": "croyait",
+    "start": 24.02,
+    "end": 24.53,
+    "id": "w61"
+  },
+  {
+    "text": "savoir.",
+    "start": 24.66,
+    "end": 25.2,
+    "id": "w62"
+  },
+  {
+    "text": "On",
+    "start": 25.3,
+    "end": 25.34,
+    "id": "w63"
+  },
+  {
+    "text": "lui",
+    "start": 25.34,
+    "end": 25.55,
+    "id": "w64"
+  },
+  {
+    "text": "attribue",
+    "start": 25.55,
+    "end": 26.12,
+    "id": "w65"
+  },
+  {
+    "text": "cette",
+    "start": 26.12,
+    "end": 26.43,
+    "id": "w66"
+  },
+  {
+    "text": "formule",
+    "start": 26.62,
+    "end": 26.98,
+    "id": "w67"
+  },
+  {
+    "text": "«",
+    "start": 26.98,
+    "end": 27.04,
+    "id": "w68"
+  },
+  {
+    "text": "Je",
+    "start": 27.14,
+    "end": 27.24,
+    "id": "w69"
+  },
+  {
+    "text": "sais",
+    "start": 27.24,
+    "end": 27.56,
+    "id": "w70"
+  },
+  {
+    "text": "que",
+    "start": 27.6,
+    "end": 27.82,
+    "id": "w71"
+  },
+  {
+    "text": "je",
+    "start": 27.82,
+    "end": 27.87,
+    "id": "w72"
+  },
+  {
+    "text": "ne",
+    "start": 28.01,
+    "end": 28.14,
+    "id": "w73"
+  },
+  {
+    "text": "sais",
+    "start": 28.14,
+    "end": 28.46,
+    "id": "w74"
+  },
+  {
+    "text": "rien",
+    "start": 28.62,
+    "end": 28.76,
+    "id": "w75"
+  },
+  {
+    "text": "».",
+    "start": 28.8,
+    "end": 29.19,
+    "id": "w76"
+  },
+  {
+    "text": "Ces",
+    "start": 29.31,
+    "end": 29.37,
+    "id": "w77"
+  },
+  {
+    "text": "questions",
+    "start": 29.37,
+    "end": 29.89,
+    "id": "w78"
+  },
+  {
+    "text": "dérangeaient.",
+    "start": 29.9,
+    "end": 30.8,
+    "id": "w79"
+  },
+  {
+    "text": "En",
+    "start": 30.8,
+    "end": 30.97,
+    "id": "w80"
+  },
+  {
+    "text": "399",
+    "start": 30.97,
+    "end": 31.76,
+    "id": "w81"
+  },
+  {
+    "text": "avant,",
+    "start": 31.76,
+    "end": 32.4,
+    "id": "w82"
+  },
+  {
+    "text": "Jésus",
+    "start": 32.4,
+    "end": 32.99,
+    "id": "w83"
+  },
+  {
+    "text": "crie",
+    "start": 32.99,
+    "end": 33.5,
+    "id": "w84"
+  },
+  {
+    "text": "«",
+    "start": 33.5,
+    "end": 33.61,
+    "id": "w85"
+  },
+  {
+    "text": "Athènes",
+    "start": 33.61,
+    "end": 34.38,
+    "id": "w86"
+  },
+  {
+    "text": "l'a",
+    "start": 34.38,
+    "end": 34.71,
+    "id": "w87"
+  },
+  {
+    "text": "condamné",
+    "start": 34.71,
+    "end": 35.45,
+    "id": "w88"
+  },
+  {
+    "text": "à",
+    "start": 35.59,
+    "end": 35.71,
+    "id": "w89"
+  },
+  {
+    "text": "mort.",
+    "start": 36.07,
+    "end": 36.57,
+    "id": "w90"
+  },
+  {
+    "text": "»",
+    "start": 36.57,
+    "end": 36.7,
+    "id": "w91"
+  },
+  {
+    "text": "Car",
+    "start": 36.8,
+    "end": 37.04,
+    "id": "w92"
+  },
+  {
+    "text": "d'après,",
+    "start": 37.04,
+    "end": 37.93,
+    "id": "w93"
+  },
+  {
+    "text": "Athènes,",
+    "start": 38.12,
+    "end": 39.06,
+    "id": "w94"
+  },
+  {
+    "text": "il",
+    "start": 39.1,
+    "end": 39.32,
+    "id": "w95"
+  },
+  {
+    "text": "corrompait",
+    "start": 39.32,
+    "end": 40.45,
+    "id": "w96"
+  },
+  {
+    "text": "la",
+    "start": 40.45,
+    "end": 40.67,
+    "id": "w97"
+  },
+  {
+    "text": "jeunesse,",
+    "start": 40.67,
+    "end": 41.84,
+    "id": "w98"
+  },
+  {
+    "text": "donc",
+    "start": 41.84,
+    "end": 42.14,
+    "id": "w99"
+  },
+  {
+    "text": "il",
+    "start": 42.14,
+    "end": 42.29,
+    "id": "w100"
+  },
+  {
+    "text": "aurait",
+    "start": 42.29,
+    "end": 42.73,
+    "id": "w101"
+  },
+  {
+    "text": "pu",
+    "start": 42.73,
+    "end": 42.87,
+    "id": "w102"
+  },
+  {
+    "text": "fuir.",
+    "start": 42.87,
+    "end": 43.2,
+    "id": "w103"
+  },
+  {
+    "text": "Il",
+    "start": 43.31,
+    "end": 43.36,
+    "id": "w104"
+  },
+  {
+    "text": "a",
+    "start": 43.36,
+    "end": 43.44,
+    "id": "w105"
+  },
+  {
+    "text": "choisi",
+    "start": 43.44,
+    "end": 43.91,
+    "id": "w106"
+  },
+  {
+    "text": "de",
+    "start": 43.91,
+    "end": 44.07,
+    "id": "w107"
+  },
+  {
+    "text": "boire",
+    "start": 44.07,
+    "end": 44.43,
+    "id": "w108"
+  },
+  {
+    "text": "la",
+    "start": 44.43,
+    "end": 44.62,
+    "id": "w109"
+  },
+  {
+    "text": "sécu.",
+    "start": 44.62,
+    "end": 45.2,
+    "id": "w110"
+  },
+  {
+    "text": "Il",
+    "start": 45.2,
+    "end": 45.3,
+    "id": "w111"
+  },
+  {
+    "text": "nous",
+    "start": 45.3,
+    "end": 45.47,
+    "id": "w112"
+  },
+  {
+    "text": "a",
+    "start": 45.47,
+    "end": 45.6,
+    "id": "w113"
+  },
+  {
+    "text": "laissé",
+    "start": 45.6,
+    "end": 45.82,
+    "id": "w114"
+  },
+  {
+    "text": "une",
+    "start": 45.82,
+    "end": 45.87,
+    "id": "w115"
+  },
+  {
+    "text": "idée",
+    "start": 46.01,
+    "end": 46.16,
+    "id": "w116"
+  },
+  {
+    "text": "qui",
+    "start": 46.16,
+    "end": 46.31,
+    "id": "w117"
+  },
+  {
+    "text": "n'a",
+    "start": 46.31,
+    "end": 46.44,
+    "id": "w118"
+  },
+  {
+    "text": "pas",
+    "start": 46.44,
+    "end": 46.56,
+    "id": "w119"
+  },
+  {
+    "text": "pris",
+    "start": 46.62,
+    "end": 46.76,
+    "id": "w120"
+  },
+  {
+    "text": "une",
+    "start": 46.8,
+    "end": 46.93,
+    "id": "w121"
+  },
+  {
+    "text": "rite.",
+    "start": 46.93,
+    "end": 47.67,
+    "id": "w122"
+  },
+  {
+    "text": "Une",
+    "start": 47.81,
+    "end": 47.9,
+    "id": "w123"
+  },
+  {
+    "text": "vie",
+    "start": 47.9,
+    "end": 48.06,
+    "id": "w124"
+  },
+  {
+    "text": "sans",
+    "start": 48.1,
+    "end": 48.37,
+    "id": "w125"
+  },
+  {
+    "text": "examen",
+    "start": 48.37,
+    "end": 48.77,
+    "id": "w126"
+  },
+  {
+    "text": "ne",
+    "start": 48.77,
+    "end": 48.9,
+    "id": "w127"
+  },
+  {
+    "text": "vaut",
+    "start": 48.9,
+    "end": 49.17,
+    "id": "w128"
+  },
+  {
+    "text": "pas",
+    "start": 49.17,
+    "end": 49.37,
+    "id": "w129"
+  },
+  {
+    "text": "la",
+    "start": 49.37,
+    "end": 49.49,
+    "id": "w130"
+  },
+  {
+    "text": "peine",
+    "start": 49.49,
+    "end": 49.84,
+    "id": "w131"
+  },
+  {
+    "text": "d'être",
+    "start": 49.84,
+    "end": 50.24,
+    "id": "w132"
+  },
+  {
+    "text": "vécue.",
+    "start": 50.24,
+    "end": 50.7,
+    "id": "w133"
+  },
+  {
+    "text": "Et",
+    "start": 50.81,
+    "end": 50.85,
+    "id": "w134"
+  },
+  {
+    "text": "toi?",
+    "start": 50.85,
+    "end": 51.09,
+    "id": "w135"
+  },
+  {
+    "text": "Quand",
+    "start": 51.29,
+    "end": 51.64,
+    "id": "w136"
+  },
+  {
+    "text": "es-tu",
+    "start": 51.69,
+    "end": 51.95,
+    "id": "w137"
+  },
+  {
+    "text": "posé",
+    "start": 52.12,
+    "end": 52.33,
+    "id": "w138"
+  },
+  {
+    "text": "une",
+    "start": 52.33,
+    "end": 52.52,
+    "id": "w139"
+  },
+  {
+    "text": "vraie",
+    "start": 52.66,
+    "end": 52.92,
+    "id": "w140"
+  },
+  {
+    "text": "question",
+    "start": 52.92,
+    "end": 53.52,
+    "id": "w141"
+  },
+  {
+    "text": "pour",
+    "start": 53.52,
+    "end": 53.82,
+    "id": "w142"
+  },
+  {
+    "text": "la",
+    "start": 53.82,
+    "end": 53.96,
+    "id": "w143"
+  },
+  {
+    "text": "dernière",
+    "start": 54.12,
+    "end": 54.49,
+    "id": "w144"
+  },
+  {
+    "text": "fois?",
+    "start": 54.57,
+    "end": 55.17,
+    "id": "w145"
+  }
+]

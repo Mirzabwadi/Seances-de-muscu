@@ -1,0 +1,97 @@
+<template>
+  <style>
+    #titles {
+      position: absolute;
+      inset: 0;
+      --card: rgba(14, 14, 16, 0.88);
+      --ink: #ffffff;
+      --muted: rgba(255, 255, 255, 0.78);
+      --accent: #ffd23f;
+    }
+    .top {
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 36px;
+      padding: 40px 56px 44px;
+      text-align: center;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
+    .kicker {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .name {
+      margin-top: 10px;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 128px;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .line {
+      margin-top: 18px;
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1.2;
+      color: var(--muted);
+    }
+    .line b {
+      color: var(--accent);
+      font-weight: 900;
+    }
+    .tag {
+      background: var(--card);
+      border-radius: 999px;
+      padding: 18px 34px;
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: var(--ink);
+    }
+    .tag span {
+      color: var(--accent);
+    }
+  </style>
+  <div id="titles" data-composition-id="titles" data-width="1080" data-height="1920">
+    <div id="t-hook" class="top clip" data-start="0" data-duration="4.45" style="top: 230px">
+      <div id="t-hook-in" class="card">
+        <div class="kicker">La philo en 1 minute</div>
+        <div class="name">Socrate</div>
+        <div class="line">Le philosophe qui n'a<br /><b>jamais</b> rien écrit</div>
+      </div>
+    </div>
+    <div id="t-date" class="top clip" data-start="4.6" data-duration="4.6" style="top: 250px">
+      <div id="t-date-in" class="tag">Athènes · <span>v. 470 – 399 av. J.-C.</span></div>
+    </div>
+    <div id="t-end" class="top clip" data-start="50.75" data-duration="5.95" style="top: 250px">
+      <div id="t-end-in" class="card">
+        <div class="name">Et toi ?</div>
+        <div id="t-end-cta" class="line">Réponds en commentaire 👇</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Hook: on screen from frame 0 (it is the thumbnail), settles, then leaves.
+    tl.fromTo("#t-hook-in", { scale: 1.04 }, { scale: 1, duration: 1.2, ease: "power2.out" }, 0);
+    tl.to("#t-hook-in", { y: -40, opacity: 0, duration: 0.25, ease: "power2.in" }, 4.2);
+    // Date tag.
+    tl.fromTo("#t-date-in", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 4.6);
+    tl.to("#t-date-in", { y: -30, opacity: 0, duration: 0.2, ease: "power2.in" }, 8.95);
+    // End card: question, then the call to comment.
+    tl.fromTo("#t-end-in", { y: -40, scale: 0.9, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.8)" }, 50.75);
+    tl.fromTo("#t-end-cta", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 52.0);
+    window.__timelines["titles"] = tl;
+  </script>
+</template>
