@@ -25,11 +25,15 @@
     }
     #outro-top {
       position: absolute;
-      left: 0;
-      right: 0;
-      top: 230px;
+      left: 140px;
+      right: 140px;
+      top: 220px;
+      padding: 40px 0 46px;
+      border-radius: 36px;
+      background: rgba(12, 10, 8, 0.86);
       text-align: center;
       color: var(--ink);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
     }
     #outro-q {
       font-family: "Playfair Display", serif;
@@ -54,12 +58,19 @@
       left: 0;
       right: 0;
       top: 1180px;
+      display: flex;
+      justify-content: center;
       text-align: center;
       font-family: "Playfair Display", serif;
       font-style: italic;
       font-size: 48px;
       line-height: 1.25;
       color: var(--ink);
+    }
+    #outro-tag {
+      padding: 18px 40px;
+      border-radius: 28px;
+      background: rgba(12, 10, 8, 0.86);
     }
     #outro-bottom b {
       color: var(--gold);
@@ -74,7 +85,7 @@
       <div id="outro-rule"></div>
       <div id="outro-cta">Réponds en commentaire 👇</div>
     </div>
-    <div id="outro-bottom"><b>Socrate</b><br />v. 470 – 399 av. J.-C.</div>
+    <div id="outro-bottom"><div id="outro-tag"><b>Socrate</b><br />v. 470 – 399 av. J.-C.</div></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });

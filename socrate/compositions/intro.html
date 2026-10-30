@@ -47,7 +47,7 @@
     #intro-name {
       font-family: "Playfair Display", serif;
       font-weight: 700;
-      font-size: 190px;
+      font-size: 158px;
       line-height: 1;
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -82,7 +82,7 @@
     const tl = gsap.timeline({ paused: true });
     // Frame 0 is the thumbnail: the name is already on screen, then everything settles.
     tl.fromTo("#intro-photo", { scale: 1.12 }, { scale: 1.0, duration: 3.5, ease: "none" }, 0);
-    tl.fromTo("#intro-name", { letterSpacing: "0.16em", opacity: 0.85 }, { letterSpacing: "0.04em", opacity: 1, duration: 1.4, ease: "power3.out" }, 0);
+    tl.fromTo("#intro-name", { scale: 1.05, opacity: 0.85 }, { scale: 1, opacity: 1, duration: 1.4, ease: "power3.out" }, 0);
     tl.fromTo(".intro-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, 0.25);
     tl.fromTo("#intro-kicker", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.45);
     tl.fromTo("#intro-sub", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.8);
