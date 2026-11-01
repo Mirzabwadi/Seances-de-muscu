@@ -54,22 +54,27 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="38"
+      data-duration="117.3"
       data-width="1080"
       data-height="1920"
     >
-      <!-- Voice-over Reel: the paintings are the picture, one per part of the story. -->
-      <img id="bg-ecole" class="bg clip" src="assets/images/bg-ecole-athenes.jpg" alt="" data-start="3.9" data-duration="4.3" data-track-index="1" />
-      <img id="bg-poussin" class="bg clip" src="assets/images/bg-diogene-poussin.jpg" alt="" data-start="8.2" data-duration="8.9" data-track-index="2" />
-      <img id="bg-lanterne" class="bg clip" src="assets/images/bg-diogene-gerome.jpg" alt="" data-start="17.1" data-duration="7.1" data-track-index="1" />
-      <img id="bg-soleil" class="bg clip" src="assets/images/bg-gerome-soleil.jpg" alt="" data-start="24.2" data-duration="7.7" data-track-index="2" />
+      <!-- Voice-over Reel in Kabyle: one painting per sentence of the memo (times from assets/lines.json). -->
+      <img id="bg-jarre" class="bg clip" src="assets/images/bg-diogene-gerome.jpg" alt="" data-start="3.5" data-duration="6.7" data-track-index="1" />
+      <img id="bg-ecole" class="bg clip" src="assets/images/bg-ecole-athenes.jpg" alt="" data-start="10.2" data-duration="8.7" data-track-index="2" />
+      <img id="bg-paysage" class="bg clip" src="assets/images/bg-poussin-paysage.jpg" alt="" data-start="18.9" data-duration="7.3" data-track-index="1" />
+      <img id="bg-soleil" class="bg clip" src="assets/images/bg-gerome-soleil.jpg" alt="" data-start="26.2" data-duration="9.4" data-track-index="2" />
+      <img id="bg-marches" class="bg clip" src="assets/images/bg-ecole-diogene.jpg" alt="" data-start="35.6" data-duration="10.6" data-track-index="1" />
+      <img id="bg-bol" class="bg clip" src="assets/images/bg-diogene-poussin.jpg" alt="" data-start="46.2" data-duration="18.8" data-track-index="2" />
+      <img id="bg-lanterne" class="bg clip" src="assets/images/bg-diogene-gerome-portrait.jpg" alt="" data-start="65" data-duration="15.1" data-track-index="1" />
+      <img id="bg-alexandre" class="bg clip" src="assets/images/bg-langetti-alexandre.jpg" alt="" data-start="80.1" data-duration="15" data-track-index="2" />
+      <img id="bg-fin" class="bg clip" src="assets/images/bg-diogene-gerome.jpg" alt="" data-start="95.1" data-duration="11.2" data-track-index="1" />
 
       <div
         id="intro"
         data-composition-id="intro"
         data-composition-src="compositions/intro.html"
         data-start="0"
-        data-duration="4.3"
+        data-duration="3.9"
         data-track-kind="graphics"
         data-track-index="0"
         data-width="1080"
@@ -80,7 +85,7 @@
         data-composition-id="titles"
         data-composition-src="compositions/titles.html"
         data-start="0"
-        data-duration="31.9"
+        data-duration="105.9"
         data-track-kind="graphics"
         data-track-index="3"
         data-width="1080"
@@ -90,8 +95,8 @@
         id="outro"
         data-composition-id="outro"
         data-composition-src="compositions/outro.html"
-        data-start="31.9"
-        data-duration="6.1"
+        data-start="105.9"
+        data-duration="11.4"
         data-track-kind="graphics"
         data-track-index="4"
         data-width="1080"
@@ -101,24 +106,24 @@
         id="captions"
         data-composition-id="captions"
         data-composition-src="compositions/captions.html"
-        data-start="0.3"
-        data-duration="34.4"
+        data-start="0"
+        data-duration="113.7"
         data-track-kind="captions"
         data-track-index="5"
         data-width="1080"
         data-height="1920"
       ></div>
 
-      <audio id="voice" class="clip" src="assets/audio/voice.m4a" data-start="0.3" data-duration="34.1" data-volume="1" data-track-index="6"></audio>
-      <audio id="boom" class="clip" src="assets/audio/boom.mp3" data-start="0" data-duration="3" data-volume="0.6" data-track-index="7"></audio>
+      <audio id="voice" class="clip" src="assets/audio/voice.m4a" data-start="0" data-duration="114.5" data-volume="1" data-track-index="6"></audio>
+      <audio id="boom" class="clip" src="assets/audio/boom.mp3" data-start="0" data-duration="3" data-volume="0.5" data-track-index="7"></audio>
       <audio
         id="music"
         class="clip"
         src="assets/audio/music.mp3"
         data-start="0"
-        data-duration="38"
+        data-duration="117.3"
         data-volume="1"
-        data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.18},{&quot;t&quot;:34.3,&quot;v&quot;:0.18},{&quot;t&quot;:35,&quot;v&quot;:0.5},{&quot;t&quot;:38,&quot;v&quot;:0.5}]}]}"
+        data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.3},{&quot;t&quot;:3.4,&quot;v&quot;:0.3},{&quot;t&quot;:3.9,&quot;v&quot;:0.16},{&quot;t&quot;:113.2,&quot;v&quot;:0.16},{&quot;t&quot;:113.9,&quot;v&quot;:0.5},{&quot;t&quot;:117.3,&quot;v&quot;:0.5}]}]}"
         data-track-index="8"
       ></audio>
     </div>
@@ -127,10 +132,15 @@
       // Each painting fades in over the previous one, then drifts slowly (alternating
       // push-in and pull-out so consecutive shots don't move the same way).
       for (const [id, start, dur, from, to] of [
-        ["#bg-ecole", 3.9, 4.3, 1.0, 1.08],
-        ["#bg-poussin", 8.2, 8.9, 1.1, 1.0],
-        ["#bg-lanterne", 17.1, 7.1, 1.0, 1.1],
-        ["#bg-soleil", 24.2, 7.7, 1.08, 1.0],
+        ["#bg-jarre", 3.5, 6.7, 1.0, 1.06],
+        ["#bg-ecole", 10.2, 8.7, 1.08, 1.0],
+        ["#bg-paysage", 18.9, 7.3, 1.0, 1.08],
+        ["#bg-soleil", 26.2, 9.4, 1.08, 1.0],
+        ["#bg-marches", 35.6, 10.6, 1.0, 1.08],
+        ["#bg-bol", 46.2, 18.8, 1.1, 1.0],
+        ["#bg-lanterne", 65, 15.1, 1.0, 1.08],
+        ["#bg-alexandre", 80.1, 15, 1.08, 1.0],
+        ["#bg-fin", 95.1, 11.2, 1.0, 1.08],
       ]) {
         tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, start);
         tl.fromTo(id, { scale: from }, { scale: to, duration: dur, ease: "none", immediateRender: false }, start);

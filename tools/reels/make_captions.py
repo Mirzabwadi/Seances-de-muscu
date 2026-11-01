@@ -32,6 +32,8 @@ parser.add_argument("transcript")
 parser.add_argument("out")
 parser.add_argument("--edits")
 parser.add_argument("--end", type=float, help="caption track length in seconds (default: last word + 1.2 s)")
+parser.add_argument("--font", default="Inter", help='font family, e.g. "Inter Kab" for Kabyle (see fonts-kab/)')
+parser.add_argument("--font-css", help="file of @font-face rules to embed (e.g. tools/reels/fonts-kab/fonts-kab.css)")
 args = parser.parse_args()
 
 words = json.load(open(args.transcript))
@@ -113,9 +115,10 @@ for n, (ws, (start, end)) in enumerate(zip(built, spans)):
         )
     script.append(f'    tl.to("#{gid}-in", {{ opacity: 0, duration: 0.1, ease: "power2.in" }}, {end - 0.1:.2f});')
 
+font_css = open(args.font_css).read() if args.font_css else ""
 page = f"""<template>
   <style>
-    #captions {{
+{font_css}    #captions {{
       position: absolute;
       inset: 0;
       --cap-ink: #ffffff;
@@ -136,7 +139,7 @@ page = f"""<template>
     .cap-in {{
       max-width: 980px;
       text-align: center;
-      font-family: "Inter", sans-serif;
+      font-family: "{args.font}", sans-serif;
       font-weight: 900;
       font-size: 64px;
       line-height: 1.08;
