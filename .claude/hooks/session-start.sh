@@ -33,6 +33,15 @@ fi
 warm=$(mktemp -d)
 trap 'rm -rf "$warm"' EXIT
 
+# whisper.cpp is compiled for the CPU it was built on; a resumed session can land on
+# a machine without the same instructions (e.g. AMX), and whisper-cli then dies with
+# SIGILL. Rebuild it whenever the CPU flags differ from the ones it was built with.
+cpu_flags=$(grep -m1 '^flags' /proc/cpuinfo | sha256sum | cut -c1-16)
+if [ -d "$CACHE/whisper/whisper.cpp" ] && [ "$(cat "$CACHE/whisper/.cpu-flags" 2>/dev/null)" != "$cpu_flags" ]; then
+  echo "CPU changed: rebuilding Whisper"
+  rm -rf "$CACHE/whisper/whisper.cpp"
+fi
+
 # Whisper runtime and the multilingual "medium" model used for French captions:
 # a one-second transcription installs both.
 if [ ! -x "$CACHE/whisper/whisper.cpp/build/bin/whisper-cli" ] || [ ! -s "$CACHE/whisper/models/ggml-medium.bin" ]; then
@@ -40,6 +49,7 @@ if [ ! -x "$CACHE/whisper/whisper.cpp/build/bin/whisper-cli" ] || [ ! -s "$CACHE
   ffmpeg -loglevel error -y -f lavfi -i "anullsrc=r=16000:cl=mono" -t 1 "$warm/silence.wav"
   hyperframes transcribe "$warm/silence.wav" --dir "$warm" --model medium --language fr --timeout 900000
 fi
+echo "$cpu_flags" > "$CACHE/whisper/.cpu-flags"
 
 # Background-removal model and its ONNX runtime: one tiny image installs both.
 if [ -z "$(ls -A "$CACHE/background-removal/models" 2>/dev/null)" ] || [ -z "$(ls -A "$CACHE/optional" 2>/dev/null)" ]; then
