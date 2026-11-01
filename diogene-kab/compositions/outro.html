@@ -91,10 +91,10 @@
     }
   </style>
   <div id="outro" data-composition-id="outro" data-width="1080" data-height="1920">
-    <img id="outro-bust" class="clip" src="assets/images/bg-diogene-gerome-portrait.jpg" alt="Diogène, par Jean-Léon Gérôme" data-start="0" data-duration="11.4" />
+    <img id="outro-bust" class="clip" src="assets/images/bg-diogene-gerome-portrait.jpg" alt="Diogène, par Jean-Léon Gérôme" data-start="0" data-duration="10.08" />
     <div id="outro-shade"></div>
     <div id="outro-top">
-      <div id="outro-q">Kečč ?</div>
+      <div id="outro-q">Kunwi ?</div>
       <div id="outro-rule"></div>
       <div id="outro-cta">Réponds en commentaire 👇</div>
     </div>
@@ -103,13 +103,13 @@
   <script>
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#outro", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0);
-    tl.fromTo("#outro-bust", { scale: 1.0 }, { scale: 1.08, duration: 11.4, ease: "none" }, 0);
+    tl.fromTo("#outro-bust", { scale: 1.0 }, { scale: 1.08, duration: 10.08, ease: "none" }, 0);
     // The card waits for the narrator's question, so it never shows empty.
-    tl.fromTo("#outro-top", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 7.3);
-    tl.fromTo("#outro-q", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 7.4);
-    tl.fromTo("#outro-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 7.65);
-    tl.fromTo("#outro-cta", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 7.9);
-    tl.fromTo("#outro-bottom", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 8.4);
+    tl.fromTo("#outro-top", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 5.93);
+    tl.fromTo("#outro-q", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 6.03);
+    tl.fromTo("#outro-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 6.28);
+    tl.fromTo("#outro-cta", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 6.53);
+    tl.fromTo("#outro-bottom", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 7.03);
     window.__timelines["outro"] = tl;
   </script>
 </template>

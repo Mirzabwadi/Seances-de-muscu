@@ -69,27 +69,27 @@
       margin-top: 18px;
       font-family: "Playfair Kab", "Playfair Display", serif;
       font-weight: 400;
-      font-size: 46px;
+      font-size: 40px;
       font-style: italic;
       color: rgba(246, 241, 231, 0.85);
     }
   </style>
   <div id="intro" data-composition-id="intro" data-width="1080" data-height="1920">
-    <img id="intro-photo" class="clip" src="assets/images/diogene-gerome.jpg" alt="" data-start="0" data-duration="3.9" />
+    <img id="intro-photo" class="clip" src="assets/images/diogene-gerome.jpg" alt="" data-start="0" data-duration="4.5" />
     <div id="intro-shade"></div>
     <div id="intro-block">
       <div id="intro-kicker">La philo en 1 minute</div>
       <div id="intro-rule-top" class="intro-rule"></div>
       <div id="intro-name" data-var-text="name">Diogène</div>
-      <div id="intro-sub">Argaz ur neḥwaǧ acemmek</div>
+      <div id="intro-sub">D yiwen umdan ur neḥwaǧ acemmek akken ad yidir</div>
       <div id="intro-rule-bottom" class="intro-rule"></div>
     </div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
     // Frame 0 is the thumbnail: the name is already on screen, then everything settles.
-    tl.to("#intro", { opacity: 0, duration: 0.4, ease: "power1.in" }, 3.5);
-    tl.fromTo("#intro-photo", { scale: 1.1 }, { scale: 1.0, duration: 3.9, ease: "none" }, 0);
+    tl.to("#intro", { opacity: 0, duration: 0.4, ease: "power1.in" }, 4.1);
+    tl.fromTo("#intro-photo", { scale: 1.1 }, { scale: 1.0, duration: 4.5, ease: "none" }, 0);
     tl.fromTo("#intro-name", { scale: 1.05, opacity: 0.85 }, { scale: 1, opacity: 1, duration: 1.4, ease: "power3.out" }, 0);
     tl.fromTo(".intro-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, 0.25);
     tl.fromTo("#intro-kicker", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.45);
