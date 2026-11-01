@@ -1,0 +1,710 @@
+[
+  {
+    "text": "Il",
+    "start": 0.14,
+    "end": 0.17,
+    "id": "w0"
+  },
+  {
+    "text": "vivait",
+    "start": 0.17,
+    "end": 0.55,
+    "id": "w1"
+  },
+  {
+    "text": "dans",
+    "start": 0.55,
+    "end": 0.82,
+    "id": "w2"
+  },
+  {
+    "text": "une",
+    "start": 0.85,
+    "end": 1.04,
+    "id": "w3"
+  },
+  {
+    "text": "jarre",
+    "start": 1.04,
+    "end": 1.32,
+    "id": "w4"
+  },
+  {
+    "text": "et",
+    "start": 1.32,
+    "end": 1.52,
+    "id": "w5"
+  },
+  {
+    "text": "il",
+    "start": 1.52,
+    "end": 1.64,
+    "id": "w6"
+  },
+  {
+    "text": "a",
+    "start": 1.64,
+    "end": 1.7,
+    "id": "w7"
+  },
+  {
+    "text": "remis",
+    "start": 1.7,
+    "end": 2.01,
+    "id": "w8"
+  },
+  {
+    "text": "Alexandre",
+    "start": 2.01,
+    "end": 2.58,
+    "id": "w9"
+  },
+  {
+    "text": "le",
+    "start": 2.58,
+    "end": 2.7,
+    "id": "w10"
+  },
+  {
+    "text": "Grand",
+    "start": 2.7,
+    "end": 3.08,
+    "id": "w11"
+  },
+  {
+    "text": "à",
+    "start": 3.08,
+    "end": 3.18,
+    "id": "w12"
+  },
+  {
+    "text": "sa",
+    "start": 3.18,
+    "end": 3.35,
+    "id": "w13"
+  },
+  {
+    "text": "place.",
+    "start": 3.43,
+    "end": 4,
+    "id": "w14"
+  },
+  {
+    "text": "Diogène,",
+    "start": 4.17,
+    "end": 5,
+    "id": "w15"
+  },
+  {
+    "text": "philosophe",
+    "start": 5,
+    "end": 5.57,
+    "id": "w16"
+  },
+  {
+    "text": "grec,",
+    "start": 5.57,
+    "end": 5.92,
+    "id": "w17"
+  },
+  {
+    "text": "il",
+    "start": 5.92,
+    "end": 6.07,
+    "id": "w18"
+  },
+  {
+    "text": "y",
+    "start": 6.07,
+    "end": 6.14,
+    "id": "w19"
+  },
+  {
+    "text": "a",
+    "start": 6.14,
+    "end": 6.21,
+    "id": "w20"
+  },
+  {
+    "text": "plus",
+    "start": 6.21,
+    "end": 6.51,
+    "id": "w21"
+  },
+  {
+    "text": "de",
+    "start": 6.51,
+    "end": 6.66,
+    "id": "w22"
+  },
+  {
+    "text": "2300",
+    "start": 6.66,
+    "end": 7.55,
+    "id": "w23"
+  },
+  {
+    "text": "ans.",
+    "start": 7.55,
+    "end": 7.8,
+    "id": "w24"
+  },
+  {
+    "text": "Pour",
+    "start": 7.97,
+    "end": 8.02,
+    "id": "w25"
+  },
+  {
+    "text": "lui,",
+    "start": 8.02,
+    "end": 8.29,
+    "id": "w26"
+  },
+  {
+    "text": "le",
+    "start": 8.29,
+    "end": 8.4,
+    "id": "w27"
+  },
+  {
+    "text": "bonheur,",
+    "start": 8.4,
+    "end": 8.89,
+    "id": "w28"
+  },
+  {
+    "text": "c'est",
+    "start": 8.89,
+    "end": 9.12,
+    "id": "w29"
+  },
+  {
+    "text": "d'avoir",
+    "start": 9.17,
+    "end": 9.52,
+    "id": "w30"
+  },
+  {
+    "text": "besoin",
+    "start": 9.52,
+    "end": 9.85,
+    "id": "w31"
+  },
+  {
+    "text": "de",
+    "start": 9.85,
+    "end": 9.96,
+    "id": "w32"
+  },
+  {
+    "text": "presque",
+    "start": 9.96,
+    "end": 10.34,
+    "id": "w33"
+  },
+  {
+    "text": "rien.",
+    "start": 10.34,
+    "end": 10.8,
+    "id": "w34"
+  },
+  {
+    "text": "Un",
+    "start": 10.8,
+    "end": 10.97,
+    "id": "w35"
+  },
+  {
+    "text": "jour,",
+    "start": 10.97,
+    "end": 11.22,
+    "id": "w36"
+  },
+  {
+    "text": "il",
+    "start": 11.22,
+    "end": 11.31,
+    "id": "w37"
+  },
+  {
+    "text": "voit",
+    "start": 11.33,
+    "end": 11.54,
+    "id": "w38"
+  },
+  {
+    "text": "un",
+    "start": 11.54,
+    "end": 11.62,
+    "id": "w39"
+  },
+  {
+    "text": "enfant",
+    "start": 11.65,
+    "end": 11.97,
+    "id": "w40"
+  },
+  {
+    "text": "boire",
+    "start": 11.97,
+    "end": 12.12,
+    "id": "w41"
+  },
+  {
+    "text": "dans",
+    "start": 12.32,
+    "end": 12.45,
+    "id": "w42"
+  },
+  {
+    "text": "le",
+    "start": 12.45,
+    "end": 12.56,
+    "id": "w43"
+  },
+  {
+    "text": "creux",
+    "start": 12.56,
+    "end": 12.82,
+    "id": "w44"
+  },
+  {
+    "text": "de",
+    "start": 12.82,
+    "end": 12.93,
+    "id": "w45"
+  },
+  {
+    "text": "ses",
+    "start": 12.93,
+    "end": 13.09,
+    "id": "w46"
+  },
+  {
+    "text": "mains.",
+    "start": 13.09,
+    "end": 13.6,
+    "id": "w47"
+  },
+  {
+    "text": "Il",
+    "start": 13.6,
+    "end": 13.77,
+    "id": "w48"
+  },
+  {
+    "text": "jette",
+    "start": 13.77,
+    "end": 14.15,
+    "id": "w49"
+  },
+  {
+    "text": "son",
+    "start": 14.15,
+    "end": 14.39,
+    "id": "w50"
+  },
+  {
+    "text": "bol,",
+    "start": 14.39,
+    "end": 14.8,
+    "id": "w51"
+  },
+  {
+    "text": "un",
+    "start": 14.8,
+    "end": 14.92,
+    "id": "w52"
+  },
+  {
+    "text": "enfant",
+    "start": 15.12,
+    "end": 15.36,
+    "id": "w53"
+  },
+  {
+    "text": "m'a",
+    "start": 15.36,
+    "end": 15.57,
+    "id": "w54"
+  },
+  {
+    "text": "battu",
+    "start": 15.57,
+    "end": 15.91,
+    "id": "w55"
+  },
+  {
+    "text": "en",
+    "start": 15.98,
+    "end": 16.02,
+    "id": "w56"
+  },
+  {
+    "text": "simplicité.",
+    "start": 16.08,
+    "end": 16.95,
+    "id": "w57"
+  },
+  {
+    "text": "En",
+    "start": 16.95,
+    "end": 17.17,
+    "id": "w58"
+  },
+  {
+    "text": "plein",
+    "start": 17.17,
+    "end": 17.43,
+    "id": "w59"
+  },
+  {
+    "text": "jour,",
+    "start": 17.43,
+    "end": 17.8,
+    "id": "w60"
+  },
+  {
+    "text": "il",
+    "start": 17.8,
+    "end": 17.92,
+    "id": "w61"
+  },
+  {
+    "text": "marche",
+    "start": 17.92,
+    "end": 18.29,
+    "id": "w62"
+  },
+  {
+    "text": "dans",
+    "start": 18.29,
+    "end": 18.54,
+    "id": "w63"
+  },
+  {
+    "text": "Athènes",
+    "start": 18.54,
+    "end": 18.96,
+    "id": "w64"
+  },
+  {
+    "text": "avec",
+    "start": 18.96,
+    "end": 19.21,
+    "id": "w65"
+  },
+  {
+    "text": "une",
+    "start": 19.21,
+    "end": 19.31,
+    "id": "w66"
+  },
+  {
+    "text": "lanterne",
+    "start": 19.38,
+    "end": 19.86,
+    "id": "w67"
+  },
+  {
+    "text": "allumée.",
+    "start": 19.92,
+    "end": 20.6,
+    "id": "w68"
+  },
+  {
+    "text": "On",
+    "start": 20.6,
+    "end": 20.77,
+    "id": "w69"
+  },
+  {
+    "text": "lui",
+    "start": 20.77,
+    "end": 20.9,
+    "id": "w70"
+  },
+  {
+    "text": "demande",
+    "start": 20.9,
+    "end": 21.32,
+    "id": "w71"
+  },
+  {
+    "text": "pourquoi.",
+    "start": 21.32,
+    "end": 21.92,
+    "id": "w72"
+  },
+  {
+    "text": "Il",
+    "start": 21.92,
+    "end": 22.17,
+    "id": "w73"
+  },
+  {
+    "text": "répond",
+    "start": 22.17,
+    "end": 22.49,
+    "id": "w74"
+  },
+  {
+    "text": "«",
+    "start": 22.49,
+    "end": 22.55,
+    "id": "w75"
+  },
+  {
+    "text": "Je",
+    "start": 22.55,
+    "end": 22.65,
+    "id": "w76"
+  },
+  {
+    "text": "cherche",
+    "start": 22.69,
+    "end": 23.1,
+    "id": "w77"
+  },
+  {
+    "text": "un",
+    "start": 23.1,
+    "end": 23.22,
+    "id": "w78"
+  },
+  {
+    "text": "homme",
+    "start": 23.22,
+    "end": 23.53,
+    "id": "w79"
+  },
+  {
+    "text": "».",
+    "start": 23.53,
+    "end": 23.8,
+    "id": "w80"
+  },
+  {
+    "text": "Puis",
+    "start": 23.97,
+    "end": 24.02,
+    "id": "w81"
+  },
+  {
+    "text": "Alexandre",
+    "start": 24.02,
+    "end": 24.52,
+    "id": "w82"
+  },
+  {
+    "text": "le",
+    "start": 24.52,
+    "end": 24.62,
+    "id": "w83"
+  },
+  {
+    "text": "Grand,",
+    "start": 24.65,
+    "end": 25.02,
+    "id": "w84"
+  },
+  {
+    "text": "le",
+    "start": 25.02,
+    "end": 25.12,
+    "id": "w85"
+  },
+  {
+    "text": "maître",
+    "start": 25.14,
+    "end": 25.46,
+    "id": "w86"
+  },
+  {
+    "text": "du",
+    "start": 25.46,
+    "end": 25.57,
+    "id": "w87"
+  },
+  {
+    "text": "monde,",
+    "start": 25.57,
+    "end": 26,
+    "id": "w88"
+  },
+  {
+    "text": "vient",
+    "start": 26,
+    "end": 26.36,
+    "id": "w89"
+  },
+  {
+    "text": "le",
+    "start": 26.36,
+    "end": 26.5,
+    "id": "w90"
+  },
+  {
+    "text": "voir",
+    "start": 26.5,
+    "end": 26.8,
+    "id": "w91"
+  },
+  {
+    "text": "et",
+    "start": 26.8,
+    "end": 26.89,
+    "id": "w92"
+  },
+  {
+    "text": "lui",
+    "start": 26.95,
+    "end": 27.1,
+    "id": "w93"
+  },
+  {
+    "text": "propose",
+    "start": 27.1,
+    "end": 27.52,
+    "id": "w94"
+  },
+  {
+    "text": "ce",
+    "start": 27.52,
+    "end": 27.65,
+    "id": "w95"
+  },
+  {
+    "text": "qu'il",
+    "start": 27.65,
+    "end": 27.95,
+    "id": "w96"
+  },
+  {
+    "text": "veut.",
+    "start": 27.96,
+    "end": 28.4,
+    "id": "w97"
+  },
+  {
+    "text": "Diogène",
+    "start": 28.52,
+    "end": 28.82,
+    "id": "w98"
+  },
+  {
+    "text": "lui",
+    "start": 28.82,
+    "end": 29,
+    "id": "w99"
+  },
+  {
+    "text": "répond",
+    "start": 29,
+    "end": 29.36,
+    "id": "w100"
+  },
+  {
+    "text": "simplement",
+    "start": 29.36,
+    "end": 30,
+    "id": "w101"
+  },
+  {
+    "text": "«",
+    "start": 30,
+    "end": 30.07,
+    "id": "w102"
+  },
+  {
+    "text": "Hôte-toi",
+    "start": 30.07,
+    "end": 30.59,
+    "id": "w103"
+  },
+  {
+    "text": "de",
+    "start": 30.59,
+    "end": 30.71,
+    "id": "w104"
+  },
+  {
+    "text": "mon",
+    "start": 30.78,
+    "end": 30.94,
+    "id": "w105"
+  },
+  {
+    "text": "soleil.",
+    "start": 30.94,
+    "end": 31.6,
+    "id": "w106"
+  },
+  {
+    "text": "Et",
+    "start": 31.6,
+    "end": 31.77,
+    "id": "w107"
+  },
+  {
+    "text": "toi,",
+    "start": 31.77,
+    "end": 31.92,
+    "id": "w108"
+  },
+  {
+    "text": "de",
+    "start": 31.92,
+    "end": 32.01,
+    "id": "w109"
+  },
+  {
+    "text": "quoi",
+    "start": 32.01,
+    "end": 32.2,
+    "id": "w110"
+  },
+  {
+    "text": "as-tu",
+    "start": 32.2,
+    "end": 32.42,
+    "id": "w111"
+  },
+  {
+    "text": "vraiment",
+    "start": 32.42,
+    "end": 32.8,
+    "id": "w112"
+  },
+  {
+    "text": "besoin",
+    "start": 32.8,
+    "end": 32.92,
+    "id": "w113"
+  },
+  {
+    "text": "pour",
+    "start": 33.12,
+    "end": 33.27,
+    "id": "w114"
+  },
+  {
+    "text": "être",
+    "start": 33.27,
+    "end": 33.46,
+    "id": "w115"
+  },
+  {
+    "text": "heureux?",
+    "start": 33.46,
+    "end": 33.99,
+    "id": "w116"
+  },
+  {
+    "text": "»",
+    "start": 33.99,
+    "end": 34,
+    "id": "w117"
+  }
+]

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #0e0e10;
+        --ink: #ffffff;
+        --accent: #ff4d2e;
+        --font-display: "Inter", sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        font-family: var(--font-display);
+        background: radial-gradient(circle at 50% 38%, #2a1410 0%, var(--ground) 60%);
+      }
+      .beat {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 300px;
+        height: 900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--ink);
+      }
+      .big {
+        font-size: 150px;
+        font-weight: 900;
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+      }
+      .accent {
+        color: var(--accent);
+      }
+      .sub {
+        margin-top: 40px;
+        font-size: 56px;
+        font-weight: 600;
+        opacity: 0.85;
+      }
+      #bar {
+        position: absolute;
+        left: 140px;
+        top: 1240px;
+        width: 800px;
+        height: 14px;
+        border-radius: 7px;
+        background: var(--accent);
+        transform-origin: left center;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="6"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div id="hook" class="beat clip" data-start="0" data-duration="2" data-track-index="0">
+        <div id="hook-in">
+          <div class="big">Séance<br /><span class="accent">du jour</span></div>
+          <div class="sub">Test Reels 1080×1920</div>
+        </div>
+      </div>
+      <div id="reps" class="beat clip" data-start="2" data-duration="2" data-track-index="0">
+        <div id="reps-in">
+          <div class="big">4 × 10</div>
+          <div class="sub">Squat · Développé · Tirage</div>
+        </div>
+      </div>
+      <div id="outro" class="beat clip" data-start="4" data-duration="2" data-track-index="0">
+        <div id="outro-in">
+          <div class="big">On <span class="accent">lâche</span><br />rien 💪</div>
+        </div>
+      </div>
+      <div id="bar" class="clip" data-start="0" data-duration="6" data-track-index="1"></div>
+      <audio
+        id="music"
+        class="clip"
+        src="assets/audio/music.mp3"
+        data-start="0"
+        data-duration="6"
+        data-volume="1"
+        data-track-index="2"
+      ></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#hook-in", { scale: 1.08 }, { scale: 1, duration: 1.9, ease: "power2.out" }, 0);
+      tl.fromTo("#reps-in", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 2);
+      tl.fromTo("#outro-in", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2)" }, 4);
+      tl.fromTo("#bar", { scaleX: 0 }, { scaleX: 1, duration: 5.95, ease: "none" }, 0);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

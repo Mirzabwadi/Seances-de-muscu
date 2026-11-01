@@ -1,0 +1,8 @@
+.hyperframes/
+renders/
+assets/socrate.mp4
+assets/socrate-cutout.webm
+assets/.tmp-*
+assets/images/thumbs.txt
+assets/images/*.part
+.transcode-cache/

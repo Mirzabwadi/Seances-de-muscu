@@ -1,0 +1,115 @@
+<template>
+  <style>
+/* Inter and Playfair Display with their Latin Extended subsets, which hold the Kabyle
+   letters (ɣ ɛ ḍ ḥ ǧ ṭ ẓ ṛ č ṣ). HyperFrames' bundled copies lack ɣ and ɛ.
+   Copy the .woff2 files to <project>/assets/fonts/ and paste these rules into each
+   composition's style block; use the families "Inter Kab" and "Playfair Kab". Fonts: SIL OFL 1.1. */
+@font-face { font-family: "Inter Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/inter-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/inter-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Inter Kab"; font-style: normal; font-weight: 900; src: url("assets/fonts/inter-latin-900-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter Kab"; font-style: normal; font-weight: 900; src: url("assets/fonts/inter-latin-ext-900-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Playfair Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/playfair-display-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Playfair Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/playfair-display-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Playfair Kab"; font-style: italic; font-weight: 400; src: url("assets/fonts/playfair-display-latin-400-italic.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Playfair Kab"; font-style: italic; font-weight: 400; src: url("assets/fonts/playfair-display-latin-ext-400-italic.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+    #outro {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #0b0a09;
+      --gold: #e8c46a;
+      --ink: #f6f1e7;
+    }
+    #outro-bust {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 40%;
+      transform-origin: 45% 38%;
+    }
+    #outro-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 7, 6, 0.75) 0%, rgba(8, 7, 6, 0.1) 32%, rgba(8, 7, 6, 0.1) 62%, rgba(8, 7, 6, 0.9) 100%);
+    }
+    #outro-top {
+      position: absolute;
+      left: 140px;
+      right: 140px;
+      top: 220px;
+      padding: 40px 0 46px;
+      border-radius: 36px;
+      background: rgba(12, 10, 8, 0.86);
+      text-align: center;
+      color: var(--ink);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+    }
+    #outro-q {
+      font-family: "Playfair Kab", "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 150px;
+      line-height: 1;
+    }
+    #outro-rule {
+      width: 360px;
+      height: 3px;
+      margin: 30px auto 26px;
+      background: var(--gold);
+    }
+    #outro-cta {
+      font-family: "Inter Kab", "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 46px;
+      color: var(--ink);
+    }
+    #outro-bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 1180px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      font-family: "Playfair Kab", "Playfair Display", serif;
+      font-style: italic;
+      font-size: 48px;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+    #outro-tag {
+      padding: 18px 40px;
+      border-radius: 28px;
+      background: rgba(12, 10, 8, 0.86);
+    }
+    #outro-bottom b {
+      color: var(--gold);
+      font-style: normal;
+    }
+  </style>
+  <div id="outro" data-composition-id="outro" data-width="1080" data-height="1920">
+    <img id="outro-bust" class="clip" src="assets/images/bg-diogene-gerome-portrait.jpg" alt="Diogène, par Jean-Léon Gérôme" data-start="0" data-duration="10.08" />
+    <div id="outro-shade"></div>
+    <div id="outro-top">
+      <div id="outro-q">Kunwi ?</div>
+      <div id="outro-rule"></div>
+      <div id="outro-cta">Réponds en commentaire 👇</div>
+    </div>
+    <div id="outro-bottom"><div id="outro-tag"><b>Diogène</b><br />v. 413 – 323 av. J.-C.</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#outro", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0);
+    tl.fromTo("#outro-bust", { scale: 1.0 }, { scale: 1.08, duration: 10.08, ease: "none" }, 0);
+    // The card waits for the narrator's question, so it never shows empty.
+    tl.fromTo("#outro-top", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 5.93);
+    tl.fromTo("#outro-q", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 6.03);
+    tl.fromTo("#outro-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 6.28);
+    tl.fromTo("#outro-cta", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 6.53);
+    tl.fromTo("#outro-bottom", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 7.03);
+    window.__timelines["outro"] = tl;
+  </script>
+</template>
