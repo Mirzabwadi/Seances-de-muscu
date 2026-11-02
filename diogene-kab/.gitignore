@@ -1,0 +1,4 @@
+.hyperframes/
+renders/
+.transcode-cache/
+assets/audio/voice-raw*

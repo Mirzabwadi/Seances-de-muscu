@@ -1,0 +1,78 @@
+<template>
+  <style>
+    #titles {
+      position: absolute;
+      inset: 0;
+      --card: rgba(14, 14, 16, 0.88);
+      --ink: #ffffff;
+      --muted: rgba(255, 255, 255, 0.78);
+      --accent: #ffd23f;
+    }
+    .top {
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 36px;
+      padding: 40px 56px 44px;
+      text-align: center;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
+    .kicker {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .name {
+      margin-top: 10px;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 128px;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .line {
+      margin-top: 18px;
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1.2;
+      color: var(--muted);
+    }
+    .line b {
+      color: var(--accent);
+      font-weight: 900;
+    }
+    .tag {
+      background: var(--card);
+      border-radius: 999px;
+      padding: 18px 34px;
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: var(--ink);
+    }
+    .tag span {
+      color: var(--accent);
+    }
+  </style>
+  <div id="titles" data-composition-id="titles" data-width="1080" data-height="1920">
+    <div id="t-date" class="top clip" data-start="12.03" data-duration="7.41" style="top: 250px">
+      <div id="t-date-in" class="tag">Sinope · <span>v. 413 – 323 av. J.-C.</span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Date tag.
+    tl.fromTo("#t-date-in", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 12.03);
+    tl.to("#t-date-in", { y: -30, opacity: 0, duration: 0.2, ease: "power2.in" }, 19.24);
+    window.__timelines["titles"] = tl;
+  </script>
+</template>

@@ -1,0 +1,93 @@
+<template>
+  <style>
+    #intro {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #07070a;
+      --gold: #e8c46a;
+      --ink: #f6f1e7;
+    }
+    #intro-photo {
+      position: absolute;
+      inset: -60px;
+      width: calc(100% + 120px);
+      height: calc(100% + 120px);
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+    #intro-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5, 5, 8, 0.55) 0%, rgba(5, 5, 8, 0.25) 40%, rgba(5, 5, 8, 0.85) 100%);
+    }
+    #intro-block {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 560px;
+      text-align: center;
+      color: var(--ink);
+    }
+    #intro-kicker {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 34px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .intro-rule {
+      width: 520px;
+      height: 3px;
+      margin: 34px auto;
+      background: var(--gold);
+      transform-origin: 50% 50%;
+    }
+    #intro-name {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 158px;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    #intro-sub {
+      margin-top: 18px;
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      font-size: 46px;
+      font-style: italic;
+      color: rgba(246, 241, 231, 0.85);
+    }
+    #intro-flash {
+      position: absolute;
+      inset: 0;
+      background: #f6f1e7;
+    }
+  </style>
+  <div id="intro" data-composition-id="intro" data-width="1080" data-height="1920">
+    <img id="intro-photo" class="clip" src="assets/images/erechtheion.jpg" alt="" data-start="0" data-duration="3.5" />
+    <div id="intro-shade"></div>
+    <div id="intro-block">
+      <div id="intro-kicker">La philo en 1 minute</div>
+      <div id="intro-rule-top" class="intro-rule"></div>
+      <div id="intro-name" data-var-text="name">Socrate</div>
+      <div id="intro-sub">Le philosophe qui n'a jamais rien écrit</div>
+      <div id="intro-rule-bottom" class="intro-rule"></div>
+    </div>
+    <div id="intro-flash"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Frame 0 is the thumbnail: the name is already on screen, then everything settles.
+    tl.fromTo("#intro-photo", { scale: 1.12 }, { scale: 1.0, duration: 3.5, ease: "none" }, 0);
+    tl.fromTo("#intro-name", { scale: 1.05, opacity: 0.85 }, { scale: 1, opacity: 1, duration: 1.4, ease: "power3.out" }, 0);
+    tl.fromTo(".intro-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, 0.25);
+    tl.fromTo("#intro-kicker", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.45);
+    tl.fromTo("#intro-sub", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.8);
+    // Hand-off to the talk: a quick soft flash.
+    tl.fromTo("#intro-flash", { opacity: 0 }, { opacity: 0.85, duration: 0.18, ease: "power2.in" }, 3.32);
+    window.__timelines["intro"] = tl;
+  </script>
+</template>

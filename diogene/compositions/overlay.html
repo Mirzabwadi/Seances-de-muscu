@@ -1,0 +1,271 @@
+<template>
+  <style>
+    #overlay {
+      position: absolute;
+      inset: 0;
+      --gold: #e8c46a;
+      --ink: #f6f1e7;
+      --card: rgba(12, 10, 8, 0.86);
+      font-family: "Inter", sans-serif;
+      color: var(--ink);
+    }
+    /* Series identity: thin frame, logo, progress bar. */
+    #ov-frame {
+      position: absolute;
+      inset: 26px;
+      border: 2px solid rgba(232, 196, 106, 0.45);
+      border-radius: 28px;
+    }
+    #ov-logo {
+      position: absolute;
+      left: 70px;
+      top: 186px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: rgba(12, 10, 8, 0.72);
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    #ov-progress-track {
+      position: absolute;
+      left: 70px;
+      right: 70px;
+      top: 168px;
+      height: 5px;
+      border-radius: 3px;
+      background: rgba(246, 241, 231, 0.18);
+    }
+    #ov-progress {
+      width: 100%;
+      height: 100%;
+      border-radius: 3px;
+      background: var(--gold);
+      transform-origin: left center;
+    }
+    /* Chapter pill. */
+    .chap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 240px;
+      display: flex;
+      justify-content: center;
+    }
+    .chap-in {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 34px 16px 18px;
+      border-radius: 999px;
+      background: var(--card);
+      font-weight: 700;
+      font-size: 40px;
+    }
+    .chap-n {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #14110c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 30px;
+    }
+    /* Gold sweep that marks a chapter change. */
+    .sweep {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(232, 196, 106, 0) 0%, rgba(232, 196, 106, 0.55) 50%, rgba(232, 196, 106, 0) 100%);
+    }
+    /* Painting credit, top right under the chapter. */
+    .art {
+      position: absolute;
+      right: 70px;
+      top: 330px;
+      max-width: 620px;
+      text-align: right;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 30px;
+      line-height: 1.25;
+      padding: 8px 18px;
+      border-radius: 12px;
+      background: rgba(12, 10, 8, 0.72);
+      color: rgba(246, 241, 231, 0.95);
+    }
+    /* Quote card. */
+    .quote {
+      position: absolute;
+      left: 80px;
+      right: 80px;
+      top: 880px;
+      padding: 54px 56px 50px;
+      border-radius: 36px;
+      background: var(--card);
+      border: 2px solid rgba(232, 196, 106, 0.5);
+      text-align: center;
+    }
+    .quote-mark {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -62px;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 150px;
+      line-height: 1;
+      color: var(--gold);
+    }
+    .quote-text {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 68px;
+      line-height: 1.12;
+    }
+    .quote-by {
+      margin-top: 22px;
+      font-weight: 700;
+      font-size: 30px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    /* Key figure. */
+    #ov-fact {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 560px;
+      text-align: center;
+    }
+    #ov-fact-small {
+      font-weight: 700;
+      font-size: 40px;
+      color: var(--ink);
+      text-shadow: 0 3px 14px rgba(0, 0, 0, 0.9);
+    }
+    #ov-fact-big {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 190px;
+      line-height: 1;
+      color: var(--gold);
+      text-shadow: 0 6px 24px rgba(0, 0, 0, 0.85);
+    }
+    /* Sinope -> Athens, schematic. */
+    #ov-map {
+      position: absolute;
+      left: 110px;
+      right: 110px;
+      top: 520px;
+      height: 400px;
+      border-radius: 32px;
+      background: var(--card);
+    }
+    #ov-map svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .map-label {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 38px;
+      fill: #f6f1e7;
+    }
+    .map-sub {
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-size: 30px;
+      fill: rgba(246, 241, 231, 0.75);
+    }
+  </style>
+  <div id="overlay" data-composition-id="overlay" data-width="1080" data-height="1920">
+    <div id="ov-frame" class="clip" data-start="4" data-duration="27.9"></div>
+    <div id="ov-logo" class="clip" data-start="4" data-duration="27.9">La philo en 1 minute</div>
+    <div id="ov-progress-track" class="clip" data-start="4" data-duration="27.9"><div id="ov-progress"></div></div>
+
+    <!-- Where and when: map, then the figure. -->
+    <div id="ov-map" class="clip" data-start="4.5" data-duration="2.4">
+      <svg viewBox="0 0 860 400">
+        <path id="ov-map-route" d="M 640 120 Q 470 40 230 270" fill="none" stroke="#e8c46a" stroke-width="7" stroke-dasharray="18 14" stroke-linecap="round" />
+        <circle cx="640" cy="120" r="16" fill="#e8c46a" />
+        <circle id="ov-map-athens" cx="230" cy="270" r="18" fill="#e8c46a" />
+        <text class="map-label" x="640" y="180" text-anchor="middle">Sinope</text>
+        <text class="map-sub" x="640" y="214" text-anchor="middle">mer Noire</text>
+        <text class="map-label" x="230" y="335" text-anchor="middle">Athènes</text>
+      </svg>
+    </div>
+    <div id="ov-fact" class="clip" data-start="6.8" data-duration="1.5">
+      <div id="ov-fact-big">2 300 ans</div>
+    </div>
+
+    <!-- Chapters. -->
+    <div id="ov-ch1" class="chap clip" data-start="8.3" data-duration="2.8"><div id="ov-ch1-in" class="chap-in"><div class="chap-n">1</div>Le bonheur</div></div>
+    <div id="ov-ch2" class="chap clip" data-start="11.1" data-duration="6.1"><div id="ov-ch2-in" class="chap-in"><div class="chap-n">2</div>Le bol</div></div>
+    <div id="ov-ch3" class="chap clip" data-start="17.2" data-duration="7.1"><div id="ov-ch3-in" class="chap-in"><div class="chap-n">3</div>La lanterne</div></div>
+    <div id="ov-ch4" class="chap clip" data-start="24.3" data-duration="7.6"><div id="ov-ch4-in" class="chap-in"><div class="chap-n">4</div>Alexandre</div></div>
+    <div id="ov-sweep1" class="sweep clip" data-start="8.15" data-duration="0.5"></div>
+    <div id="ov-sweep2" class="sweep clip" data-start="10.95" data-duration="0.5"></div>
+    <div id="ov-sweep3" class="sweep clip" data-start="17.05" data-duration="0.5"></div>
+    <div id="ov-sweep4" class="sweep clip" data-start="24.15" data-duration="0.5"></div>
+
+    <!-- Painting credits, shown while each painting is on screen. -->
+    <div id="ov-art1" class="art clip" data-start="4.2" data-duration="3.9">Raphaël, <b>L'École d'Athènes</b>, 1509-1511</div>
+    <div id="ov-art2" class="art clip" data-start="8.6" data-duration="8.4">Nicolas Poussin, <b>Paysage avec Diogène</b></div>
+    <div id="ov-art3" class="art clip" data-start="17.5" data-duration="6.6">Jean-Léon Gérôme, <b>Diogène</b>, 1860</div>
+    <div id="ov-art4" class="art clip" data-start="24.6" data-duration="7.2">Jean-Léon Gérôme, <b>Diogène</b> (détail)</div>
+
+    <!-- His words, as quote cards (the captions step aside). -->
+    <div id="ov-q1" class="quote clip" data-start="15" data-duration="2.05"><div class="quote-mark">“</div><div class="quote-text">Un enfant m'a battu en simplicité.</div><div class="quote-by">Diogène</div></div>
+    <div id="ov-q2" class="quote clip" data-start="22.8" data-duration="1.4"><div class="quote-mark">“</div><div class="quote-text">Je cherche un homme.</div><div class="quote-by">Diogène</div></div>
+    <div id="ov-q3" class="quote clip" data-start="30.3" data-duration="1.6"><div class="quote-mark">“</div><div class="quote-text">Ôte-toi de mon soleil.</div><div class="quote-by">Diogène à Alexandre</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // Identity: the frame and logo settle in after the title card; the bar fills to the end card.
+    tl.fromTo("#ov-frame", { opacity: 0, scale: 1.02 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 4);
+    tl.fromTo("#ov-logo", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 4.2);
+    tl.fromTo("#ov-progress", { scaleX: 0 }, { scaleX: 1, duration: 27.9, ease: "none" }, 4);
+
+    // Map: the route draws itself from Sinope to Athens.
+    tl.fromTo("#ov-map", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.5);
+    tl.fromTo("#ov-map-route", { strokeDashoffset: 600, opacity: 0.2 }, { strokeDashoffset: 0, opacity: 1, duration: 1.2, ease: "power1.inOut" }, 4.7);
+    tl.fromTo("#ov-map-athens", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.35, ease: "back.out(3)" }, 5.8);
+    tl.to("#ov-map", { opacity: 0, duration: 0.2, ease: "power2.in" }, 6.7);
+
+    // Key figure.
+    tl.fromTo("#ov-fact", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 6.8);
+    tl.to("#ov-fact", { opacity: 0, duration: 0.2, ease: "power2.in" }, 8.1);
+
+    // Chapters: a gold sweep crosses the frame, then the pill drops in.
+    const chapters = [["#ov-ch1-in", "#ov-sweep1", 8.3, 11.1], ["#ov-ch2-in", "#ov-sweep2", 11.1, 17.2], ["#ov-ch3-in", "#ov-sweep3", 17.2, 24.3], ["#ov-ch4-in", "#ov-sweep4", 24.3, 31.9]];
+    for (const [pill, sweep, start, end] of chapters) {
+      tl.fromTo(sweep, { xPercent: -100, opacity: 1 }, { xPercent: 100, opacity: 1, duration: 0.5, ease: "power2.inOut" }, start - 0.15);
+      tl.fromTo(pill, { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(1.8)" }, start);
+      tl.to(pill, { opacity: 0, duration: 0.15, ease: "power2.in" }, end - 0.15);
+    }
+
+    // Painting credits fade in and out.
+    for (const [id, start, dur] of [["#ov-art1", 4.2, 3.9], ["#ov-art2", 8.6, 8.4], ["#ov-art3", 17.5, 6.6], ["#ov-art4", 24.6, 7.2]]) {
+      tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, start);
+      tl.to(id, { opacity: 0, duration: 0.3, ease: "power1.in" }, start + dur - 0.3);
+    }
+
+    // Quote cards.
+    for (const [id, start, dur] of [["#ov-q1", 15, 2.05], ["#ov-q2", 22.8, 1.4], ["#ov-q3", 30.3, 1.6]]) {
+      tl.fromTo(id, { opacity: 0, scale: 0.92, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: "back.out(1.6)" }, start);
+      tl.to(id, { opacity: 0, duration: 0.15, ease: "power2.in" }, start + dur - 0.15);
+    }
+    window.__timelines["overlay"] = tl;
+  </script>
+</template>
