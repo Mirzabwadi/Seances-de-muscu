@@ -8,6 +8,12 @@ et suis-le étape par étape ; le projet `socrate/` est la référence à copier
 
 ## Règles
 
+- **Langue : les vidéos de l'utilisateur sont en kabyle.** Tout le texte à l'écran (titre,
+  chapitres, cartes de citation, chiffres clés, logo, appel à commenter) doit être en kabyle,
+  avec les polices de `tools/reels/fonts-kab/`. N'écris jamais de kabyle toi-même : demande à
+  l'utilisateur la liste exacte des textes à traduire avant le rendu, et garde ses
+  traductions telles quelles.
+
 - Lance toutes les commandes `hyperframes` avec `NODE_USE_ENV_PROXY=1`.
 - Le détourage est l'étape la plus longue (≈19 min par minute de vidéo) : lance-le en arrière-plan
   dès que le montage brut est validé, et prépare le reste pendant ce temps.
