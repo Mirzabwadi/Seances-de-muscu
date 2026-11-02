@@ -22,5 +22,13 @@ et suis-le étape par étape ; le projet `socrate/` est la référence à copier
 
 ## Ce que tu rends
 
+**À chaque vidéo, sans qu'on le demande : le post de publication**, prêt à copier-coller
+pour TikTok et Instagram — une accroche, deux ou trois lignes sur le sujet, la question
+finale pour faire commenter, les crédits des images, puis les hashtags (3 à 5 pour TikTok,
+8 à 12 pour Instagram). Pour une vidéo en kabyle, reprends les phrases kabyles de
+l'utilisateur telles qu'il les a écrites (titre, question finale) plutôt que d'en inventer,
+et complète en français. Ne relance pas le rendu pour livrer le post.
+
+
 Le chemin du MP4 Instagram, ce qui a été coupé et pourquoi, les corrections de sous-titres,
 les crédits d'images, et ce que tu n'as pas pu vérifier (tu ne peux pas écouter le son).

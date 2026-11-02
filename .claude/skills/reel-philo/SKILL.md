@@ -78,7 +78,10 @@ without it, model downloads fail with `ENOTFOUND` or a proxy 403.
 - `hyperframes render -o renders/<name>.mp4` (~7 min for a minute), then the Instagram file:
   `ffmpeg -i in.mp4 -c:v libx264 -preset slow -crf 21 -pix_fmt yuv420p -af "loudnorm=I=-14:TP=-1:LRA=9" -ar 48000 -c:a aac -b:a 192k -movflags +faststart out-insta.mp4`
   (~30 MB, about -15 LUFS). Extract a few frames from the final file to confirm the cut-out rendered.
-- Send the file with SendUserFile. Say honestly what was checked and that you cannot listen to it.
+- Send the file with SendUserFile, and always give the publication post with it (caption, final
+  question, image credits, hashtags for TikTok and for Instagram); see `.claude/agents/monteur-reels.md`.
+  For Kabyle, reuse the user's own Kabyle lines rather than writing new Kabyle.
+- Then: Say honestly what was checked and that you cannot listen to it.
 - Commit the project (not the renders, cut-out, source or `.transcode-cache/`) and push.
 
 ## Timings to quote
