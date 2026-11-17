@@ -1,0 +1,2431 @@
+[
+ {
+  "text": "Spinoza",
+  "start": 1.001,
+  "end": 1.141,
+  "line": 0,
+  "id": "w0"
+ },
+ {
+  "text": "I",
+  "start": 1.141,
+  "end": 1.161,
+  "line": 1,
+  "id": "w1"
+ },
+ {
+  "text": "lukan",
+  "start": 1.221,
+  "end": 1.542,
+  "line": 1,
+  "id": "w2"
+ },
+ {
+  "text": "Illu",
+  "start": 1.602,
+  "end": 1.822,
+  "line": 1,
+  "id": "w3"
+ },
+ {
+  "text": "neɣ",
+  "start": 2.122,
+  "end": 2.242,
+  "line": 1,
+  "id": "w4"
+ },
+ {
+  "text": "Ṛebbi",
+  "start": 2.362,
+  "end": 2.643,
+  "line": 1,
+  "id": "w5"
+ },
+ {
+  "text": "ur",
+  "start": 2.803,
+  "end": 2.883,
+  "line": 1,
+  "id": "w6"
+ },
+ {
+  "text": "yelli",
+  "start": 2.943,
+  "end": 3.163,
+  "line": 1,
+  "id": "w7"
+ },
+ {
+  "text": "d",
+  "start": 3.343,
+  "end": 3.363,
+  "line": 1,
+  "id": "w8"
+ },
+ {
+  "text": "yiwen,",
+  "start": 3.484,
+  "end": 3.784,
+  "line": 1,
+  "id": "w9"
+ },
+ {
+  "text": "maca",
+  "start": 4.324,
+  "end": 4.585,
+  "line": 1,
+  "id": "w10"
+ },
+ {
+  "text": "d",
+  "start": 4.765,
+  "end": 4.785,
+  "line": 1,
+  "id": "w11"
+ },
+ {
+  "text": "ayen",
+  "start": 4.845,
+  "end": 5.045,
+  "line": 1,
+  "id": "w12"
+ },
+ {
+  "text": "yellan ?",
+  "start": 5.125,
+  "end": 5.506,
+  "line": 1,
+  "id": "w13"
+ },
+ {
+  "text": "Tagi",
+  "start": 6.106,
+  "end": 6.307,
+  "line": 1,
+  "id": "w14"
+ },
+ {
+  "text": "d",
+  "start": 6.367,
+  "end": 6.387,
+  "line": 1,
+  "id": "w15"
+ },
+ {
+  "text": "tikti",
+  "start": 6.407,
+  "end": 6.707,
+  "line": 1,
+  "id": "w16"
+ },
+ {
+  "text": "n",
+  "start": 6.747,
+  "end": 6.767,
+  "line": 1,
+  "id": "w17"
+ },
+ {
+  "text": "Spinoza,",
+  "start": 6.847,
+  "end": 7.368,
+  "line": 1,
+  "id": "w18"
+ },
+ {
+  "text": "yiwen",
+  "start": 7.768,
+  "end": 7.968,
+  "line": 1,
+  "id": "w19"
+ },
+ {
+  "text": "ufiluẓuf",
+  "start": 8.008,
+  "end": 8.569,
+  "line": 1,
+  "id": "w20"
+ },
+ {
+  "text": "yeddren",
+  "start": 8.669,
+  "end": 9.029,
+  "line": 1,
+  "id": "w21"
+ },
+ {
+  "text": "di",
+  "start": 9.109,
+  "end": 9.19,
+  "line": 1,
+  "id": "w22"
+ },
+ {
+  "text": "lqern",
+  "start": 9.25,
+  "end": 9.59,
+  "line": 1,
+  "id": "w23"
+ },
+ {
+  "text": "wis 17,",
+  "start": 9.83,
+  "end": 10.291,
+  "line": 1,
+  "id": "w24"
+ },
+ {
+  "text": "i",
+  "start": 10.871,
+  "end": 10.891,
+  "line": 1,
+  "id": "w25"
+ },
+ {
+  "text": "d-yessekles",
+  "start": 10.951,
+  "end": 11.572,
+  "line": 1,
+  "id": "w26"
+ },
+ {
+  "text": "deg",
+  "start": 11.772,
+  "end": 11.912,
+  "line": 1,
+  "id": "w27"
+ },
+ {
+  "text": "udlis-is",
+  "start": 11.952,
+  "end": 12.573,
+  "line": 1,
+  "id": "w28"
+ },
+ {
+  "text": "muccaɛen",
+  "start": 12.753,
+  "end": 13.154,
+  "line": 1,
+  "id": "w29"
+ },
+ {
+  "text": "aṭas,",
+  "start": 13.194,
+  "end": 13.534,
+  "line": 1,
+  "id": "w30"
+ },
+ {
+  "text": "L'Ethique.",
+  "start": 14.075,
+  "end": 15.276,
+  "line": 1,
+  "id": "w31"
+ },
+ {
+  "text": "ɣur-s,",
+  "start": 15.276,
+  "end": 15.516,
+  "line": 2,
+  "id": "w32"
+ },
+ {
+  "text": "tella",
+  "start": 15.556,
+  "end": 15.796,
+  "line": 2,
+  "id": "w33"
+ },
+ {
+  "text": "kan",
+  "start": 15.876,
+  "end": 16.057,
+  "line": 2,
+  "id": "w34"
+ },
+ {
+  "text": "yiwet",
+  "start": 16.077,
+  "end": 16.337,
+  "line": 2,
+  "id": "w35"
+ },
+ {
+  "text": "n",
+  "start": 16.437,
+  "end": 16.457,
+  "line": 2,
+  "id": "w36"
+ },
+ {
+  "text": "tidet,",
+  "start": 16.557,
+  "end": 16.938,
+  "line": 2,
+  "id": "w37"
+ },
+ {
+  "text": "d",
+  "start": 17.418,
+  "end": 17.438,
+  "line": 2,
+  "id": "w38"
+ },
+ {
+  "text": "tin",
+  "start": 17.478,
+  "end": 17.638,
+  "line": 2,
+  "id": "w39"
+ },
+ {
+  "text": "ur",
+  "start": 17.698,
+  "end": 17.778,
+  "line": 2,
+  "id": "w40"
+ },
+ {
+  "text": "nettfakka.",
+  "start": 17.859,
+  "end": 18.319,
+  "line": 2,
+  "id": "w41"
+ },
+ {
+  "text": "Yessawal-as",
+  "start": 18.94,
+  "end": 19.54,
+  "line": 2,
+  "id": "w42"
+ },
+ {
+  "text": "Rebbi",
+  "start": 19.7,
+  "end": 19.961,
+  "line": 2,
+  "id": "w43"
+ },
+ {
+  "text": "neɣ",
+  "start": 20.521,
+  "end": 20.641,
+  "line": 2,
+  "id": "w44"
+ },
+ {
+  "text": "Agama.",
+  "start": 20.701,
+  "end": 21.042,
+  "line": 2,
+  "id": "w45"
+ },
+ {
+  "text": "D",
+  "start": 22.063,
+  "end": 22.083,
+  "line": 2,
+  "id": "w46"
+ },
+ {
+  "text": "ssin",
+  "start": 22.163,
+  "end": 22.383,
+  "line": 2,
+  "id": "w47"
+ },
+ {
+  "text": "yesmawen",
+  "start": 22.403,
+  "end": 22.944,
+  "line": 2,
+  "id": "w48"
+ },
+ {
+  "text": "i",
+  "start": 22.984,
+  "end": 23.004,
+  "line": 2,
+  "id": "w49"
+ },
+ {
+  "text": "nezmer",
+  "start": 23.084,
+  "end": 23.464,
+  "line": 2,
+  "id": "w50"
+ },
+ {
+  "text": "ad",
+  "start": 23.645,
+  "end": 23.705,
+  "line": 2,
+  "id": "w51"
+ },
+ {
+  "text": "nefkk",
+  "start": 23.745,
+  "end": 24.005,
+  "line": 2,
+  "id": "w52"
+ },
+ {
+  "text": "kan",
+  "start": 24.045,
+  "end": 24.245,
+  "line": 2,
+  "id": "w53"
+ },
+ {
+  "text": "i",
+  "start": 24.285,
+  "end": 24.305,
+  "line": 2,
+  "id": "w54"
+ },
+ {
+  "text": "yiwet",
+  "start": 24.365,
+  "end": 24.545,
+  "line": 2,
+  "id": "w55"
+ },
+ {
+  "text": "n",
+  "start": 24.646,
+  "end": 24.666,
+  "line": 2,
+  "id": "w56"
+ },
+ {
+  "text": "tɣawsa.",
+  "start": 24.726,
+  "end": 25.186,
+  "line": 2,
+  "id": "w57"
+ },
+ {
+  "text": "Rebbi",
+  "start": 25.847,
+  "end": 26.067,
+  "line": 3,
+  "id": "w58"
+ },
+ {
+  "text": "illu",
+  "start": 26.307,
+  "end": 26.528,
+  "line": 3,
+  "id": "w59"
+ },
+ {
+  "text": "ur",
+  "start": 26.888,
+  "end": 26.988,
+  "line": 3,
+  "id": "w60"
+ },
+ {
+  "text": "yelli",
+  "start": 27.028,
+  "end": 27.268,
+  "line": 3,
+  "id": "w61"
+ },
+ {
+  "text": "d",
+  "start": 27.449,
+  "end": 27.469,
+  "line": 3,
+  "id": "w62"
+ },
+ {
+  "text": "agellid",
+  "start": 27.509,
+  "end": 27.909,
+  "line": 3,
+  "id": "w63"
+ },
+ {
+  "text": "yeqqimen",
+  "start": 27.989,
+  "end": 28.43,
+  "line": 3,
+  "id": "w64"
+ },
+ {
+  "text": "ɣef",
+  "start": 28.89,
+  "end": 29.07,
+  "line": 3,
+  "id": "w65"
+ },
+ {
+  "text": "usgeld",
+  "start": 29.13,
+  "end": 29.671,
+  "line": 3,
+  "id": "w66"
+ },
+ {
+  "text": "(trône)",
+  "start": 30.051,
+  "end": 31.052,
+  "line": 3,
+  "id": "w67"
+ },
+ {
+  "text": "akkin",
+  "start": 31.413,
+  "end": 31.773,
+  "line": 3,
+  "id": "w68"
+ },
+ {
+  "text": "deg",
+  "start": 31.873,
+  "end": 32.033,
+  "line": 3,
+  "id": "w69"
+ },
+ {
+  "text": "igenwan,",
+  "start": 32.073,
+  "end": 32.574,
+  "line": 3,
+  "id": "w70"
+ },
+ {
+  "text": "win",
+  "start": 33.094,
+  "end": 33.214,
+  "line": 3,
+  "id": "w71"
+ },
+ {
+  "text": "yettḥasaben",
+  "start": 33.255,
+  "end": 33.895,
+  "line": 3,
+  "id": "w72"
+ },
+ {
+  "text": "tarwa-s",
+  "start": 33.955,
+  "end": 34.476,
+  "line": 3,
+  "id": "w73"
+ },
+ {
+  "text": "neɣ",
+  "start": 34.896,
+  "end": 35.016,
+  "line": 3,
+  "id": "w74"
+ },
+ {
+  "text": "i",
+  "start": 35.056,
+  "end": 35.076,
+  "line": 3,
+  "id": "w75"
+ },
+ {
+  "text": "tt-yeselquyen.",
+  "start": 35.136,
+  "end": 35.937,
+  "line": 3,
+  "id": "w76"
+ },
+ {
+  "text": "Illu",
+  "start": 36.718,
+  "end": 37.099,
+  "line": 3,
+  "id": "w77"
+ },
+ {
+  "text": "d",
+  "start": 37.199,
+  "end": 37.219,
+  "line": 3,
+  "id": "w78"
+ },
+ {
+  "text": "tazmert",
+  "start": 37.259,
+  "end": 37.759,
+  "line": 3,
+  "id": "w79"
+ },
+ {
+  "text": "i",
+  "start": 38.14,
+  "end": 38.16,
+  "line": 3,
+  "id": "w80"
+ },
+ {
+  "text": "s-iteddu",
+  "start": 38.24,
+  "end": 38.66,
+  "line": 3,
+  "id": "w81"
+ },
+ {
+  "text": "umeɣrad",
+  "start": 38.72,
+  "end": 39.201,
+  "line": 3,
+  "id": "w82"
+ },
+ {
+  "text": "(l'univers),",
+  "start": 39.481,
+  "end": 40.522,
+  "line": 3,
+  "id": "w83"
+ },
+ {
+  "text": "s",
+  "start": 40.542,
+  "end": 40.562,
+  "line": 3,
+  "id": "w84"
+ },
+ {
+  "text": "lekmal-is.",
+  "start": 40.662,
+  "end": 41.283,
+  "line": 3,
+  "id": "w85"
+ },
+ {
+  "text": "Ihi",
+  "start": 41.964,
+  "end": 42.144,
+  "line": 4,
+  "id": "w86"
+ },
+ {
+  "text": "nekni,",
+  "start": 42.244,
+  "end": 42.584,
+  "line": 4,
+  "id": "w87"
+ },
+ {
+  "text": "Ṭjuṛ,",
+  "start": 43.065,
+  "end": 43.425,
+  "line": 4,
+  "id": "w88"
+ },
+ {
+  "text": "itran,",
+  "start": 43.625,
+  "end": 44.066,
+  "line": 4,
+  "id": "w89"
+ },
+ {
+  "text": "igenwan",
+  "start": 44.366,
+  "end": 44.927,
+  "line": 4,
+  "id": "w90"
+ },
+ {
+  "text": "akked",
+  "start": 45.267,
+  "end": 45.587,
+  "line": 4,
+  "id": "w91"
+ },
+ {
+  "text": "tal",
+  "start": 45.748,
+  "end": 45.908,
+  "line": 4,
+  "id": "w92"
+ },
+ {
+  "text": "taɣawsa",
+  "start": 45.968,
+  "end": 46.468,
+  "line": 4,
+  "id": "w93"
+ },
+ {
+  "text": "deg",
+  "start": 46.528,
+  "end": 46.648,
+  "line": 4,
+  "id": "w94"
+ },
+ {
+  "text": "umaḍal",
+  "start": 46.648,
+  "end": 47.129,
+  "line": 4,
+  "id": "w95"
+ },
+ {
+  "text": "d",
+  "start": 47.509,
+  "end": 47.529,
+  "line": 4,
+  "id": "w96"
+ },
+ {
+  "text": "tugniwin",
+  "start": 47.569,
+  "end": 48.11,
+  "line": 4,
+  "id": "w97"
+ },
+ {
+  "text": "kan",
+  "start": 48.19,
+  "end": 48.37,
+  "line": 4,
+  "id": "w98"
+ },
+ {
+  "text": "yebnan",
+  "start": 48.43,
+  "end": 48.791,
+  "line": 4,
+  "id": "w99"
+ },
+ {
+  "text": "tazmert-agi,",
+  "start": 48.851,
+  "end": 49.571,
+  "line": 4,
+  "id": "w100"
+ },
+ {
+  "text": "am",
+  "start": 50.152,
+  "end": 50.252,
+  "line": 4,
+  "id": "w101"
+ },
+ {
+  "text": "lemwaji",
+  "start": 50.312,
+  "end": 50.853,
+  "line": 4,
+  "id": "w102"
+ },
+ {
+  "text": "yebnan",
+  "start": 51.333,
+  "end": 51.734,
+  "line": 4,
+  "id": "w103"
+ },
+ {
+  "text": "illel.",
+  "start": 51.794,
+  "end": 52.114,
+  "line": 4,
+  "id": "w104"
+ },
+ {
+  "text": "Tikti",
+  "start": 54.717,
+  "end": 55.017,
+  "line": 5,
+  "id": "w105"
+ },
+ {
+  "text": "tis",
+  "start": 55.197,
+  "end": 55.378,
+  "line": 5,
+  "id": "w106"
+ },
+ {
+  "text": "snat,",
+  "start": 55.478,
+  "end": 55.838,
+  "line": 5,
+  "id": "w107"
+ },
+ {
+  "text": "deg",
+  "start": 56.238,
+  "end": 56.379,
+  "line": 5,
+  "id": "w108"
+ },
+ {
+  "text": "ugama",
+  "start": 56.399,
+  "end": 56.719,
+  "line": 5,
+  "id": "w109"
+ },
+ {
+  "text": "ur",
+  "start": 56.839,
+  "end": 56.939,
+  "line": 5,
+  "id": "w110"
+ },
+ {
+  "text": "yelli",
+  "start": 56.979,
+  "end": 57.179,
+  "line": 5,
+  "id": "w111"
+ },
+ {
+  "text": "d",
+  "start": 57.46,
+  "end": 57.48,
+  "line": 5,
+  "id": "w112"
+ },
+ {
+  "text": "acu",
+  "start": 57.5,
+  "end": 57.68,
+  "line": 5,
+  "id": "w113"
+ },
+ {
+  "text": "i",
+  "start": 57.8,
+  "end": 57.82,
+  "line": 5,
+  "id": "w114"
+ },
+ {
+  "text": "d-yettasen",
+  "start": 57.86,
+  "end": 58.401,
+  "line": 5,
+  "id": "w115"
+ },
+ {
+  "text": "akka",
+  "start": 58.461,
+  "end": 58.661,
+  "line": 5,
+  "id": "w116"
+ },
+ {
+  "text": "kan.",
+  "start": 58.761,
+  "end": 58.961,
+  "line": 5,
+  "id": "w117"
+ },
+ {
+  "text": "Tal",
+  "start": 59.542,
+  "end": 59.682,
+  "line": 5,
+  "id": "w118"
+ },
+ {
+  "text": "taɣawsa",
+  "start": 59.722,
+  "end": 60.203,
+  "line": 5,
+  "id": "w119"
+ },
+ {
+  "text": "tesɛa",
+  "start": 60.283,
+  "end": 60.583,
+  "line": 5,
+  "id": "w120"
+ },
+ {
+  "text": "sebba-s,",
+  "start": 60.683,
+  "end": 61.164,
+  "line": 5,
+  "id": "w121"
+ },
+ {
+  "text": "akken",
+  "start": 61.724,
+  "end": 61.984,
+  "line": 5,
+  "id": "w122"
+ },
+ {
+  "text": "sebba-nni",
+  "start": 62.104,
+  "end": 62.545,
+  "line": 5,
+  "id": "w123"
+ },
+ {
+  "text": "diɣen",
+  "start": 62.605,
+  "end": 62.905,
+  "line": 5,
+  "id": "w124"
+ },
+ {
+  "text": "ɣur-s",
+  "start": 63.286,
+  "end": 63.506,
+  "line": 5,
+  "id": "w125"
+ },
+ {
+  "text": "sebba-ines,",
+  "start": 63.586,
+  "end": 64.167,
+  "line": 5,
+  "id": "w126"
+ },
+ {
+  "text": "alamma",
+  "start": 64.607,
+  "end": 64.947,
+  "line": 5,
+  "id": "w127"
+ },
+ {
+  "text": "d",
+  "start": 65.188,
+  "end": 65.208,
+  "line": 5,
+  "id": "w128"
+ },
+ {
+  "text": "imifeḍ",
+  "start": 65.248,
+  "end": 65.688,
+  "line": 5,
+  "id": "w129"
+ },
+ {
+  "text": "(jusqu'à",
+  "start": 66.269,
+  "end": 66.629,
+  "line": 5,
+  "id": "w130"
+ },
+ {
+  "text": "l'infini).",
+  "start": 66.649,
+  "end": 67.09,
+  "line": 5,
+  "id": "w131"
+ },
+ {
+  "text": "Ihi",
+  "start": 67.71,
+  "end": 67.951,
+  "line": 6,
+  "id": "w132"
+ },
+ {
+  "text": "ayen",
+  "start": 68.491,
+  "end": 68.691,
+  "line": 6,
+  "id": "w133"
+ },
+ {
+  "text": "i",
+  "start": 68.731,
+  "end": 68.751,
+  "line": 6,
+  "id": "w134"
+ },
+ {
+  "text": "neǧɛell",
+  "start": 68.751,
+  "end": 69.132,
+  "line": 6,
+  "id": "w135"
+ },
+ {
+  "text": "d",
+  "start": 69.192,
+  "end": 69.212,
+  "line": 6,
+  "id": "w136"
+ },
+ {
+  "text": "akken",
+  "start": 69.252,
+  "end": 69.492,
+  "line": 6,
+  "id": "w137"
+ },
+ {
+  "text": "nekni",
+  "start": 69.532,
+  "end": 69.812,
+  "line": 6,
+  "id": "w138"
+ },
+ {
+  "text": "d",
+  "start": 70.013,
+  "end": 70.033,
+  "line": 6,
+  "id": "w139"
+ },
+ {
+  "text": "ilelliyen ?",
+  "start": 70.073,
+  "end": 70.653,
+  "line": 6,
+  "id": "w140"
+ },
+ {
+  "text": "Nessen",
+  "start": 71.334,
+  "end": 71.694,
+  "line": 6,
+  "id": "w141"
+ },
+ {
+  "text": "lebɣiwat-nneɣ",
+  "start": 71.755,
+  "end": 72.575,
+  "line": 6,
+  "id": "w142"
+ },
+ {
+  "text": "akk",
+  "start": 72.916,
+  "end": 73.036,
+  "line": 6,
+  "id": "w143"
+ },
+ {
+  "text": "d",
+  "start": 73.116,
+  "end": 73.136,
+  "line": 6,
+  "id": "w144"
+ },
+ {
+  "text": "acu",
+  "start": 73.176,
+  "end": 73.396,
+  "line": 6,
+  "id": "w145"
+ },
+ {
+  "text": "nebɣa",
+  "start": 73.456,
+  "end": 73.757,
+  "line": 6,
+  "id": "w146"
+ },
+ {
+  "text": "maca",
+  "start": 74.197,
+  "end": 74.417,
+  "line": 6,
+  "id": "w147"
+ },
+ {
+  "text": "ur",
+  "start": 74.537,
+  "end": 74.617,
+  "line": 6,
+  "id": "w148"
+ },
+ {
+  "text": "neẓri",
+  "start": 74.658,
+  "end": 74.958,
+  "line": 6,
+  "id": "w149"
+ },
+ {
+  "text": "ansi",
+  "start": 75.078,
+  "end": 75.278,
+  "line": 6,
+  "id": "w150"
+ },
+ {
+  "text": "i",
+  "start": 75.298,
+  "end": 75.318,
+  "line": 6,
+  "id": "w151"
+ },
+ {
+  "text": "d-kkan",
+  "start": 75.378,
+  "end": 75.739,
+  "line": 6,
+  "id": "w152"
+ },
+ {
+  "text": "neɣ",
+  "start": 76.179,
+  "end": 76.279,
+  "line": 6,
+  "id": "w153"
+ },
+ {
+  "text": "tisebbiwin",
+  "start": 76.319,
+  "end": 76.9,
+  "line": 6,
+  "id": "w154"
+ },
+ {
+  "text": "i",
+  "start": 76.94,
+  "end": 76.96,
+  "line": 6,
+  "id": "w155"
+ },
+ {
+  "text": "ten-id-yefkan.",
+  "start": 77.02,
+  "end": 77.701,
+  "line": 6,
+  "id": "w156"
+ },
+ {
+  "text": "Am",
+  "start": 78.702,
+  "end": 78.822,
+  "line": 7,
+  "id": "w157"
+ },
+ {
+  "text": "ublaḍ",
+  "start": 78.862,
+  "end": 79.182,
+  "line": 7,
+  "id": "w158"
+ },
+ {
+  "text": "ma",
+  "start": 79.242,
+  "end": 79.302,
+  "line": 7,
+  "id": "w159"
+ },
+ {
+  "text": "tɛellaḍ-t",
+  "start": 79.342,
+  "end": 79.743,
+  "line": 7,
+  "id": "w160"
+ },
+ {
+  "text": "deg",
+  "start": 79.823,
+  "end": 79.943,
+  "line": 7,
+  "id": "w161"
+ },
+ {
+  "text": "igenni,",
+  "start": 79.963,
+  "end": 80.323,
+  "line": 7,
+  "id": "w162"
+ },
+ {
+  "text": "lemmer",
+  "start": 80.764,
+  "end": 81.044,
+  "line": 7,
+  "id": "w163"
+ },
+ {
+  "text": "yettxemmim,",
+  "start": 81.104,
+  "end": 81.645,
+  "line": 7,
+  "id": "w164"
+ },
+ {
+  "text": "ad",
+  "start": 81.945,
+  "end": 82.045,
+  "line": 7,
+  "id": "w165"
+ },
+ {
+  "text": "yenwu",
+  "start": 82.085,
+  "end": 82.325,
+  "line": 7,
+  "id": "w166"
+ },
+ {
+  "text": "d",
+  "start": 82.406,
+  "end": 82.426,
+  "line": 7,
+  "id": "w167"
+ },
+ {
+  "text": "akken",
+  "start": 82.486,
+  "end": 82.686,
+  "line": 7,
+  "id": "w168"
+ },
+ {
+  "text": "yettferfir",
+  "start": 82.746,
+  "end": 83.367,
+  "line": 7,
+  "id": "w169"
+ },
+ {
+  "text": "acku",
+  "start": 83.607,
+  "end": 83.887,
+  "line": 7,
+  "id": "w170"
+ },
+ {
+  "text": "d",
+  "start": 83.947,
+  "end": 83.967,
+  "line": 7,
+  "id": "w171"
+ },
+ {
+  "text": "netta",
+  "start": 84.067,
+  "end": 84.268,
+  "line": 7,
+  "id": "w172"
+ },
+ {
+  "text": "i",
+  "start": 84.368,
+  "end": 84.388,
+  "line": 7,
+  "id": "w173"
+ },
+ {
+  "text": "yebɣan.",
+  "start": 84.448,
+  "end": 84.828,
+  "line": 7,
+  "id": "w174"
+ },
+ {
+  "text": "Syen",
+  "start": 87.211,
+  "end": 87.451,
+  "line": 8,
+  "id": "w175"
+ },
+ {
+  "text": "ɣer-s,",
+  "start": 87.551,
+  "end": 87.831,
+  "line": 8,
+  "id": "w176"
+ },
+ {
+  "text": "bnadem",
+  "start": 88.091,
+  "end": 88.412,
+  "line": 8,
+  "id": "w177"
+ },
+ {
+  "text": "ur",
+  "start": 88.452,
+  "end": 88.552,
+  "line": 8,
+  "id": "w178"
+ },
+ {
+  "text": "yelli",
+  "start": 88.572,
+  "end": 88.792,
+  "line": 8,
+  "id": "w179"
+ },
+ {
+  "text": "d",
+  "start": 88.912,
+  "end": 88.932,
+  "line": 8,
+  "id": "w180"
+ },
+ {
+  "text": "amenkud",
+  "start": 88.952,
+  "end": 89.493,
+  "line": 8,
+  "id": "w181"
+ },
+ {
+  "text": "(un",
+  "start": 89.813,
+  "end": 89.913,
+  "line": 8,
+  "id": "w182"
+ },
+ {
+  "text": "empire)",
+  "start": 89.993,
+  "end": 90.534,
+  "line": 8,
+  "id": "w183"
+ },
+ {
+  "text": "s",
+  "start": 90.534,
+  "end": 90.554,
+  "line": 8,
+  "id": "w184"
+ },
+ {
+  "text": "daxel",
+  "start": 90.634,
+  "end": 90.874,
+  "line": 8,
+  "id": "w185"
+ },
+ {
+  "text": "n",
+  "start": 90.874,
+  "end": 90.894,
+  "line": 8,
+  "id": "w186"
+ },
+ {
+  "text": "wayeḍ",
+  "start": 90.974,
+  "end": 91.195,
+  "line": 8,
+  "id": "w187"
+ },
+ {
+  "text": "n",
+  "start": 91.195,
+  "end": 91.215,
+  "line": 8,
+  "id": "w188"
+ },
+ {
+  "text": "umenkud.",
+  "start": 91.215,
+  "end": 91.715,
+  "line": 8,
+  "id": "w189"
+ },
+ {
+  "text": "Bnadem",
+  "start": 92.136,
+  "end": 92.476,
+  "line": 8,
+  "id": "w190"
+ },
+ {
+  "text": "s",
+  "start": 92.516,
+  "end": 92.536,
+  "line": 8,
+  "id": "w191"
+ },
+ {
+  "text": "timmat-is",
+  "start": 92.596,
+  "end": 93.197,
+  "line": 8,
+  "id": "w192"
+ },
+ {
+  "text": "yettekki",
+  "start": 93.497,
+  "end": 93.918,
+  "line": 8,
+  "id": "w193"
+ },
+ {
+  "text": "deg",
+  "start": 94.078,
+  "end": 94.198,
+  "line": 8,
+  "id": "w194"
+ },
+ {
+  "text": "ugama",
+  "start": 94.218,
+  "end": 94.578,
+  "line": 8,
+  "id": "w195"
+ },
+ {
+  "text": "am",
+  "start": 94.758,
+  "end": 94.838,
+  "line": 8,
+  "id": "w196"
+ },
+ {
+  "text": "wid",
+  "start": 94.939,
+  "end": 95.079,
+  "line": 8,
+  "id": "w197"
+ },
+ {
+  "text": "akk",
+  "start": 95.159,
+  "end": 95.299,
+  "line": 8,
+  "id": "w198"
+ },
+ {
+  "text": "yettikkin",
+  "start": 95.299,
+  "end": 95.759,
+  "line": 8,
+  "id": "w199"
+ },
+ {
+  "text": "deg-s,",
+  "start": 95.84,
+  "end": 96.14,
+  "line": 8,
+  "id": "w200"
+ },
+ {
+  "text": "akken",
+  "start": 96.961,
+  "end": 97.181,
+  "line": 8,
+  "id": "w201"
+ },
+ {
+  "text": "diɣen",
+  "start": 97.221,
+  "end": 97.521,
+  "line": 8,
+  "id": "w202"
+ },
+ {
+  "text": "teṭṭafaṛ",
+  "start": 97.882,
+  "end": 98.342,
+  "line": 8,
+  "id": "w203"
+ },
+ {
+  "text": "isuḍaf-ines.",
+  "start": 98.382,
+  "end": 99.163,
+  "line": 8,
+  "id": "w204"
+ },
+ {
+  "text": "Ihi",
+  "start": 99.784,
+  "end": 100.044,
+  "line": 9,
+  "id": "w205"
+ },
+ {
+  "text": "Yal",
+  "start": 100.044,
+  "end": 100.204,
+  "line": 9,
+  "id": "w206"
+ },
+ {
+  "text": "iman",
+  "start": 100.244,
+  "end": 100.504,
+  "line": 9,
+  "id": "w207"
+ },
+ {
+  "text": "yewwid",
+  "start": 100.564,
+  "end": 100.825,
+  "line": 9,
+  "id": "w208"
+ },
+ {
+  "text": "fell-as",
+  "start": 100.865,
+  "end": 101.285,
+  "line": 9,
+  "id": "w209"
+ },
+ {
+  "text": "akken",
+  "start": 101.666,
+  "end": 101.906,
+  "line": 9,
+  "id": "w210"
+ },
+ {
+  "text": "ad",
+  "start": 101.946,
+  "end": 102.046,
+  "line": 9,
+  "id": "w211"
+ },
+ {
+  "text": "yesdum",
+  "start": 102.106,
+  "end": 102.446,
+  "line": 9,
+  "id": "w212"
+ },
+ {
+  "text": "deg",
+  "start": 102.486,
+  "end": 102.587,
+  "line": 9,
+  "id": "w213"
+ },
+ {
+  "text": "tlalit-is.",
+  "start": 102.667,
+  "end": 103.347,
+  "line": 9,
+  "id": "w214"
+ },
+ {
+  "text": "Mara",
+  "start": 103.948,
+  "end": 104.128,
+  "line": 9,
+  "id": "w215"
+ },
+ {
+  "text": "tettnerni",
+  "start": 104.168,
+  "end": 104.629,
+  "line": 9,
+  "id": "w216"
+ },
+ {
+  "text": "tezmert-nneɣ,",
+  "start": 104.689,
+  "end": 105.45,
+  "line": 9,
+  "id": "w217"
+ },
+ {
+  "text": "nfeṛṛeḥ,",
+  "start": 105.57,
+  "end": 105.99,
+  "line": 9,
+  "id": "w218"
+ },
+ {
+  "text": "akken",
+  "start": 106.491,
+  "end": 106.731,
+  "line": 9,
+  "id": "w219"
+ },
+ {
+  "text": "nettnuɣnu",
+  "start": 106.811,
+  "end": 107.331,
+  "line": 9,
+  "id": "w220"
+ },
+ {
+  "text": "mara",
+  "start": 107.412,
+  "end": 107.592,
+  "line": 9,
+  "id": "w221"
+ },
+ {
+  "text": "tessilwi.",
+  "start": 107.652,
+  "end": 108.112,
+  "line": 9,
+  "id": "w222"
+ },
+ {
+  "text": "Ihi",
+  "start": 108.693,
+  "end": 108.833,
+  "line": 10,
+  "id": "w223"
+ },
+ {
+  "text": "d",
+  "start": 108.893,
+  "end": 108.913,
+  "line": 10,
+  "id": "w224"
+ },
+ {
+  "text": "acu",
+  "start": 108.953,
+  "end": 109.133,
+  "line": 10,
+  "id": "w225"
+ },
+ {
+  "text": "d",
+  "start": 109.193,
+  "end": 109.213,
+  "line": 10,
+  "id": "w226"
+ },
+ {
+  "text": "tilelli ?",
+  "start": 109.253,
+  "end": 109.654,
+  "line": 10,
+  "id": "w227"
+ },
+ {
+  "text": "Tilelli",
+  "start": 110.275,
+  "end": 110.675,
+  "line": 10,
+  "id": "w228"
+ },
+ {
+  "text": "mačči",
+  "start": 110.775,
+  "end": 110.975,
+  "line": 10,
+  "id": "w229"
+ },
+ {
+  "text": "d",
+  "start": 111.035,
+  "end": 111.055,
+  "line": 10,
+  "id": "w230"
+ },
+ {
+  "text": "tarewla",
+  "start": 111.095,
+  "end": 111.436,
+  "line": 10,
+  "id": "w231"
+ },
+ {
+  "text": "ɣef",
+  "start": 111.496,
+  "end": 111.636,
+  "line": 10,
+  "id": "w232"
+ },
+ {
+  "text": "tsebbiwin,",
+  "start": 111.676,
+  "end": 112.237,
+  "line": 10,
+  "id": "w233"
+ },
+ {
+  "text": "winna",
+  "start": 112.397,
+  "end": 112.617,
+  "line": 10,
+  "id": "w234"
+ },
+ {
+  "text": "d",
+  "start": 112.677,
+  "end": 112.697,
+  "line": 10,
+  "id": "w235"
+ },
+ {
+  "text": "awezɣi.",
+  "start": 112.717,
+  "end": 113.158,
+  "line": 10,
+  "id": "w236"
+ },
+ {
+  "text": "Tilelli",
+  "start": 113.738,
+  "end": 114.159,
+  "line": 10,
+  "id": "w237"
+ },
+ {
+  "text": "tettbin-d",
+  "start": 114.419,
+  "end": 114.959,
+  "line": 10,
+  "id": "w238"
+ },
+ {
+  "text": "di",
+  "start": 115.26,
+  "end": 115.34,
+  "line": 10,
+  "id": "w239"
+ },
+ {
+  "text": "tigzi",
+  "start": 115.4,
+  "end": 115.72,
+  "line": 10,
+  "id": "w240"
+ },
+ {
+  "text": "n",
+  "start": 115.78,
+  "end": 115.8,
+  "line": 10,
+  "id": "w241"
+ },
+ {
+  "text": "tsebbiwin",
+  "start": 115.86,
+  "end": 116.481,
+  "line": 10,
+  "id": "w242"
+ },
+ {
+  "text": "i",
+  "start": 116.861,
+  "end": 116.881,
+  "line": 10,
+  "id": "w243"
+ },
+ {
+  "text": "d-yefkan",
+  "start": 116.961,
+  "end": 117.382,
+  "line": 10,
+  "id": "w244"
+ },
+ {
+  "text": "ayen",
+  "start": 117.422,
+  "end": 117.642,
+  "line": 10,
+  "id": "w245"
+ },
+ {
+  "text": "s",
+  "start": 117.742,
+  "end": 117.762,
+  "line": 10,
+  "id": "w246"
+ },
+ {
+  "text": "nettḥussu.",
+  "start": 117.842,
+  "end": 118.383,
+  "line": 10,
+  "id": "w247"
+ },
+ {
+  "text": "Win",
+  "start": 119.264,
+  "end": 119.404,
+  "line": 11,
+  "id": "w248"
+ },
+ {
+  "text": "uɣen",
+  "start": 119.444,
+  "end": 119.624,
+  "line": 11,
+  "id": "w249"
+ },
+ {
+  "text": "irumsa",
+  "start": 119.664,
+  "end": 120.445,
+  "line": 11,
+  "id": "w250"
+ },
+ {
+  "text": "(les",
+  "start": 120.485,
+  "end": 120.645,
+  "line": 11,
+  "id": "w251"
+ },
+ {
+  "text": "passions)",
+  "start": 120.645,
+  "end": 121.166,
+  "line": 11,
+  "id": "w252"
+ },
+ {
+  "text": "nebla",
+  "start": 121.406,
+  "end": 121.666,
+  "line": 11,
+  "id": "w253"
+ },
+ {
+  "text": "ma",
+  "start": 121.706,
+  "end": 121.786,
+  "line": 11,
+  "id": "w254"
+ },
+ {
+  "text": "yegza-ten,",
+  "start": 121.847,
+  "end": 122.367,
+  "line": 11,
+  "id": "w255"
+ },
+ {
+  "text": "winna",
+  "start": 122.667,
+  "end": 122.888,
+  "line": 11,
+  "id": "w256"
+ },
+ {
+  "text": "d",
+  "start": 122.948,
+  "end": 122.968,
+  "line": 11,
+  "id": "w257"
+ },
+ {
+  "text": "akli,",
+  "start": 123.008,
+  "end": 123.328,
+  "line": 11,
+  "id": "w258"
+ },
+ {
+  "text": "ma",
+  "start": 123.688,
+  "end": 123.749,
+  "line": 11,
+  "id": "w259"
+ },
+ {
+  "text": "d",
+  "start": 123.809,
+  "end": 123.829,
+  "line": 11,
+  "id": "w260"
+ },
+ {
+  "text": "win",
+  "start": 123.889,
+  "end": 124.029,
+  "line": 11,
+  "id": "w261"
+ },
+ {
+  "text": "yegzan",
+  "start": 124.069,
+  "end": 124.429,
+  "line": 11,
+  "id": "w262"
+ },
+ {
+  "text": "ayen",
+  "start": 124.449,
+  "end": 124.629,
+  "line": 11,
+  "id": "w263"
+ },
+ {
+  "text": "s",
+  "start": 124.71,
+  "end": 124.73,
+  "line": 11,
+  "id": "w264"
+ },
+ {
+  "text": "yettḥussu",
+  "start": 124.83,
+  "end": 125.31,
+  "line": 11,
+  "id": "w265"
+ },
+ {
+  "text": "acimi",
+  "start": 125.691,
+  "end": 126.031,
+  "line": 11,
+  "id": "w266"
+ },
+ {
+  "text": "i",
+  "start": 126.091,
+  "end": 126.111,
+  "line": 11,
+  "id": "w267"
+ },
+ {
+  "text": "ten-ittḥussu,",
+  "start": 126.231,
+  "end": 126.872,
+  "line": 11,
+  "id": "w268"
+ },
+ {
+  "text": "winna",
+  "start": 127.412,
+  "end": 127.653,
+  "line": 11,
+  "id": "w269"
+ },
+ {
+  "text": "yettuɣal",
+  "start": 127.713,
+  "end": 128.253,
+  "line": 11,
+  "id": "w270"
+ },
+ {
+  "text": "d",
+  "start": 128.614,
+  "end": 128.634,
+  "line": 11,
+  "id": "w271"
+ },
+ {
+  "text": "netta",
+  "start": 128.754,
+  "end": 129.014,
+  "line": 11,
+  "id": "w272"
+ },
+ {
+  "text": "i",
+  "start": 129.134,
+  "end": 129.154,
+  "line": 11,
+  "id": "w273"
+ },
+ {
+  "text": "d",
+  "start": 129.214,
+  "end": 129.234,
+  "line": 11,
+  "id": "w274"
+ },
+ {
+  "text": "imdebbar",
+  "start": 129.254,
+  "end": 129.795,
+  "line": 11,
+  "id": "w275"
+ },
+ {
+  "text": "n",
+  "start": 130.135,
+  "end": 130.155,
+  "line": 11,
+  "id": "w276"
+ },
+ {
+  "text": "tudert-is.",
+  "start": 130.235,
+  "end": 130.836,
+  "line": 11,
+  "id": "w277"
+ },
+ {
+  "text": "Ihi,",
+  "start": 133.098,
+  "end": 133.278,
+  "line": 12,
+  "id": "w278"
+ },
+ {
+  "text": "dmma",
+  "start": 133.819,
+  "end": 133.999,
+  "line": 12,
+  "id": "w279"
+ },
+ {
+  "text": "ngezzu",
+  "start": 134.079,
+  "end": 134.42,
+  "line": 12,
+  "id": "w280"
+ },
+ {
+  "text": "agama,",
+  "start": 134.54,
+  "end": 134.92,
+  "line": 12,
+  "id": "w281"
+ },
+ {
+  "text": "dmma",
+  "start": 135.26,
+  "end": 135.461,
+  "line": 12,
+  "id": "w282"
+ },
+ {
+  "text": "nettḥussu",
+  "start": 135.521,
+  "end": 136.021,
+  "line": 12,
+  "id": "w283"
+ },
+ {
+  "text": "s",
+  "start": 136.201,
+  "end": 136.221,
+  "line": 12,
+  "id": "w284"
+ },
+ {
+  "text": "lferḥ",
+  "start": 136.322,
+  "end": 136.582,
+  "line": 12,
+  "id": "w285"
+ },
+ {
+  "text": "lqayen",
+  "start": 136.682,
+  "end": 137.122,
+  "line": 12,
+  "id": "w286"
+ },
+ {
+  "text": "akked",
+  "start": 137.503,
+  "end": 137.723,
+  "line": 12,
+  "id": "w287"
+ },
+ {
+  "text": "win",
+  "start": 137.783,
+  "end": 137.923,
+  "line": 12,
+  "id": "w288"
+ },
+ {
+  "text": "yettdumun.",
+  "start": 137.963,
+  "end": 138.584,
+  "line": 12,
+  "id": "w289"
+ },
+ {
+  "text": "Spinoza",
+  "start": 138.984,
+  "end": 139.525,
+  "line": 12,
+  "id": "w290"
+ },
+ {
+  "text": "yessawal-as",
+  "start": 139.625,
+  "end": 140.326,
+  "line": 12,
+  "id": "w291"
+ },
+ {
+  "text": "Tanaflit",
+  "start": 140.806,
+  "end": 141.427,
+  "line": 12,
+  "id": "w292"
+ },
+ {
+  "text": "neɣ",
+  "start": 141.887,
+  "end": 142.048,
+  "line": 12,
+  "id": "w293"
+ },
+ {
+  "text": "la",
+  "start": 142.168,
+  "end": 142.248,
+  "line": 12,
+  "id": "w294"
+ },
+ {
+  "text": "béatitude.",
+  "start": 142.348,
+  "end": 143.109,
+  "line": 12,
+  "id": "w295"
+ },
+ {
+  "text": "Mačči",
+  "start": 143.729,
+  "end": 144.01,
+  "line": 13,
+  "id": "w296"
+ },
+ {
+  "text": "d",
+  "start": 144.09,
+  "end": 144.11,
+  "line": 13,
+  "id": "w297"
+ },
+ {
+  "text": "ayen",
+  "start": 144.15,
+  "end": 144.31,
+  "line": 13,
+  "id": "w298"
+ },
+ {
+  "text": "yeɛnan",
+  "start": 144.37,
+  "end": 144.79,
+  "line": 13,
+  "id": "w299"
+ },
+ {
+  "text": "tisefka",
+  "start": 144.951,
+  "end": 145.531,
+  "line": 13,
+  "id": "w300"
+ },
+ {
+  "text": "n",
+  "start": 145.571,
+  "end": 145.591,
+  "line": 13,
+  "id": "w301"
+ },
+ {
+  "text": "wakkin",
+  "start": 145.671,
+  "end": 146.052,
+  "line": 13,
+  "id": "w302"
+ },
+ {
+  "text": "i",
+  "start": 146.072,
+  "end": 146.092,
+  "line": 13,
+  "id": "w303"
+ },
+ {
+  "text": "tmettant,",
+  "start": 146.152,
+  "end": 146.712,
+  "line": 13,
+  "id": "w304"
+ },
+ {
+  "text": "maca",
+  "start": 147.133,
+  "end": 147.413,
+  "line": 13,
+  "id": "w305"
+ },
+ {
+  "text": "d",
+  "start": 147.573,
+  "end": 147.593,
+  "line": 13,
+  "id": "w306"
+ },
+ {
+  "text": "tanaflit",
+  "start": 147.633,
+  "end": 148.174,
+  "line": 13,
+  "id": "w307"
+ },
+ {
+  "text": "n",
+  "start": 148.274,
+  "end": 148.294,
+  "line": 13,
+  "id": "w308"
+ },
+ {
+  "text": "dagi",
+  "start": 148.434,
+  "end": 148.714,
+  "line": 13,
+  "id": "w309"
+ },
+ {
+  "text": "akked",
+  "start": 149.195,
+  "end": 149.395,
+  "line": 13,
+  "id": "w310"
+ },
+ {
+  "text": "tura.",
+  "start": 149.455,
+  "end": 149.715,
+  "line": 13,
+  "id": "w311"
+ },
+ {
+  "text": "Ihi,",
+  "start": 150.376,
+  "end": 150.596,
+  "line": 14,
+  "id": "w312"
+ },
+ {
+  "text": "asmi",
+  "start": 151.297,
+  "end": 151.517,
+  "line": 14,
+  "id": "w313"
+ },
+ {
+  "text": "ara",
+  "start": 151.537,
+  "end": 151.678,
+  "line": 14,
+  "id": "w314"
+ },
+ {
+  "text": "k-yawi",
+  "start": 151.738,
+  "end": 152.038,
+  "line": 14,
+  "id": "w315"
+ },
+ {
+  "text": "reffu",
+  "start": 152.158,
+  "end": 152.418,
+  "line": 14,
+  "id": "w316"
+ },
+ {
+  "text": "neɣ",
+  "start": 152.999,
+  "end": 153.079,
+  "line": 14,
+  "id": "w317"
+ },
+ {
+  "text": "ad",
+  "start": 153.139,
+  "end": 153.179,
+  "line": 14,
+  "id": "w318"
+ },
+ {
+  "text": "k-tawi",
+  "start": 153.199,
+  "end": 153.499,
+  "line": 14,
+  "id": "w319"
+ },
+ {
+  "text": "tneɣnit,",
+  "start": 153.559,
+  "end": 154.08,
+  "line": 14,
+  "id": "w320"
+ },
+ {
+  "text": "ma",
+  "start": 154.721,
+  "end": 154.781,
+  "line": 14,
+  "id": "w321"
+ },
+ {
+  "text": "ttesteqsiḍ",
+  "start": 154.801,
+  "end": 155.401,
+  "line": 14,
+  "id": "w322"
+ },
+ {
+  "text": "iman-ik",
+  "start": 155.461,
+  "end": 155.862,
+  "line": 14,
+  "id": "w323"
+ },
+ {
+  "text": "s",
+  "start": 155.922,
+  "end": 155.942,
+  "line": 14,
+  "id": "w324"
+ },
+ {
+  "text": "westeqsi-yagi",
+  "start": 156.022,
+  "end": 156.723,
+  "line": 14,
+  "id": "w325"
+ },
+ {
+  "text": "n",
+  "start": 156.783,
+  "end": 156.803,
+  "line": 14,
+  "id": "w326"
+ },
+ {
+  "text": "Spinoza.",
+  "start": 156.863,
+  "end": 157.403,
+  "line": 14,
+  "id": "w327"
+ },
+ {
+  "text": "Ma",
+  "start": 158.084,
+  "end": 158.144,
+  "line": 15,
+  "id": "w328"
+ },
+ {
+  "text": "d",
+  "start": 158.204,
+  "end": 158.224,
+  "line": 15,
+  "id": "w329"
+ },
+ {
+  "text": "qebleɣ",
+  "start": 158.304,
+  "end": 158.605,
+  "line": 15,
+  "id": "w330"
+ },
+ {
+  "text": "ayen",
+  "start": 158.665,
+  "end": 158.885,
+  "line": 15,
+  "id": "w331"
+ },
+ {
+  "text": "i",
+  "start": 159.386,
+  "end": 159.406,
+  "line": 15,
+  "id": "w332"
+ },
+ {
+  "text": "s",
+  "start": 159.486,
+  "end": 159.506,
+  "line": 15,
+  "id": "w333"
+ },
+ {
+  "text": "ttḥissuɣ",
+  "start": 159.606,
+  "end": 160.086,
+  "line": 15,
+  "id": "w334"
+ },
+ {
+  "text": "akka",
+  "start": 160.106,
+  "end": 160.246,
+  "line": 15,
+  "id": "w335"
+ },
+ {
+  "text": "tura,",
+  "start": 160.306,
+  "end": 160.587,
+  "line": 15,
+  "id": "w336"
+ },
+ {
+  "text": "neɣ",
+  "start": 161.027,
+  "end": 161.127,
+  "line": 15,
+  "id": "w337"
+ },
+ {
+  "text": "ad",
+  "start": 161.167,
+  "end": 161.267,
+  "line": 15,
+  "id": "w338"
+ },
+ {
+  "text": "nadiɣ",
+  "start": 161.348,
+  "end": 161.648,
+  "line": 15,
+  "id": "w339"
+ },
+ {
+  "text": "di",
+  "start": 161.708,
+  "end": 161.788,
+  "line": 15,
+  "id": "w340"
+ },
+ {
+  "text": "tazwara",
+  "start": 161.848,
+  "end": 162.349,
+  "line": 15,
+  "id": "w341"
+ },
+ {
+  "text": "d",
+  "start": 162.789,
+  "end": 162.809,
+  "line": 15,
+  "id": "w342"
+ },
+ {
+  "text": "acu",
+  "start": 162.849,
+  "end": 163.029,
+  "line": 15,
+  "id": "w343"
+ },
+ {
+  "text": "i",
+  "start": 163.189,
+  "end": 163.209,
+  "line": 15,
+  "id": "w344"
+ },
+ {
+  "text": "d",
+  "start": 163.25,
+  "end": 163.27,
+  "line": 15,
+  "id": "w345"
+ },
+ {
+  "text": "tisebbiwin-ines ?",
+  "start": 163.29,
+  "end": 164.191,
+  "line": 15,
+  "id": "w346"
+ }
+]

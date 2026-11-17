@@ -1,0 +1,222 @@
+<template>
+  <style>
+    /* Kabyle-capable Inter and Playfair subsets (ɣ ɛ ḍ ḥ ǧ ṭ ẓ ṛ č ṣ). Fonts: SIL OFL 1.1. */
+    @font-face { font-family: "Inter Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/inter-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: "Inter Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/inter-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: "Playfair Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/playfair-display-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: "Playfair Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/playfair-display-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: "Playfair Kab"; font-style: italic; font-weight: 400; src: url("assets/fonts/playfair-display-latin-400-italic.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: "Playfair Kab"; font-style: italic; font-weight: 400; src: url("assets/fonts/playfair-display-latin-ext-400-italic.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+    #overlay {
+      position: absolute;
+      inset: 0;
+      --gold: #e8c46a;
+      --ink: #f6f1e7;
+      --card: rgba(12, 10, 8, 0.86);
+      font-family: "Inter Kab", "Inter", sans-serif;
+      color: var(--ink);
+    }
+    #ov-frame {
+      position: absolute;
+      inset: 26px;
+      border: 2px solid rgba(232, 196, 106, 0.45);
+      border-radius: 28px;
+    }
+    #ov-logo {
+      position: absolute;
+      left: 70px;
+      top: 186px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: rgba(12, 10, 8, 0.72);
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    #ov-progress-track {
+      position: absolute;
+      left: 70px;
+      right: 70px;
+      top: 168px;
+      height: 5px;
+      border-radius: 3px;
+      background: rgba(246, 241, 231, 0.18);
+    }
+    #ov-progress {
+      width: 100%;
+      height: 100%;
+      border-radius: 3px;
+      background: var(--gold);
+      transform-origin: left center;
+    }
+    .chap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 240px;
+      display: flex;
+      justify-content: center;
+    }
+    .chap-in {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 34px 16px 18px;
+      border-radius: 999px;
+      background: var(--card);
+      font-weight: 700;
+      font-size: 40px;
+    }
+    .chap-n {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #14110c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 30px;
+    }
+    .sweep {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(232, 196, 106, 0) 0%, rgba(232, 196, 106, 0.55) 50%, rgba(232, 196, 106, 0) 100%);
+    }
+    .art {
+      position: absolute;
+      right: 70px;
+      top: 330px;
+      max-width: 640px;
+      padding: 8px 18px;
+      border-radius: 12px;
+      background: rgba(12, 10, 8, 0.72);
+      text-align: right;
+      font-family: "Playfair Kab", "Playfair Display", serif;
+      font-style: italic;
+      font-size: 30px;
+      line-height: 1.25;
+      color: rgba(246, 241, 231, 0.95);
+    }
+    .quote {
+      position: absolute;
+      left: 80px;
+      right: 80px;
+      top: 860px;
+      padding: 54px 56px 50px;
+      border-radius: 36px;
+      background: var(--card);
+      border: 2px solid rgba(232, 196, 106, 0.5);
+      text-align: center;
+    }
+    .quote-mark {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -62px;
+      font-family: "Playfair Kab", "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 150px;
+      line-height: 1;
+      color: var(--gold);
+    }
+    .quote-text {
+      font-family: "Playfair Kab", "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 1.12;
+    }
+    .quote-by {
+      margin-top: 22px;
+      font-weight: 700;
+      font-size: 30px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    #ov-date {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 560px;
+      display: flex;
+      justify-content: center;
+    }
+    #ov-date-in {
+      padding: 18px 38px;
+      border-radius: 999px;
+      background: var(--card);
+      font-weight: 700;
+      font-size: 38px;
+    }
+    #ov-date-in span {
+      color: var(--gold);
+    }
+  </style>
+  <div id="overlay" data-composition-id="overlay" data-width="1080" data-height="1920">
+    <div id="ov-frame" class="clip" data-start="4.6" data-duration="160.0"></div>
+    <div id="ov-logo" class="clip" data-start="4.6" data-duration="160.0">Spinoza</div>
+    <div id="ov-progress-track" class="clip" data-start="4.6" data-duration="160.0"><div id="ov-progress"></div></div>
+
+    <div id="ov-date" class="clip" data-start="7.4" data-duration="3.6">
+      <div id="ov-date-in">Amsterdam · <span>1632 – 1677</span></div>
+    </div>
+
+    <!-- Chapters: each word is lifted verbatim from the author's own Kabyle script. -->
+    <div id="ov-ch1" class="chap clip" data-start="12.2" data-duration="42.5"><div id="ov-ch1-in" class="chap-in"><div class="chap-n">1</div>Ṛebbi d Agama</div></div>
+    <div id="ov-ch2" class="chap clip" data-start="54.7" data-duration="32.5"><div id="ov-ch2-in" class="chap-in"><div class="chap-n">2</div>Tisebbiwin</div></div>
+    <div id="ov-ch3" class="chap clip" data-start="87.2" data-duration="45.9"><div id="ov-ch3-in" class="chap-in"><div class="chap-n">3</div>Tilelli</div></div>
+    <div id="ov-ch4" class="chap clip" data-start="133.1" data-duration="31.5"><div id="ov-ch4-in" class="chap-in"><div class="chap-n">4</div>Tanaflit</div></div>
+    <div id="ov-sweep1" class="sweep clip" data-start="12.05" data-duration="0.5"></div>
+    <div id="ov-sweep2" class="sweep clip" data-start="54.55" data-duration="0.5"></div>
+    <div id="ov-sweep3" class="sweep clip" data-start="87.05" data-duration="0.5"></div>
+    <div id="ov-sweep4" class="sweep clip" data-start="132.95" data-duration="0.5"></div>
+
+    <!-- Painting credits, one per picture. -->
+    <div id="ov-art1" class="art clip" data-start="5.2" data-duration="7" >Portrait de Spinoza, v. 1665</div>
+
+
+
+
+
+    <!-- Quote cards: the author's own sentences, enlarged. -->
+    <div id="ov-q1" class="quote clip" data-start="18.9" data-duration="2.6"><div class="quote-mark">“</div><div class="quote-text">Ṛebbi neɣ Agama</div><div class="quote-by">Spinoza</div></div>
+    <div id="ov-q2" class="quote clip" data-start="147.6" data-duration="2.6"><div class="quote-mark">“</div><div class="quote-text">Tanaflit n dagi akked tura</div><div class="quote-by">Spinoza</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#ov-frame", { opacity: 0, scale: 1.02 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 4.6);
+    tl.fromTo("#ov-logo", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 4.8);
+    tl.fromTo("#ov-progress", { scaleX: 0 }, { scaleX: 1, duration: 160.0, ease: "none" }, 4.6);
+
+    tl.fromTo("#ov-date-in", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 7.4);
+    tl.to("#ov-date-in", { y: -30, opacity: 0, duration: 0.2, ease: "power2.in" }, 10.8);
+
+    // Chapters: a gold sweep crosses the frame, then the pill drops in.
+    const chapters = [["#ov-ch1-in", "#ov-sweep1", 12.2, 54.7], ["#ov-ch2-in", "#ov-sweep2", 54.7, 87.2], ["#ov-ch3-in", "#ov-sweep3", 87.2, 133.1], ["#ov-ch4-in", "#ov-sweep4", 133.1, 164.6]];
+    for (const [pill, sweep, start, end] of chapters) {
+      tl.fromTo(sweep, { xPercent: -100, opacity: 1 }, { xPercent: 100, opacity: 1, duration: 0.5, ease: "power2.inOut" }, start - 0.15);
+      tl.fromTo(pill, { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(1.8)" }, start);
+      tl.to(pill, { opacity: 0, duration: 0.15, ease: "power2.in" }, end - 0.15);
+    }
+
+    for (const [id, start, dur] of [["#ov-art1", 5.2, 7]]) {
+      tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, start);
+      tl.to(id, { opacity: 0, duration: 0.3, ease: "power1.in" }, start + dur - 0.3);
+    }
+
+    for (const [id, start, dur] of [["#ov-q1", 18.9, 2.6], ["#ov-q2", 147.6, 2.6]]) {
+      tl.fromTo(id, { opacity: 0, scale: 0.92, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: "back.out(1.6)" }, start);
+      tl.to(id, { opacity: 0, duration: 0.15, ease: "power2.in" }, start + dur - 0.15);
+    }
+    window.__timelines["overlay"] = tl;
+  </script>
+</template>

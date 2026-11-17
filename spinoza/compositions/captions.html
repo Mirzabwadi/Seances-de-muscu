@@ -1,0 +1,829 @@
+<template>
+  <style>
+/* Inter and Playfair Display with their Latin Extended subsets, which hold the Kabyle
+   letters (ɣ ɛ ḍ ḥ ǧ ṭ ẓ ṛ č ṣ). HyperFrames' bundled copies lack ɣ and ɛ.
+   Copy the .woff2 files to <project>/assets/fonts/ and paste these rules into each
+   composition's style block; use the families "Inter Kab" and "Playfair Kab". Fonts: SIL OFL 1.1. */
+@font-face { font-family: "Inter Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/inter-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/inter-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Inter Kab"; font-style: normal; font-weight: 900; src: url("assets/fonts/inter-latin-900-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter Kab"; font-style: normal; font-weight: 900; src: url("assets/fonts/inter-latin-ext-900-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Playfair Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/playfair-display-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Playfair Kab"; font-style: normal; font-weight: 700; src: url("assets/fonts/playfair-display-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Playfair Kab"; font-style: italic; font-weight: 400; src: url("assets/fonts/playfair-display-latin-400-italic.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Playfair Kab"; font-style: italic; font-weight: 400; src: url("assets/fonts/playfair-display-latin-ext-400-italic.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    #captions {
+      position: absolute;
+      inset: 0;
+      --cap-ink: #ffffff;
+      --cap-dim: rgba(255, 255, 255, 0.74);
+      --cap-accent: #ffd23f;
+    }
+    .cap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 1200px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+    .cap-in {
+      max-width: 980px;
+      text-align: center;
+      font-family: "Inter Kab", sans-serif;
+      font-weight: 900;
+      font-size: 64px;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      -webkit-text-stroke: 12px rgba(0, 0, 0, 0.9);
+      paint-order: stroke fill;
+      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+    }
+    .w {
+      display: inline-block;
+      margin: 0 0.1em;
+      color: var(--cap-dim);
+    }
+  </style>
+  <div id="captions" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div id="cap-g0" class="cap clip" data-start="1.08" data-duration="0.98"><div id="cap-g0-in" class="cap-in"><span id="cap-w1" class="w">I</span> <span id="cap-w2" class="w">lukan</span> <span id="cap-w3" class="w acc">Illu</span></div></div>
+    <div id="cap-g1" class="cap clip" data-start="2.06" data-duration="0.68"><div id="cap-g1-in" class="cap-in"><span id="cap-w4" class="w">neɣ</span> <span id="cap-w5" class="w acc">Ṛebbi</span></div></div>
+    <div id="cap-g2" class="cap clip" data-start="2.74" data-duration="0.54"><div id="cap-g2-in" class="cap-in"><span id="cap-w6" class="w">ur</span> <span id="cap-w7" class="w">yelli</span></div></div>
+    <div id="cap-g3" class="cap clip" data-start="3.28" data-duration="0.98"><div id="cap-g3-in" class="cap-in"><span id="cap-w8" class="w">d</span> <span id="cap-w9" class="w">yiwen,</span></div></div>
+    <div id="cap-g4" class="cap clip" data-start="4.26" data-duration="0.44"><div id="cap-g4-in" class="cap-in"><span id="cap-w10" class="w">maca</span></div></div>
+    <div id="cap-g5" class="cap clip" data-start="4.71" data-duration="1.34"><div id="cap-g5-in" class="cap-in"><span id="cap-w11" class="w">d</span> <span id="cap-w12" class="w">ayen</span> <span id="cap-w13" class="w">yellan ?</span></div></div>
+    <div id="cap-g6" class="cap clip" data-start="6.05" data-duration="0.74"><div id="cap-g6-in" class="cap-in"><span id="cap-w14" class="w">Tagi</span> <span id="cap-w15" class="w">d</span> <span id="cap-w16" class="w">tikti</span> <span id="cap-w17" class="w">n</span></div></div>
+    <div id="cap-g7" class="cap clip" data-start="6.79" data-duration="0.92"><div id="cap-g7-in" class="cap-in"><span id="cap-w18" class="w acc">Spinoza,</span></div></div>
+    <div id="cap-g8" class="cap clip" data-start="7.71" data-duration="1.34"><div id="cap-g8-in" class="cap-in"><span id="cap-w19" class="w">yiwen</span> <span id="cap-w20" class="w">ufiluẓuf</span> <span id="cap-w21" class="w">yeddren</span></div></div>
+    <div id="cap-g9" class="cap clip" data-start="9.05" data-duration="0.72"><div id="cap-g9-in" class="cap-in"><span id="cap-w22" class="w">di</span> <span id="cap-w23" class="w">lqern</span></div></div>
+    <div id="cap-g10" class="cap clip" data-start="9.77" data-duration="1.04"><div id="cap-g10-in" class="cap-in"><span id="cap-w24" class="w">wis 17,</span></div></div>
+    <div id="cap-g11" class="cap clip" data-start="10.81" data-duration="0.90"><div id="cap-g11-in" class="cap-in"><span id="cap-w25" class="w">i</span> <span id="cap-w26" class="w">d-yessekles</span></div></div>
+    <div id="cap-g12" class="cap clip" data-start="11.71" data-duration="0.98"><div id="cap-g12-in" class="cap-in"><span id="cap-w27" class="w">deg</span> <span id="cap-w28" class="w">udlis-is</span></div></div>
+    <div id="cap-g13" class="cap clip" data-start="12.69" data-duration="1.32"><div id="cap-g13-in" class="cap-in"><span id="cap-w29" class="w">muccaɛen</span> <span id="cap-w30" class="w">aṭas,</span></div></div>
+    <div id="cap-g14" class="cap clip" data-start="14.01" data-duration="1.20"><div id="cap-g14-in" class="cap-in"><span id="cap-w31" class="w acc">L&#x27;Ethique.</span></div></div>
+    <div id="cap-g15" class="cap clip" data-start="15.22" data-duration="1.16"><div id="cap-g15-in" class="cap-in"><span id="cap-w32" class="w">ɣur-s,</span> <span id="cap-w33" class="w">tella</span> <span id="cap-w34" class="w">kan</span> <span id="cap-w35" class="w">yiwet</span></div></div>
+    <div id="cap-g16" class="cap clip" data-start="16.38" data-duration="0.98"><div id="cap-g16-in" class="cap-in"><span id="cap-w36" class="w">n</span> <span id="cap-w37" class="w">tidet,</span></div></div>
+    <div id="cap-g17" class="cap clip" data-start="17.36" data-duration="1.52"><div id="cap-g17-in" class="cap-in"><span id="cap-w38" class="w">d</span> <span id="cap-w39" class="w">tin</span> <span id="cap-w40" class="w">ur</span> <span id="cap-w41" class="w">nettfakka.</span></div></div>
+    <div id="cap-g18" class="cap clip" data-start="18.88" data-duration="0.76"><div id="cap-g18-in" class="cap-in"><span id="cap-w42" class="w">Yessawal-as</span></div></div>
+    <div id="cap-g19" class="cap clip" data-start="19.64" data-duration="0.82"><div id="cap-g19-in" class="cap-in"><span id="cap-w43" class="w acc">Rebbi</span></div></div>
+    <div id="cap-g20" class="cap clip" data-start="20.46" data-duration="1.18"><div id="cap-g20-in" class="cap-in"><span id="cap-w44" class="w">neɣ</span> <span id="cap-w45" class="w acc">Agama.</span></div></div>
+    <div id="cap-g21" class="cap clip" data-start="22.00" data-duration="1.02"><div id="cap-g21-in" class="cap-in"><span id="cap-w46" class="w">D</span> <span id="cap-w47" class="w">ssin</span> <span id="cap-w48" class="w">yesmawen</span> <span id="cap-w49" class="w">i</span></div></div>
+    <div id="cap-g22" class="cap clip" data-start="23.02" data-duration="0.56"><div id="cap-g22-in" class="cap-in"><span id="cap-w50" class="w">nezmer</span></div></div>
+    <div id="cap-g23" class="cap clip" data-start="23.59" data-duration="1.00"><div id="cap-g23-in" class="cap-in"><span id="cap-w51" class="w">ad</span> <span id="cap-w52" class="w">nefkk</span> <span id="cap-w53" class="w">kan</span> <span id="cap-w54" class="w">i</span> <span id="cap-w55" class="w">yiwet</span></div></div>
+    <div id="cap-g24" class="cap clip" data-start="24.59" data-duration="1.20"><div id="cap-g24-in" class="cap-in"><span id="cap-w56" class="w">n</span> <span id="cap-w57" class="w">tɣawsa.</span></div></div>
+    <div id="cap-g25" class="cap clip" data-start="25.79" data-duration="0.46"><div id="cap-g25-in" class="cap-in"><span id="cap-w58" class="w acc">Rebbi</span></div></div>
+    <div id="cap-g26" class="cap clip" data-start="26.25" data-duration="0.58"><div id="cap-g26-in" class="cap-in"><span id="cap-w59" class="w">illu</span></div></div>
+    <div id="cap-g27" class="cap clip" data-start="26.83" data-duration="0.56"><div id="cap-g27-in" class="cap-in"><span id="cap-w60" class="w">ur</span> <span id="cap-w61" class="w">yelli</span></div></div>
+    <div id="cap-g28" class="cap clip" data-start="27.39" data-duration="1.44"><div id="cap-g28-in" class="cap-in"><span id="cap-w62" class="w">d</span> <span id="cap-w63" class="w acc">agellid</span> <span id="cap-w64" class="w">yeqqimen</span></div></div>
+    <div id="cap-g29" class="cap clip" data-start="28.83" data-duration="1.16"><div id="cap-g29-in" class="cap-in"><span id="cap-w65" class="w">ɣef</span> <span id="cap-w66" class="w">usgeld</span></div></div>
+    <div id="cap-g30" class="cap clip" data-start="29.99" data-duration="1.36"><div id="cap-g30-in" class="cap-in"><span id="cap-w67" class="w">(trône)</span></div></div>
+    <div id="cap-g31" class="cap clip" data-start="31.35" data-duration="1.68"><div id="cap-g31-in" class="cap-in"><span id="cap-w68" class="w">akkin</span> <span id="cap-w69" class="w">deg</span> <span id="cap-w70" class="w">igenwan,</span></div></div>
+    <div id="cap-g32" class="cap clip" data-start="33.03" data-duration="0.86"><div id="cap-g32-in" class="cap-in"><span id="cap-w71" class="w">win</span> <span id="cap-w72" class="w">yettḥasaben</span></div></div>
+    <div id="cap-g33" class="cap clip" data-start="33.89" data-duration="0.94"><div id="cap-g33-in" class="cap-in"><span id="cap-w73" class="w">tarwa-s</span></div></div>
+    <div id="cap-g34" class="cap clip" data-start="34.84" data-duration="1.70"><div id="cap-g34-in" class="cap-in"><span id="cap-w74" class="w">neɣ</span> <span id="cap-w75" class="w">i</span> <span id="cap-w76" class="w">tt-yeselquyen.</span></div></div>
+    <div id="cap-g35" class="cap clip" data-start="36.66" data-duration="1.42"><div id="cap-g35-in" class="cap-in"><span id="cap-w77" class="w">Illu</span> <span id="cap-w78" class="w">d</span> <span id="cap-w79" class="w">tazmert</span></div></div>
+    <div id="cap-g36" class="cap clip" data-start="38.08" data-duration="1.34"><div id="cap-g36-in" class="cap-in"><span id="cap-w80" class="w">i</span> <span id="cap-w81" class="w">s-iteddu</span> <span id="cap-w82" class="w acc">umeɣrad</span></div></div>
+    <div id="cap-g37" class="cap clip" data-start="39.42" data-duration="1.18"><div id="cap-g37-in" class="cap-in"><span id="cap-w83" class="w">(l&#x27;univers),</span> <span id="cap-w84" class="w">s</span></div></div>
+    <div id="cap-g38" class="cap clip" data-start="40.60" data-duration="1.28"><div id="cap-g38-in" class="cap-in"><span id="cap-w85" class="w">lekmal-is.</span></div></div>
+    <div id="cap-g39" class="cap clip" data-start="41.90" data-duration="1.10"><div id="cap-g39-in" class="cap-in"><span id="cap-w86" class="w">Ihi</span> <span id="cap-w87" class="w">nekni,</span></div></div>
+    <div id="cap-g40" class="cap clip" data-start="43.00" data-duration="0.56"><div id="cap-g40-in" class="cap-in"><span id="cap-w88" class="w">Ṭjuṛ,</span></div></div>
+    <div id="cap-g41" class="cap clip" data-start="43.56" data-duration="0.74"><div id="cap-g41-in" class="cap-in"><span id="cap-w89" class="w acc">itran,</span></div></div>
+    <div id="cap-g42" class="cap clip" data-start="44.31" data-duration="0.90"><div id="cap-g42-in" class="cap-in"><span id="cap-w90" class="w">igenwan</span></div></div>
+    <div id="cap-g43" class="cap clip" data-start="45.21" data-duration="0.48"><div id="cap-g43-in" class="cap-in"><span id="cap-w91" class="w">akked</span></div></div>
+    <div id="cap-g44" class="cap clip" data-start="45.69" data-duration="1.76"><div id="cap-g44-in" class="cap-in"><span id="cap-w92" class="w">tal</span> <span id="cap-w93" class="w">taɣawsa</span> <span id="cap-w94" class="w">deg</span> <span id="cap-w95" class="w">umaḍal</span></div></div>
+    <div id="cap-g45" class="cap clip" data-start="47.45" data-duration="1.34"><div id="cap-g45-in" class="cap-in"><span id="cap-w96" class="w">d</span> <span id="cap-w97" class="w">tugniwin</span> <span id="cap-w98" class="w">kan</span> <span id="cap-w99" class="w">yebnan</span></div></div>
+    <div id="cap-g46" class="cap clip" data-start="48.79" data-duration="1.30"><div id="cap-g46-in" class="cap-in"><span id="cap-w100" class="w">tazmert-agi,</span></div></div>
+    <div id="cap-g47" class="cap clip" data-start="50.09" data-duration="1.18"><div id="cap-g47-in" class="cap-in"><span id="cap-w101" class="w">am</span> <span id="cap-w102" class="w acc">lemwaji</span></div></div>
+    <div id="cap-g48" class="cap clip" data-start="51.27" data-duration="1.44"><div id="cap-g48-in" class="cap-in"><span id="cap-w103" class="w">yebnan</span> <span id="cap-w104" class="w">illel.</span></div></div>
+    <div id="cap-g49" class="cap clip" data-start="54.66" data-duration="0.48"><div id="cap-g49-in" class="cap-in"><span id="cap-w105" class="w">Tikti</span></div></div>
+    <div id="cap-g50" class="cap clip" data-start="55.14" data-duration="1.04"><div id="cap-g50-in" class="cap-in"><span id="cap-w106" class="w">tis</span> <span id="cap-w107" class="w">snat,</span></div></div>
+    <div id="cap-g51" class="cap clip" data-start="56.18" data-duration="1.22"><div id="cap-g51-in" class="cap-in"><span id="cap-w108" class="w">deg</span> <span id="cap-w109" class="w">ugama</span> <span id="cap-w110" class="w">ur</span> <span id="cap-w111" class="w">yelli</span></div></div>
+    <div id="cap-g52" class="cap clip" data-start="57.40" data-duration="1.00"><div id="cap-g52-in" class="cap-in"><span id="cap-w112" class="w">d</span> <span id="cap-w113" class="w">acu</span> <span id="cap-w114" class="w">i</span> <span id="cap-w115" class="w">d-yettasen</span></div></div>
+    <div id="cap-g53" class="cap clip" data-start="58.40" data-duration="1.08"><div id="cap-g53-in" class="cap-in"><span id="cap-w116" class="w">akka</span> <span id="cap-w117" class="w">kan.</span></div></div>
+    <div id="cap-g54" class="cap clip" data-start="59.48" data-duration="1.14"><div id="cap-g54-in" class="cap-in"><span id="cap-w118" class="w">Tal</span> <span id="cap-w119" class="w">taɣawsa</span> <span id="cap-w120" class="w">tesɛa</span></div></div>
+    <div id="cap-g55" class="cap clip" data-start="60.62" data-duration="1.04"><div id="cap-g55-in" class="cap-in"><span id="cap-w121" class="w">sebba-s,</span></div></div>
+    <div id="cap-g56" class="cap clip" data-start="61.66" data-duration="1.56"><div id="cap-g56-in" class="cap-in"><span id="cap-w122" class="w">akken</span> <span id="cap-w123" class="w">sebba-nni</span> <span id="cap-w124" class="w">diɣen</span></div></div>
+    <div id="cap-g57" class="cap clip" data-start="63.23" data-duration="1.32"><div id="cap-g57-in" class="cap-in"><span id="cap-w125" class="w">ɣur-s</span> <span id="cap-w126" class="w">sebba-ines,</span></div></div>
+    <div id="cap-g58" class="cap clip" data-start="64.55" data-duration="0.58"><div id="cap-g58-in" class="cap-in"><span id="cap-w127" class="w">alamma</span></div></div>
+    <div id="cap-g59" class="cap clip" data-start="65.13" data-duration="1.08"><div id="cap-g59-in" class="cap-in"><span id="cap-w128" class="w">d</span> <span id="cap-w129" class="w acc">imifeḍ</span></div></div>
+    <div id="cap-g60" class="cap clip" data-start="66.21" data-duration="1.02"><div id="cap-g60-in" class="cap-in"><span id="cap-w130" class="w">(jusqu&#x27;à l&#x27;infini).</span></div></div>
+    <div id="cap-g61" class="cap clip" data-start="67.65" data-duration="0.78"><div id="cap-g61-in" class="cap-in"><span id="cap-w132" class="w">Ihi</span></div></div>
+    <div id="cap-g62" class="cap clip" data-start="68.43" data-duration="1.04"><div id="cap-g62-in" class="cap-in"><span id="cap-w133" class="w">ayen</span> <span id="cap-w134" class="w">i</span> <span id="cap-w135" class="w">neǧɛell</span> <span id="cap-w136" class="w">d</span> <span id="cap-w137" class="w">akken</span></div></div>
+    <div id="cap-g63" class="cap clip" data-start="69.47" data-duration="0.48"><div id="cap-g63-in" class="cap-in"><span id="cap-w138" class="w">nekni</span></div></div>
+    <div id="cap-g64" class="cap clip" data-start="69.95" data-duration="1.30"><div id="cap-g64-in" class="cap-in"><span id="cap-w139" class="w">d</span> <span id="cap-w140" class="w acc">ilelliyen ?</span></div></div>
+    <div id="cap-g65" class="cap clip" data-start="71.27" data-duration="1.58"><div id="cap-g65-in" class="cap-in"><span id="cap-w141" class="w">Nessen</span> <span id="cap-w142" class="w">lebɣiwat-nneɣ</span></div></div>
+    <div id="cap-g66" class="cap clip" data-start="72.86" data-duration="1.28"><div id="cap-g66-in" class="cap-in"><span id="cap-w143" class="w">akk</span> <span id="cap-w144" class="w">d</span> <span id="cap-w145" class="w">acu</span> <span id="cap-w146" class="w">nebɣa</span></div></div>
+    <div id="cap-g67" class="cap clip" data-start="74.14" data-duration="1.18"><div id="cap-g67-in" class="cap-in"><span id="cap-w147" class="w">maca</span> <span id="cap-w148" class="w">ur</span> <span id="cap-w149" class="w">neẓri</span> <span id="cap-w150" class="w">ansi</span> <span id="cap-w151" class="w">i</span></div></div>
+    <div id="cap-g68" class="cap clip" data-start="75.32" data-duration="0.80"><div id="cap-g68-in" class="cap-in"><span id="cap-w152" class="w">d-kkan</span></div></div>
+    <div id="cap-g69" class="cap clip" data-start="76.12" data-duration="0.84"><div id="cap-g69-in" class="cap-in"><span id="cap-w153" class="w">neɣ</span> <span id="cap-w154" class="w acc">tisebbiwin</span> <span id="cap-w155" class="w">i</span></div></div>
+    <div id="cap-g70" class="cap clip" data-start="76.96" data-duration="1.34"><div id="cap-g70-in" class="cap-in"><span id="cap-w156" class="w">ten-id-yefkan.</span></div></div>
+    <div id="cap-g71" class="cap clip" data-start="78.64" data-duration="1.12"><div id="cap-g71-in" class="cap-in"><span id="cap-w157" class="w">Am</span> <span id="cap-w158" class="w">ublaḍ</span> <span id="cap-w159" class="w">ma</span> <span id="cap-w160" class="w">tɛellaḍ-t</span></div></div>
+    <div id="cap-g72" class="cap clip" data-start="79.76" data-duration="0.94"><div id="cap-g72-in" class="cap-in"><span id="cap-w161" class="w">deg</span> <span id="cap-w162" class="w">igenni,</span></div></div>
+    <div id="cap-g73" class="cap clip" data-start="80.70" data-duration="1.18"><div id="cap-g73-in" class="cap-in"><span id="cap-w163" class="w">lemmer</span> <span id="cap-w164" class="w">yettxemmim,</span></div></div>
+    <div id="cap-g74" class="cap clip" data-start="81.88" data-duration="0.80"><div id="cap-g74-in" class="cap-in"><span id="cap-w165" class="w">ad</span> <span id="cap-w166" class="w">yenwu</span> <span id="cap-w167" class="w">d</span> <span id="cap-w168" class="w">akken</span></div></div>
+    <div id="cap-g75" class="cap clip" data-start="82.69" data-duration="0.86"><div id="cap-g75-in" class="cap-in"><span id="cap-w169" class="w">yettferfir</span></div></div>
+    <div id="cap-g76" class="cap clip" data-start="83.55" data-duration="1.88"><div id="cap-g76-in" class="cap-in"><span id="cap-w170" class="w">acku</span> <span id="cap-w171" class="w">d</span> <span id="cap-w172" class="w">netta</span> <span id="cap-w173" class="w">i</span> <span id="cap-w174" class="w">yebɣan.</span></div></div>
+    <div id="cap-g77" class="cap clip" data-start="87.15" data-duration="0.88"><div id="cap-g77-in" class="cap-in"><span id="cap-w175" class="w">Syen</span> <span id="cap-w176" class="w">ɣer-s,</span></div></div>
+    <div id="cap-g78" class="cap clip" data-start="88.03" data-duration="0.86"><div id="cap-g78-in" class="cap-in"><span id="cap-w177" class="w">bnadem</span> <span id="cap-w178" class="w">ur</span> <span id="cap-w179" class="w">yelli</span> <span id="cap-w180" class="w">d</span></div></div>
+    <div id="cap-g79" class="cap clip" data-start="88.89" data-duration="0.86"><div id="cap-g79-in" class="cap-in"><span id="cap-w181" class="w acc">amenkud</span></div></div>
+    <div id="cap-g80" class="cap clip" data-start="89.75" data-duration="1.16"><div id="cap-g80-in" class="cap-in"><span id="cap-w182" class="w">(un empire)</span> <span id="cap-w184" class="w">s</span> <span id="cap-w185" class="w">daxel</span> <span id="cap-w186" class="w">n</span></div></div>
+    <div id="cap-g81" class="cap clip" data-start="90.91" data-duration="1.16"><div id="cap-g81-in" class="cap-in"><span id="cap-w187" class="w">wayeḍ</span> <span id="cap-w188" class="w">n</span> <span id="cap-w189" class="w">umenkud.</span></div></div>
+    <div id="cap-g82" class="cap clip" data-start="92.08" data-duration="1.36"><div id="cap-g82-in" class="cap-in"><span id="cap-w190" class="w">Bnadem</span> <span id="cap-w191" class="w">s</span> <span id="cap-w192" class="w">timmat-is</span></div></div>
+    <div id="cap-g83" class="cap clip" data-start="93.44" data-duration="0.58"><div id="cap-g83-in" class="cap-in"><span id="cap-w193" class="w">yettekki</span></div></div>
+    <div id="cap-g84" class="cap clip" data-start="94.02" data-duration="0.68"><div id="cap-g84-in" class="cap-in"><span id="cap-w194" class="w">deg</span> <span id="cap-w195" class="w">ugama</span></div></div>
+    <div id="cap-g85" class="cap clip" data-start="94.70" data-duration="1.08"><div id="cap-g85-in" class="cap-in"><span id="cap-w196" class="w">am</span> <span id="cap-w197" class="w">wid</span> <span id="cap-w198" class="w">akk</span> <span id="cap-w199" class="w">yettikkin</span></div></div>
+    <div id="cap-g86" class="cap clip" data-start="95.78" data-duration="0.96"><div id="cap-g86-in" class="cap-in"><span id="cap-w200" class="w">deg-s,</span></div></div>
+    <div id="cap-g87" class="cap clip" data-start="96.90" data-duration="0.92"><div id="cap-g87-in" class="cap-in"><span id="cap-w201" class="w">akken</span> <span id="cap-w202" class="w">diɣen</span></div></div>
+    <div id="cap-g88" class="cap clip" data-start="97.82" data-duration="1.90"><div id="cap-g88-in" class="cap-in"><span id="cap-w203" class="w">teṭṭafaṛ</span> <span id="cap-w204" class="w">isuḍaf-ines.</span></div></div>
+    <div id="cap-g89" class="cap clip" data-start="99.72" data-duration="1.08"><div id="cap-g89-in" class="cap-in"><span id="cap-w205" class="w">Ihi</span> <span id="cap-w206" class="w">Yal</span> <span id="cap-w207" class="w">iman</span> <span id="cap-w208" class="w">yewwid</span></div></div>
+    <div id="cap-g90" class="cap clip" data-start="100.80" data-duration="0.80"><div id="cap-g90-in" class="cap-in"><span id="cap-w209" class="w">fell-as</span></div></div>
+    <div id="cap-g91" class="cap clip" data-start="101.61" data-duration="1.00"><div id="cap-g91-in" class="cap-in"><span id="cap-w210" class="w">akken</span> <span id="cap-w211" class="w">ad</span> <span id="cap-w212" class="w">yesdum</span> <span id="cap-w213" class="w">deg</span></div></div>
+    <div id="cap-g92" class="cap clip" data-start="102.61" data-duration="1.28"><div id="cap-g92-in" class="cap-in"><span id="cap-w214" class="w">tlalit-is.</span></div></div>
+    <div id="cap-g93" class="cap clip" data-start="103.89" data-duration="0.74"><div id="cap-g93-in" class="cap-in"><span id="cap-w215" class="w">Mara</span> <span id="cap-w216" class="w">tettnerni</span></div></div>
+    <div id="cap-g94" class="cap clip" data-start="104.63" data-duration="1.80"><div id="cap-g94-in" class="cap-in"><span id="cap-w217" class="w">tezmert-nneɣ,</span> <span id="cap-w218" class="w">nfeṛṛeḥ,</span></div></div>
+    <div id="cap-g95" class="cap clip" data-start="106.43" data-duration="1.16"><div id="cap-g95-in" class="cap-in"><span id="cap-w219" class="w">akken</span> <span id="cap-w220" class="w">nettnuɣnu</span> <span id="cap-w221" class="w">mara</span></div></div>
+    <div id="cap-g96" class="cap clip" data-start="107.59" data-duration="1.04"><div id="cap-g96-in" class="cap-in"><span id="cap-w222" class="w">tessilwi.</span></div></div>
+    <div id="cap-g97" class="cap clip" data-start="108.63" data-duration="1.58"><div id="cap-g97-in" class="cap-in"><span id="cap-w223" class="w">Ihi</span> <span id="cap-w224" class="w">d</span> <span id="cap-w225" class="w">acu</span> <span id="cap-w226" class="w">d</span> <span id="cap-w227" class="w acc">tilelli ?</span></div></div>
+    <div id="cap-g98" class="cap clip" data-start="110.22" data-duration="0.82"><div id="cap-g98-in" class="cap-in"><span id="cap-w228" class="w acc">Tilelli</span> <span id="cap-w229" class="w">mačči</span> <span id="cap-w230" class="w">d</span></div></div>
+    <div id="cap-g99" class="cap clip" data-start="111.03" data-duration="1.30"><div id="cap-g99-in" class="cap-in"><span id="cap-w231" class="w">tarewla</span> <span id="cap-w232" class="w">ɣef</span> <span id="cap-w233" class="w">tsebbiwin,</span></div></div>
+    <div id="cap-g100" class="cap clip" data-start="112.34" data-duration="1.34"><div id="cap-g100-in" class="cap-in"><span id="cap-w234" class="w">winna</span> <span id="cap-w235" class="w">d</span> <span id="cap-w236" class="w">awezɣi.</span></div></div>
+    <div id="cap-g101" class="cap clip" data-start="113.68" data-duration="0.68"><div id="cap-g101-in" class="cap-in"><span id="cap-w237" class="w acc">Tilelli</span></div></div>
+    <div id="cap-g102" class="cap clip" data-start="114.36" data-duration="0.84"><div id="cap-g102-in" class="cap-in"><span id="cap-w238" class="w">tettbin-d</span></div></div>
+    <div id="cap-g103" class="cap clip" data-start="115.20" data-duration="1.60"><div id="cap-g103-in" class="cap-in"><span id="cap-w239" class="w">di</span> <span id="cap-w240" class="w">tigzi</span> <span id="cap-w241" class="w">n</span> <span id="cap-w242" class="w">tsebbiwin</span></div></div>
+    <div id="cap-g104" class="cap clip" data-start="116.80" data-duration="0.98"><div id="cap-g104-in" class="cap-in"><span id="cap-w243" class="w">i</span> <span id="cap-w244" class="w">d-yefkan</span> <span id="cap-w245" class="w">ayen</span> <span id="cap-w246" class="w">s</span></div></div>
+    <div id="cap-g105" class="cap clip" data-start="117.78" data-duration="1.20"><div id="cap-g105-in" class="cap-in"><span id="cap-w247" class="w">nettḥussu.</span></div></div>
+    <div id="cap-g106" class="cap clip" data-start="119.20" data-duration="1.22"><div id="cap-g106-in" class="cap-in"><span id="cap-w248" class="w">Win</span> <span id="cap-w249" class="w">uɣen</span> <span id="cap-w250" class="w acc">irumsa</span></div></div>
+    <div id="cap-g107" class="cap clip" data-start="120.42" data-duration="0.82"><div id="cap-g107-in" class="cap-in"><span id="cap-w251" class="w">(les passions)</span></div></div>
+    <div id="cap-g108" class="cap clip" data-start="121.35" data-duration="1.26"><div id="cap-g108-in" class="cap-in"><span id="cap-w253" class="w">nebla</span> <span id="cap-w254" class="w">ma</span> <span id="cap-w255" class="w">yegza-ten,</span></div></div>
+    <div id="cap-g109" class="cap clip" data-start="122.61" data-duration="1.02"><div id="cap-g109-in" class="cap-in"><span id="cap-w256" class="w">winna</span> <span id="cap-w257" class="w">d</span> <span id="cap-w258" class="w acc">akli,</span></div></div>
+    <div id="cap-g110" class="cap clip" data-start="123.63" data-duration="1.02"><div id="cap-g110-in" class="cap-in"><span id="cap-w259" class="w">ma</span> <span id="cap-w260" class="w">d</span> <span id="cap-w261" class="w">win</span> <span id="cap-w262" class="w">yegzan</span> <span id="cap-w263" class="w">ayen</span></div></div>
+    <div id="cap-g111" class="cap clip" data-start="124.65" data-duration="0.98"><div id="cap-g111-in" class="cap-in"><span id="cap-w264" class="w">s</span> <span id="cap-w265" class="w">yettḥussu</span></div></div>
+    <div id="cap-g112" class="cap clip" data-start="125.63" data-duration="1.72"><div id="cap-g112-in" class="cap-in"><span id="cap-w266" class="w">acimi</span> <span id="cap-w267" class="w">i</span> <span id="cap-w268" class="w">ten-ittḥussu,</span></div></div>
+    <div id="cap-g113" class="cap clip" data-start="127.35" data-duration="1.20"><div id="cap-g113-in" class="cap-in"><span id="cap-w269" class="w">winna</span> <span id="cap-w270" class="w">yettuɣal</span></div></div>
+    <div id="cap-g114" class="cap clip" data-start="128.55" data-duration="1.52"><div id="cap-g114-in" class="cap-in"><span id="cap-w271" class="w">d</span> <span id="cap-w272" class="w">netta</span> <span id="cap-w273" class="w">i</span> <span id="cap-w274" class="w">d</span> <span id="cap-w275" class="w">imdebbar</span></div></div>
+    <div id="cap-g115" class="cap clip" data-start="130.07" data-duration="1.36"><div id="cap-g115-in" class="cap-in"><span id="cap-w276" class="w">n</span> <span id="cap-w277" class="w">tudert-is.</span></div></div>
+    <div id="cap-g116" class="cap clip" data-start="133.04" data-duration="0.72"><div id="cap-g116-in" class="cap-in"><span id="cap-w278" class="w">Ihi,</span></div></div>
+    <div id="cap-g117" class="cap clip" data-start="133.76" data-duration="1.44"><div id="cap-g117-in" class="cap-in"><span id="cap-w279" class="w">dmma</span> <span id="cap-w280" class="w">ngezzu</span> <span id="cap-w281" class="w">agama,</span></div></div>
+    <div id="cap-g118" class="cap clip" data-start="135.20" data-duration="0.94"><div id="cap-g118-in" class="cap-in"><span id="cap-w282" class="w">dmma</span> <span id="cap-w283" class="w">nettḥussu</span></div></div>
+    <div id="cap-g119" class="cap clip" data-start="136.14" data-duration="1.30"><div id="cap-g119-in" class="cap-in"><span id="cap-w284" class="w">s</span> <span id="cap-w285" class="w acc">lferḥ</span> <span id="cap-w286" class="w">lqayen</span></div></div>
+    <div id="cap-g120" class="cap clip" data-start="137.44" data-duration="1.48"><div id="cap-g120-in" class="cap-in"><span id="cap-w287" class="w">akked</span> <span id="cap-w288" class="w">win</span> <span id="cap-w289" class="w">yettdumun.</span></div></div>
+    <div id="cap-g121" class="cap clip" data-start="138.92" data-duration="1.82"><div id="cap-g121-in" class="cap-in"><span id="cap-w290" class="w acc">Spinoza</span> <span id="cap-w291" class="w">yessawal-as</span></div></div>
+    <div id="cap-g122" class="cap clip" data-start="140.75" data-duration="1.08"><div id="cap-g122-in" class="cap-in"><span id="cap-w292" class="w acc">Tanaflit</span></div></div>
+    <div id="cap-g123" class="cap clip" data-start="141.83" data-duration="1.84"><div id="cap-g123-in" class="cap-in"><span id="cap-w293" class="w">neɣ</span> <span id="cap-w294" class="w">la</span> <span id="cap-w295" class="w">béatitude.</span></div></div>
+    <div id="cap-g124" class="cap clip" data-start="143.67" data-duration="1.22"><div id="cap-g124-in" class="cap-in"><span id="cap-w296" class="w">Mačči</span> <span id="cap-w297" class="w">d</span> <span id="cap-w298" class="w">ayen</span> <span id="cap-w299" class="w">yeɛnan</span></div></div>
+    <div id="cap-g125" class="cap clip" data-start="144.89" data-duration="1.20"><div id="cap-g125-in" class="cap-in"><span id="cap-w300" class="w">tisefka</span> <span id="cap-w301" class="w">n</span> <span id="cap-w302" class="w">wakkin</span> <span id="cap-w303" class="w">i</span></div></div>
+    <div id="cap-g126" class="cap clip" data-start="146.09" data-duration="0.98"><div id="cap-g126-in" class="cap-in"><span id="cap-w304" class="w">tmettant,</span></div></div>
+    <div id="cap-g127" class="cap clip" data-start="147.07" data-duration="0.44"><div id="cap-g127-in" class="cap-in"><span id="cap-w305" class="w">maca</span></div></div>
+    <div id="cap-g128" class="cap clip" data-start="147.51" data-duration="1.62"><div id="cap-g128-in" class="cap-in"><span id="cap-w306" class="w">d</span> <span id="cap-w307" class="w acc">tanaflit</span> <span id="cap-w308" class="w">n</span> <span id="cap-w309" class="w">dagi</span></div></div>
+    <div id="cap-g129" class="cap clip" data-start="149.13" data-duration="1.18"><div id="cap-g129-in" class="cap-in"><span id="cap-w310" class="w">akked</span> <span id="cap-w311" class="w">tura.</span></div></div>
+    <div id="cap-g130" class="cap clip" data-start="150.32" data-duration="0.88"><div id="cap-g130-in" class="cap-in"><span id="cap-w312" class="w">Ihi,</span></div></div>
+    <div id="cap-g131" class="cap clip" data-start="151.24" data-duration="1.70"><div id="cap-g131-in" class="cap-in"><span id="cap-w313" class="w">asmi</span> <span id="cap-w314" class="w">ara</span> <span id="cap-w315" class="w">k-yawi</span> <span id="cap-w316" class="w acc">reffu</span></div></div>
+    <div id="cap-g132" class="cap clip" data-start="152.94" data-duration="1.72"><div id="cap-g132-in" class="cap-in"><span id="cap-w317" class="w">neɣ</span> <span id="cap-w318" class="w">ad</span> <span id="cap-w319" class="w">k-tawi</span> <span id="cap-w320" class="w acc">tneɣnit,</span></div></div>
+    <div id="cap-g133" class="cap clip" data-start="154.66" data-duration="1.20"><div id="cap-g133-in" class="cap-in"><span id="cap-w321" class="w">ma</span> <span id="cap-w322" class="w">ttesteqsiḍ</span> <span id="cap-w323" class="w">iman-ik</span></div></div>
+    <div id="cap-g134" class="cap clip" data-start="155.86" data-duration="0.94"><div id="cap-g134-in" class="cap-in"><span id="cap-w324" class="w">s</span> <span id="cap-w325" class="w">westeqsi-yagi</span> <span id="cap-w326" class="w">n</span></div></div>
+    <div id="cap-g135" class="cap clip" data-start="156.80" data-duration="1.20"><div id="cap-g135-in" class="cap-in"><span id="cap-w327" class="w">Spinoza.</span></div></div>
+    <div id="cap-g136" class="cap clip" data-start="158.02" data-duration="1.30"><div id="cap-g136-in" class="cap-in"><span id="cap-w328" class="w">Ma</span> <span id="cap-w329" class="w">d</span> <span id="cap-w330" class="w">qebleɣ</span> <span id="cap-w331" class="w">ayen</span></div></div>
+    <div id="cap-g137" class="cap clip" data-start="159.33" data-duration="0.92"><div id="cap-g137-in" class="cap-in"><span id="cap-w332" class="w">i</span> <span id="cap-w333" class="w">s</span> <span id="cap-w334" class="w">ttḥissuɣ</span> <span id="cap-w335" class="w">akka</span></div></div>
+    <div id="cap-g138" class="cap clip" data-start="160.25" data-duration="0.72"><div id="cap-g138-in" class="cap-in"><span id="cap-w336" class="w">tura,</span></div></div>
+    <div id="cap-g139" class="cap clip" data-start="160.97" data-duration="0.82"><div id="cap-g139-in" class="cap-in"><span id="cap-w337" class="w">neɣ</span> <span id="cap-w338" class="w">ad</span> <span id="cap-w339" class="w">nadiɣ</span> <span id="cap-w340" class="w">di</span></div></div>
+    <div id="cap-g140" class="cap clip" data-start="161.79" data-duration="0.94"><div id="cap-g140-in" class="cap-in"><span id="cap-w341" class="w">tazwara</span></div></div>
+    <div id="cap-g141" class="cap clip" data-start="162.73" data-duration="0.40"><div id="cap-g141-in" class="cap-in"><span id="cap-w342" class="w">d</span> <span id="cap-w343" class="w">acu</span></div></div>
+    <div id="cap-g142" class="cap clip" data-start="163.13" data-duration="2.26"><div id="cap-g142-in" class="cap-in"><span id="cap-w344" class="w">i</span> <span id="cap-w345" class="w">d</span> <span id="cap-w346" class="w acc">tisebbiwin-ines ?</span></div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#cap-g0-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 1.08);
+    tl.fromTo("#cap-w1", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 1.14);
+    tl.fromTo("#cap-w2", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 1.22);
+    tl.fromTo("#cap-w3", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 1.60);
+    tl.to("#cap-g0-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 1.96);
+    tl.fromTo("#cap-g1-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 2.06);
+    tl.fromTo("#cap-w4", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 2.12);
+    tl.fromTo("#cap-w5", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 2.36);
+    tl.to("#cap-g1-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 2.64);
+    tl.fromTo("#cap-g2-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 2.74);
+    tl.fromTo("#cap-w6", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 2.80);
+    tl.fromTo("#cap-w7", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 2.94);
+    tl.to("#cap-g2-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 3.18);
+    tl.fromTo("#cap-g3-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 3.28);
+    tl.fromTo("#cap-w8", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 3.34);
+    tl.fromTo("#cap-w9", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 3.48);
+    tl.to("#cap-g3-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 4.16);
+    tl.fromTo("#cap-g4-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 4.26);
+    tl.fromTo("#cap-w10", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 4.32);
+    tl.to("#cap-g4-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 4.61);
+    tl.fromTo("#cap-g5-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 4.71);
+    tl.fromTo("#cap-w11", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 4.76);
+    tl.fromTo("#cap-w12", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 4.84);
+    tl.fromTo("#cap-w13", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 5.12);
+    tl.to("#cap-g5-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 5.95);
+    tl.fromTo("#cap-g6-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 6.05);
+    tl.fromTo("#cap-w14", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 6.11);
+    tl.fromTo("#cap-w15", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 6.37);
+    tl.fromTo("#cap-w16", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 6.41);
+    tl.fromTo("#cap-w17", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 6.75);
+    tl.to("#cap-g6-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 6.69);
+    tl.fromTo("#cap-g7-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 6.79);
+    tl.fromTo("#cap-w18", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 6.85);
+    tl.to("#cap-g7-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 7.61);
+    tl.fromTo("#cap-g8-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 7.71);
+    tl.fromTo("#cap-w19", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 7.77);
+    tl.fromTo("#cap-w20", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 8.01);
+    tl.fromTo("#cap-w21", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 8.67);
+    tl.to("#cap-g8-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 8.95);
+    tl.fromTo("#cap-g9-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 9.05);
+    tl.fromTo("#cap-w22", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 9.11);
+    tl.fromTo("#cap-w23", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 9.25);
+    tl.to("#cap-g9-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 9.67);
+    tl.fromTo("#cap-g10-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 9.77);
+    tl.fromTo("#cap-w24", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 9.83);
+    tl.to("#cap-g10-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 10.71);
+    tl.fromTo("#cap-g11-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 10.81);
+    tl.fromTo("#cap-w25", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 10.87);
+    tl.fromTo("#cap-w26", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 10.95);
+    tl.to("#cap-g11-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 11.61);
+    tl.fromTo("#cap-g12-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 11.71);
+    tl.fromTo("#cap-w27", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 11.77);
+    tl.fromTo("#cap-w28", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 11.95);
+    tl.to("#cap-g12-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 12.59);
+    tl.fromTo("#cap-g13-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 12.69);
+    tl.fromTo("#cap-w29", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 12.75);
+    tl.fromTo("#cap-w30", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 13.19);
+    tl.to("#cap-g13-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 13.91);
+    tl.fromTo("#cap-g14-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 14.01);
+    tl.fromTo("#cap-w31", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 14.07);
+    tl.to("#cap-g14-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 15.12);
+    tl.fromTo("#cap-g15-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 15.22);
+    tl.fromTo("#cap-w32", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 15.28);
+    tl.fromTo("#cap-w33", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 15.56);
+    tl.fromTo("#cap-w34", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 15.88);
+    tl.fromTo("#cap-w35", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 16.08);
+    tl.to("#cap-g15-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 16.28);
+    tl.fromTo("#cap-g16-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 16.38);
+    tl.fromTo("#cap-w36", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 16.44);
+    tl.fromTo("#cap-w37", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 16.56);
+    tl.to("#cap-g16-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 17.26);
+    tl.fromTo("#cap-g17-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 17.36);
+    tl.fromTo("#cap-w38", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 17.42);
+    tl.fromTo("#cap-w39", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 17.48);
+    tl.fromTo("#cap-w40", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 17.70);
+    tl.fromTo("#cap-w41", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 17.86);
+    tl.to("#cap-g17-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 18.78);
+    tl.fromTo("#cap-g18-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 18.88);
+    tl.fromTo("#cap-w42", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 18.94);
+    tl.to("#cap-g18-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 19.54);
+    tl.fromTo("#cap-g19-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 19.64);
+    tl.fromTo("#cap-w43", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 19.70);
+    tl.to("#cap-g19-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 20.36);
+    tl.fromTo("#cap-g20-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 20.46);
+    tl.fromTo("#cap-w44", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 20.52);
+    tl.fromTo("#cap-w45", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 20.70);
+    tl.to("#cap-g20-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 21.54);
+    tl.fromTo("#cap-g21-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 22.00);
+    tl.fromTo("#cap-w46", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 22.06);
+    tl.fromTo("#cap-w47", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 22.16);
+    tl.fromTo("#cap-w48", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 22.40);
+    tl.fromTo("#cap-w49", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 22.98);
+    tl.to("#cap-g21-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 22.92);
+    tl.fromTo("#cap-g22-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 23.02);
+    tl.fromTo("#cap-w50", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 23.08);
+    tl.to("#cap-g22-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 23.48);
+    tl.fromTo("#cap-g23-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 23.59);
+    tl.fromTo("#cap-w51", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 23.64);
+    tl.fromTo("#cap-w52", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 23.75);
+    tl.fromTo("#cap-w53", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 24.05);
+    tl.fromTo("#cap-w54", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 24.29);
+    tl.fromTo("#cap-w55", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 24.36);
+    tl.to("#cap-g23-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 24.49);
+    tl.fromTo("#cap-g24-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 24.59);
+    tl.fromTo("#cap-w56", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 24.65);
+    tl.fromTo("#cap-w57", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 24.73);
+    tl.to("#cap-g24-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 25.69);
+    tl.fromTo("#cap-g25-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 25.79);
+    tl.fromTo("#cap-w58", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 25.85);
+    tl.to("#cap-g25-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 26.15);
+    tl.fromTo("#cap-g26-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 26.25);
+    tl.fromTo("#cap-w59", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 26.31);
+    tl.to("#cap-g26-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 26.73);
+    tl.fromTo("#cap-g27-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 26.83);
+    tl.fromTo("#cap-w60", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 26.89);
+    tl.fromTo("#cap-w61", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 27.03);
+    tl.to("#cap-g27-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 27.29);
+    tl.fromTo("#cap-g28-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 27.39);
+    tl.fromTo("#cap-w62", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 27.45);
+    tl.fromTo("#cap-w63", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 27.51);
+    tl.fromTo("#cap-w64", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 27.99);
+    tl.to("#cap-g28-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 28.73);
+    tl.fromTo("#cap-g29-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 28.83);
+    tl.fromTo("#cap-w65", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 28.89);
+    tl.fromTo("#cap-w66", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 29.13);
+    tl.to("#cap-g29-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 29.89);
+    tl.fromTo("#cap-g30-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 29.99);
+    tl.fromTo("#cap-w67", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 30.05);
+    tl.to("#cap-g30-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 31.25);
+    tl.fromTo("#cap-g31-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 31.35);
+    tl.fromTo("#cap-w68", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 31.41);
+    tl.fromTo("#cap-w69", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 31.87);
+    tl.fromTo("#cap-w70", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 32.07);
+    tl.to("#cap-g31-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 32.93);
+    tl.fromTo("#cap-g32-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 33.03);
+    tl.fromTo("#cap-w71", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 33.09);
+    tl.fromTo("#cap-w72", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 33.26);
+    tl.to("#cap-g32-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 33.79);
+    tl.fromTo("#cap-g33-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 33.89);
+    tl.fromTo("#cap-w73", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 33.95);
+    tl.to("#cap-g33-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 34.74);
+    tl.fromTo("#cap-g34-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 34.84);
+    tl.fromTo("#cap-w74", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 34.90);
+    tl.fromTo("#cap-w75", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 35.06);
+    tl.fromTo("#cap-w76", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 35.14);
+    tl.to("#cap-g34-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 36.44);
+    tl.fromTo("#cap-g35-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 36.66);
+    tl.fromTo("#cap-w77", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 36.72);
+    tl.fromTo("#cap-w78", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 37.20);
+    tl.fromTo("#cap-w79", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 37.26);
+    tl.to("#cap-g35-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 37.98);
+    tl.fromTo("#cap-g36-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 38.08);
+    tl.fromTo("#cap-w80", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 38.14);
+    tl.fromTo("#cap-w81", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 38.24);
+    tl.fromTo("#cap-w82", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 38.72);
+    tl.to("#cap-g36-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 39.32);
+    tl.fromTo("#cap-g37-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 39.42);
+    tl.fromTo("#cap-w83", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 39.48);
+    tl.fromTo("#cap-w84", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 40.54);
+    tl.to("#cap-g37-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 40.50);
+    tl.fromTo("#cap-g38-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 40.60);
+    tl.fromTo("#cap-w85", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 40.66);
+    tl.to("#cap-g38-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 41.78);
+    tl.fromTo("#cap-g39-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 41.90);
+    tl.fromTo("#cap-w86", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 41.96);
+    tl.fromTo("#cap-w87", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 42.24);
+    tl.to("#cap-g39-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 42.90);
+    tl.fromTo("#cap-g40-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 43.00);
+    tl.fromTo("#cap-w88", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 43.06);
+    tl.to("#cap-g40-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 43.46);
+    tl.fromTo("#cap-g41-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 43.56);
+    tl.fromTo("#cap-w89", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 43.62);
+    tl.to("#cap-g41-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 44.21);
+    tl.fromTo("#cap-g42-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 44.31);
+    tl.fromTo("#cap-w90", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 44.37);
+    tl.to("#cap-g42-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 45.11);
+    tl.fromTo("#cap-g43-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 45.21);
+    tl.fromTo("#cap-w91", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 45.27);
+    tl.to("#cap-g43-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 45.59);
+    tl.fromTo("#cap-g44-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 45.69);
+    tl.fromTo("#cap-w92", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 45.75);
+    tl.fromTo("#cap-w93", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 45.97);
+    tl.fromTo("#cap-w94", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 46.53);
+    tl.fromTo("#cap-w95", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 46.65);
+    tl.to("#cap-g44-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 47.35);
+    tl.fromTo("#cap-g45-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 47.45);
+    tl.fromTo("#cap-w96", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 47.51);
+    tl.fromTo("#cap-w97", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 47.57);
+    tl.fromTo("#cap-w98", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 48.19);
+    tl.fromTo("#cap-w99", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 48.43);
+    tl.to("#cap-g45-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 48.69);
+    tl.fromTo("#cap-g46-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 48.79);
+    tl.fromTo("#cap-w100", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 48.85);
+    tl.to("#cap-g46-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 49.99);
+    tl.fromTo("#cap-g47-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 50.09);
+    tl.fromTo("#cap-w101", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 50.15);
+    tl.fromTo("#cap-w102", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 50.31);
+    tl.to("#cap-g47-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 51.17);
+    tl.fromTo("#cap-g48-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 51.27);
+    tl.fromTo("#cap-w103", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 51.33);
+    tl.fromTo("#cap-w104", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 51.79);
+    tl.to("#cap-g48-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 52.61);
+    tl.fromTo("#cap-g49-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 54.66);
+    tl.fromTo("#cap-w105", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 54.72);
+    tl.to("#cap-g49-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 55.04);
+    tl.fromTo("#cap-g50-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 55.14);
+    tl.fromTo("#cap-w106", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 55.20);
+    tl.fromTo("#cap-w107", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 55.48);
+    tl.to("#cap-g50-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 56.08);
+    tl.fromTo("#cap-g51-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 56.18);
+    tl.fromTo("#cap-w108", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 56.24);
+    tl.fromTo("#cap-w109", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 56.40);
+    tl.fromTo("#cap-w110", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 56.84);
+    tl.fromTo("#cap-w111", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 56.98);
+    tl.to("#cap-g51-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 57.30);
+    tl.fromTo("#cap-g52-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 57.40);
+    tl.fromTo("#cap-w112", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 57.46);
+    tl.fromTo("#cap-w113", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 57.50);
+    tl.fromTo("#cap-w114", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 57.80);
+    tl.fromTo("#cap-w115", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 57.86);
+    tl.to("#cap-g52-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 58.30);
+    tl.fromTo("#cap-g53-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 58.40);
+    tl.fromTo("#cap-w116", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 58.46);
+    tl.fromTo("#cap-w117", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 58.76);
+    tl.to("#cap-g53-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 59.38);
+    tl.fromTo("#cap-g54-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 59.48);
+    tl.fromTo("#cap-w118", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 59.54);
+    tl.fromTo("#cap-w119", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 59.72);
+    tl.fromTo("#cap-w120", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 60.28);
+    tl.to("#cap-g54-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 60.52);
+    tl.fromTo("#cap-g55-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 60.62);
+    tl.fromTo("#cap-w121", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 60.68);
+    tl.to("#cap-g55-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 61.56);
+    tl.fromTo("#cap-g56-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 61.66);
+    tl.fromTo("#cap-w122", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 61.72);
+    tl.fromTo("#cap-w123", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 62.10);
+    tl.fromTo("#cap-w124", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 62.60);
+    tl.to("#cap-g56-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 63.13);
+    tl.fromTo("#cap-g57-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 63.23);
+    tl.fromTo("#cap-w125", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 63.29);
+    tl.fromTo("#cap-w126", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 63.59);
+    tl.to("#cap-g57-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 64.45);
+    tl.fromTo("#cap-g58-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 64.55);
+    tl.fromTo("#cap-w127", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 64.61);
+    tl.to("#cap-g58-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 65.03);
+    tl.fromTo("#cap-g59-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 65.13);
+    tl.fromTo("#cap-w128", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 65.19);
+    tl.fromTo("#cap-w129", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 65.25);
+    tl.to("#cap-g59-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 66.11);
+    tl.fromTo("#cap-g60-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 66.21);
+    tl.fromTo("#cap-w130", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 66.27);
+    tl.to("#cap-g60-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 67.13);
+    tl.fromTo("#cap-g61-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 67.65);
+    tl.fromTo("#cap-w132", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 67.71);
+    tl.to("#cap-g61-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 68.33);
+    tl.fromTo("#cap-g62-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 68.43);
+    tl.fromTo("#cap-w133", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 68.49);
+    tl.fromTo("#cap-w134", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 68.73);
+    tl.fromTo("#cap-w135", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 68.75);
+    tl.fromTo("#cap-w136", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 69.19);
+    tl.fromTo("#cap-w137", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 69.25);
+    tl.to("#cap-g62-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 69.37);
+    tl.fromTo("#cap-g63-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 69.47);
+    tl.fromTo("#cap-w138", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 69.53);
+    tl.to("#cap-g63-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 69.85);
+    tl.fromTo("#cap-g64-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 69.95);
+    tl.fromTo("#cap-w139", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 70.01);
+    tl.fromTo("#cap-w140", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 70.07);
+    tl.to("#cap-g64-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 71.15);
+    tl.fromTo("#cap-g65-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 71.27);
+    tl.fromTo("#cap-w141", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 71.33);
+    tl.fromTo("#cap-w142", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 71.75);
+    tl.to("#cap-g65-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 72.76);
+    tl.fromTo("#cap-g66-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 72.86);
+    tl.fromTo("#cap-w143", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 72.92);
+    tl.fromTo("#cap-w144", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 73.12);
+    tl.fromTo("#cap-w145", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 73.18);
+    tl.fromTo("#cap-w146", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 73.46);
+    tl.to("#cap-g66-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 74.04);
+    tl.fromTo("#cap-g67-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 74.14);
+    tl.fromTo("#cap-w147", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 74.20);
+    tl.fromTo("#cap-w148", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 74.54);
+    tl.fromTo("#cap-w149", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 74.66);
+    tl.fromTo("#cap-w150", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 75.08);
+    tl.fromTo("#cap-w151", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 75.30);
+    tl.to("#cap-g67-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 75.22);
+    tl.fromTo("#cap-g68-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 75.32);
+    tl.fromTo("#cap-w152", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 75.38);
+    tl.to("#cap-g68-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 76.02);
+    tl.fromTo("#cap-g69-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 76.12);
+    tl.fromTo("#cap-w153", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 76.18);
+    tl.fromTo("#cap-w154", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 76.32);
+    tl.fromTo("#cap-w155", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 76.94);
+    tl.to("#cap-g69-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 76.86);
+    tl.fromTo("#cap-g70-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 76.96);
+    tl.fromTo("#cap-w156", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 77.02);
+    tl.to("#cap-g70-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 78.20);
+    tl.fromTo("#cap-g71-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 78.64);
+    tl.fromTo("#cap-w157", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 78.70);
+    tl.fromTo("#cap-w158", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 78.86);
+    tl.fromTo("#cap-w159", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 79.24);
+    tl.fromTo("#cap-w160", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 79.34);
+    tl.to("#cap-g71-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 79.66);
+    tl.fromTo("#cap-g72-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 79.76);
+    tl.fromTo("#cap-w161", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 79.82);
+    tl.fromTo("#cap-w162", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 79.96);
+    tl.to("#cap-g72-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 80.60);
+    tl.fromTo("#cap-g73-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 80.70);
+    tl.fromTo("#cap-w163", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 80.76);
+    tl.fromTo("#cap-w164", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 81.10);
+    tl.to("#cap-g73-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 81.78);
+    tl.fromTo("#cap-g74-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 81.88);
+    tl.fromTo("#cap-w165", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 81.94);
+    tl.fromTo("#cap-w166", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 82.08);
+    tl.fromTo("#cap-w167", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 82.41);
+    tl.fromTo("#cap-w168", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 82.49);
+    tl.to("#cap-g74-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 82.59);
+    tl.fromTo("#cap-g75-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 82.69);
+    tl.fromTo("#cap-w169", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 82.75);
+    tl.to("#cap-g75-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 83.45);
+    tl.fromTo("#cap-g76-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 83.55);
+    tl.fromTo("#cap-w170", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 83.61);
+    tl.fromTo("#cap-w171", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 83.95);
+    tl.fromTo("#cap-w172", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 84.07);
+    tl.fromTo("#cap-w173", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 84.37);
+    tl.fromTo("#cap-w174", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 84.45);
+    tl.to("#cap-g76-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 85.33);
+    tl.fromTo("#cap-g77-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 87.15);
+    tl.fromTo("#cap-w175", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 87.21);
+    tl.fromTo("#cap-w176", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 87.55);
+    tl.to("#cap-g77-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 87.93);
+    tl.fromTo("#cap-g78-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 88.03);
+    tl.fromTo("#cap-w177", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 88.09);
+    tl.fromTo("#cap-w178", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 88.45);
+    tl.fromTo("#cap-w179", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 88.57);
+    tl.fromTo("#cap-w180", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 88.91);
+    tl.to("#cap-g78-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 88.79);
+    tl.fromTo("#cap-g79-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 88.89);
+    tl.fromTo("#cap-w181", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 88.95);
+    tl.to("#cap-g79-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 89.65);
+    tl.fromTo("#cap-g80-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 89.75);
+    tl.fromTo("#cap-w182", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 89.81);
+    tl.fromTo("#cap-w184", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 90.53);
+    tl.fromTo("#cap-w185", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 90.63);
+    tl.fromTo("#cap-w186", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 90.87);
+    tl.to("#cap-g80-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 90.81);
+    tl.fromTo("#cap-g81-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 90.91);
+    tl.fromTo("#cap-w187", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 90.97);
+    tl.fromTo("#cap-w188", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 91.19);
+    tl.fromTo("#cap-w189", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 91.22);
+    tl.to("#cap-g81-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 91.98);
+    tl.fromTo("#cap-g82-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 92.08);
+    tl.fromTo("#cap-w190", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 92.14);
+    tl.fromTo("#cap-w191", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 92.52);
+    tl.fromTo("#cap-w192", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 92.60);
+    tl.to("#cap-g82-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 93.34);
+    tl.fromTo("#cap-g83-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 93.44);
+    tl.fromTo("#cap-w193", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 93.50);
+    tl.to("#cap-g83-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 93.92);
+    tl.fromTo("#cap-g84-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 94.02);
+    tl.fromTo("#cap-w194", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 94.08);
+    tl.fromTo("#cap-w195", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 94.22);
+    tl.to("#cap-g84-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 94.60);
+    tl.fromTo("#cap-g85-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 94.70);
+    tl.fromTo("#cap-w196", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 94.76);
+    tl.fromTo("#cap-w197", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 94.94);
+    tl.fromTo("#cap-w198", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 95.16);
+    tl.fromTo("#cap-w199", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 95.30);
+    tl.to("#cap-g85-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 95.68);
+    tl.fromTo("#cap-g86-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 95.78);
+    tl.fromTo("#cap-w200", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 95.84);
+    tl.to("#cap-g86-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 96.64);
+    tl.fromTo("#cap-g87-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 96.90);
+    tl.fromTo("#cap-w201", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 96.96);
+    tl.fromTo("#cap-w202", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 97.22);
+    tl.to("#cap-g87-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 97.72);
+    tl.fromTo("#cap-g88-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 97.82);
+    tl.fromTo("#cap-w203", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 97.88);
+    tl.fromTo("#cap-w204", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 98.38);
+    tl.to("#cap-g88-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 99.62);
+    tl.fromTo("#cap-g89-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 99.72);
+    tl.fromTo("#cap-w205", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 99.78);
+    tl.fromTo("#cap-w206", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 100.04);
+    tl.fromTo("#cap-w207", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 100.24);
+    tl.fromTo("#cap-w208", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 100.56);
+    tl.to("#cap-g89-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 100.70);
+    tl.fromTo("#cap-g90-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 100.80);
+    tl.fromTo("#cap-w209", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 100.86);
+    tl.to("#cap-g90-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 101.51);
+    tl.fromTo("#cap-g91-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 101.61);
+    tl.fromTo("#cap-w210", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 101.67);
+    tl.fromTo("#cap-w211", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 101.95);
+    tl.fromTo("#cap-w212", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 102.11);
+    tl.fromTo("#cap-w213", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 102.49);
+    tl.to("#cap-g91-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 102.51);
+    tl.fromTo("#cap-g92-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 102.61);
+    tl.fromTo("#cap-w214", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 102.67);
+    tl.to("#cap-g92-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 103.79);
+    tl.fromTo("#cap-g93-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 103.89);
+    tl.fromTo("#cap-w215", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 103.95);
+    tl.fromTo("#cap-w216", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 104.17);
+    tl.to("#cap-g93-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 104.53);
+    tl.fromTo("#cap-g94-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 104.63);
+    tl.fromTo("#cap-w217", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 104.69);
+    tl.fromTo("#cap-w218", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 105.57);
+    tl.to("#cap-g94-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 106.33);
+    tl.fromTo("#cap-g95-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 106.43);
+    tl.fromTo("#cap-w219", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 106.49);
+    tl.fromTo("#cap-w220", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 106.81);
+    tl.fromTo("#cap-w221", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 107.41);
+    tl.to("#cap-g95-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 107.49);
+    tl.fromTo("#cap-g96-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 107.59);
+    tl.fromTo("#cap-w222", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 107.65);
+    tl.to("#cap-g96-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 108.53);
+    tl.fromTo("#cap-g97-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 108.63);
+    tl.fromTo("#cap-w223", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 108.69);
+    tl.fromTo("#cap-w224", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 108.89);
+    tl.fromTo("#cap-w225", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 108.95);
+    tl.fromTo("#cap-w226", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 109.19);
+    tl.fromTo("#cap-w227", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 109.25);
+    tl.to("#cap-g97-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 110.12);
+    tl.fromTo("#cap-g98-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 110.22);
+    tl.fromTo("#cap-w228", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 110.28);
+    tl.fromTo("#cap-w229", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 110.78);
+    tl.fromTo("#cap-w230", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 111.03);
+    tl.to("#cap-g98-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 110.94);
+    tl.fromTo("#cap-g99-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 111.03);
+    tl.fromTo("#cap-w231", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 111.09);
+    tl.fromTo("#cap-w232", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 111.50);
+    tl.fromTo("#cap-w233", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 111.68);
+    tl.to("#cap-g99-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 112.24);
+    tl.fromTo("#cap-g100-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 112.34);
+    tl.fromTo("#cap-w234", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 112.40);
+    tl.fromTo("#cap-w235", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 112.68);
+    tl.fromTo("#cap-w236", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 112.72);
+    tl.to("#cap-g100-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 113.58);
+    tl.fromTo("#cap-g101-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 113.68);
+    tl.fromTo("#cap-w237", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 113.74);
+    tl.to("#cap-g101-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 114.26);
+    tl.fromTo("#cap-g102-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 114.36);
+    tl.fromTo("#cap-w238", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 114.42);
+    tl.to("#cap-g102-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 115.10);
+    tl.fromTo("#cap-g103-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 115.20);
+    tl.fromTo("#cap-w239", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 115.26);
+    tl.fromTo("#cap-w240", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 115.40);
+    tl.fromTo("#cap-w241", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 115.78);
+    tl.fromTo("#cap-w242", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 115.86);
+    tl.to("#cap-g103-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 116.70);
+    tl.fromTo("#cap-g104-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 116.80);
+    tl.fromTo("#cap-w243", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 116.86);
+    tl.fromTo("#cap-w244", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 116.96);
+    tl.fromTo("#cap-w245", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 117.42);
+    tl.fromTo("#cap-w246", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 117.74);
+    tl.to("#cap-g104-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 117.68);
+    tl.fromTo("#cap-g105-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 117.78);
+    tl.fromTo("#cap-w247", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 117.84);
+    tl.to("#cap-g105-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 118.88);
+    tl.fromTo("#cap-g106-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 119.20);
+    tl.fromTo("#cap-w248", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 119.26);
+    tl.fromTo("#cap-w249", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 119.44);
+    tl.fromTo("#cap-w250", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 119.66);
+    tl.to("#cap-g106-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 120.33);
+    tl.fromTo("#cap-g107-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 120.42);
+    tl.fromTo("#cap-w251", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 120.48);
+    tl.to("#cap-g107-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 121.14);
+    tl.fromTo("#cap-g108-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 121.35);
+    tl.fromTo("#cap-w253", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 121.41);
+    tl.fromTo("#cap-w254", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 121.71);
+    tl.fromTo("#cap-w255", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 121.85);
+    tl.to("#cap-g108-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 122.51);
+    tl.fromTo("#cap-g109-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 122.61);
+    tl.fromTo("#cap-w256", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 122.67);
+    tl.fromTo("#cap-w257", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 122.95);
+    tl.fromTo("#cap-w258", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 123.01);
+    tl.to("#cap-g109-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 123.53);
+    tl.fromTo("#cap-g110-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 123.63);
+    tl.fromTo("#cap-w259", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 123.69);
+    tl.fromTo("#cap-w260", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 123.81);
+    tl.fromTo("#cap-w261", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 123.89);
+    tl.fromTo("#cap-w262", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 124.07);
+    tl.fromTo("#cap-w263", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 124.45);
+    tl.to("#cap-g110-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 124.55);
+    tl.fromTo("#cap-g111-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 124.65);
+    tl.fromTo("#cap-w264", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 124.71);
+    tl.fromTo("#cap-w265", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 124.83);
+    tl.to("#cap-g111-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 125.53);
+    tl.fromTo("#cap-g112-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 125.63);
+    tl.fromTo("#cap-w266", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 125.69);
+    tl.fromTo("#cap-w267", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 126.09);
+    tl.fromTo("#cap-w268", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 126.23);
+    tl.to("#cap-g112-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 127.25);
+    tl.fromTo("#cap-g113-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 127.35);
+    tl.fromTo("#cap-w269", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 127.41);
+    tl.fromTo("#cap-w270", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 127.71);
+    tl.to("#cap-g113-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 128.45);
+    tl.fromTo("#cap-g114-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 128.55);
+    tl.fromTo("#cap-w271", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 128.61);
+    tl.fromTo("#cap-w272", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 128.75);
+    tl.fromTo("#cap-w273", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 129.13);
+    tl.fromTo("#cap-w274", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 129.21);
+    tl.fromTo("#cap-w275", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 129.25);
+    tl.to("#cap-g114-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 129.97);
+    tl.fromTo("#cap-g115-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 130.07);
+    tl.fromTo("#cap-w276", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 130.13);
+    tl.fromTo("#cap-w277", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 130.24);
+    tl.to("#cap-g115-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 131.34);
+    tl.fromTo("#cap-g116-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 133.04);
+    tl.fromTo("#cap-w278", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 133.10);
+    tl.to("#cap-g116-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 133.66);
+    tl.fromTo("#cap-g117-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 133.76);
+    tl.fromTo("#cap-w279", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 133.82);
+    tl.fromTo("#cap-w280", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 134.08);
+    tl.fromTo("#cap-w281", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 134.54);
+    tl.to("#cap-g117-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 135.10);
+    tl.fromTo("#cap-g118-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 135.20);
+    tl.fromTo("#cap-w282", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 135.26);
+    tl.fromTo("#cap-w283", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 135.52);
+    tl.to("#cap-g118-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 136.04);
+    tl.fromTo("#cap-g119-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 136.14);
+    tl.fromTo("#cap-w284", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 136.20);
+    tl.fromTo("#cap-w285", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 136.32);
+    tl.fromTo("#cap-w286", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 136.68);
+    tl.to("#cap-g119-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 137.34);
+    tl.fromTo("#cap-g120-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 137.44);
+    tl.fromTo("#cap-w287", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 137.50);
+    tl.fromTo("#cap-w288", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 137.78);
+    tl.fromTo("#cap-w289", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 137.96);
+    tl.to("#cap-g120-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 138.82);
+    tl.fromTo("#cap-g121-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 138.92);
+    tl.fromTo("#cap-w290", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 138.98);
+    tl.fromTo("#cap-w291", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 139.62);
+    tl.to("#cap-g121-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 140.65);
+    tl.fromTo("#cap-g122-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 140.75);
+    tl.fromTo("#cap-w292", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 140.81);
+    tl.to("#cap-g122-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 141.73);
+    tl.fromTo("#cap-g123-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 141.83);
+    tl.fromTo("#cap-w293", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 141.89);
+    tl.fromTo("#cap-w294", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 142.17);
+    tl.fromTo("#cap-w295", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 142.35);
+    tl.to("#cap-g123-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 143.57);
+    tl.fromTo("#cap-g124-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 143.67);
+    tl.fromTo("#cap-w296", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 143.73);
+    tl.fromTo("#cap-w297", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 144.09);
+    tl.fromTo("#cap-w298", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 144.15);
+    tl.fromTo("#cap-w299", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 144.37);
+    tl.to("#cap-g124-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 144.79);
+    tl.fromTo("#cap-g125-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 144.89);
+    tl.fromTo("#cap-w300", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 144.95);
+    tl.fromTo("#cap-w301", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 145.57);
+    tl.fromTo("#cap-w302", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 145.67);
+    tl.fromTo("#cap-w303", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 146.07);
+    tl.to("#cap-g125-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 145.99);
+    tl.fromTo("#cap-g126-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 146.09);
+    tl.fromTo("#cap-w304", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 146.15);
+    tl.to("#cap-g126-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 146.97);
+    tl.fromTo("#cap-g127-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 147.07);
+    tl.fromTo("#cap-w305", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 147.13);
+    tl.to("#cap-g127-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 147.41);
+    tl.fromTo("#cap-g128-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 147.51);
+    tl.fromTo("#cap-w306", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 147.57);
+    tl.fromTo("#cap-w307", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 147.63);
+    tl.fromTo("#cap-w308", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 148.27);
+    tl.fromTo("#cap-w309", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 148.43);
+    tl.to("#cap-g128-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 149.03);
+    tl.fromTo("#cap-g129-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 149.13);
+    tl.fromTo("#cap-w310", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 149.19);
+    tl.fromTo("#cap-w311", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 149.46);
+    tl.to("#cap-g129-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 150.22);
+    tl.fromTo("#cap-g130-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 150.32);
+    tl.fromTo("#cap-w312", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 150.38);
+    tl.to("#cap-g130-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 151.10);
+    tl.fromTo("#cap-g131-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 151.24);
+    tl.fromTo("#cap-w313", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 151.30);
+    tl.fromTo("#cap-w314", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 151.54);
+    tl.fromTo("#cap-w315", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 151.74);
+    tl.fromTo("#cap-w316", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 152.16);
+    tl.to("#cap-g131-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 152.84);
+    tl.fromTo("#cap-g132-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 152.94);
+    tl.fromTo("#cap-w317", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 153.00);
+    tl.fromTo("#cap-w318", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 153.14);
+    tl.fromTo("#cap-w319", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 153.20);
+    tl.fromTo("#cap-w320", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 153.56);
+    tl.to("#cap-g132-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 154.56);
+    tl.fromTo("#cap-g133-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 154.66);
+    tl.fromTo("#cap-w321", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 154.72);
+    tl.fromTo("#cap-w322", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 154.80);
+    tl.fromTo("#cap-w323", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 155.46);
+    tl.to("#cap-g133-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 155.76);
+    tl.fromTo("#cap-g134-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 155.86);
+    tl.fromTo("#cap-w324", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 155.92);
+    tl.fromTo("#cap-w325", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 156.02);
+    tl.fromTo("#cap-w326", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 156.78);
+    tl.to("#cap-g134-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 156.70);
+    tl.fromTo("#cap-g135-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 156.80);
+    tl.fromTo("#cap-w327", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 156.86);
+    tl.to("#cap-g135-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 157.90);
+    tl.fromTo("#cap-g136-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 158.02);
+    tl.fromTo("#cap-w328", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 158.08);
+    tl.fromTo("#cap-w329", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 158.20);
+    tl.fromTo("#cap-w330", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 158.30);
+    tl.fromTo("#cap-w331", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 158.66);
+    tl.to("#cap-g136-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 159.23);
+    tl.fromTo("#cap-g137-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 159.33);
+    tl.fromTo("#cap-w332", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 159.39);
+    tl.fromTo("#cap-w333", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 159.49);
+    tl.fromTo("#cap-w334", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 159.61);
+    tl.fromTo("#cap-w335", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 160.11);
+    tl.to("#cap-g137-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 160.15);
+    tl.fromTo("#cap-g138-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 160.25);
+    tl.fromTo("#cap-w336", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 160.31);
+    tl.to("#cap-g138-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 160.87);
+    tl.fromTo("#cap-g139-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 160.97);
+    tl.fromTo("#cap-w337", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 161.03);
+    tl.fromTo("#cap-w338", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 161.17);
+    tl.fromTo("#cap-w339", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 161.35);
+    tl.fromTo("#cap-w340", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 161.71);
+    tl.to("#cap-g139-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 161.69);
+    tl.fromTo("#cap-g140-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 161.79);
+    tl.fromTo("#cap-w341", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 161.85);
+    tl.to("#cap-g140-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 162.63);
+    tl.fromTo("#cap-g141-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 162.73);
+    tl.fromTo("#cap-w342", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 162.79);
+    tl.fromTo("#cap-w343", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 162.85);
+    tl.to("#cap-g141-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 163.03);
+    tl.fromTo("#cap-g142-in", { y: 26, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.16, ease: "power3.out" }, 163.13);
+    tl.fromTo("#cap-w344", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 163.19);
+    tl.fromTo("#cap-w345", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-ink)", scale: 1, duration: 0.08, ease: "power1.out" }, 163.25);
+    tl.fromTo("#cap-w346", { color: "var(--cap-dim)", scale: 1 }, { color: "var(--cap-accent)", scale: 1.08, duration: 0.08, ease: "power1.out" }, 163.29);
+    tl.to("#cap-g142-in", { opacity: 0, duration: 0.1, ease: "power2.in" }, 165.29);
+    window.__timelines["captions"] = tl;
+  </script>
+</template>
